@@ -88,10 +88,248 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./components/ImageCard/ImageCard.component.jsx":
+/*!******************************************************!*\
+  !*** ./components/ImageCard/ImageCard.component.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _material_ui_core_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material-ui/core/Card */ "@material-ui/core/Card");
+/* harmony import */ var _material_ui_core_Card__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/CardMedia */ "@material-ui/core/CardMedia");
+/* harmony import */ var _material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles/sharedStyles */ "./styles/sharedStyles.js");
+/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! chroma-js */ "chroma-js");
+/* harmony import */ var chroma_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(chroma_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_6__);
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/components/ImageCard/ImageCard.component.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+const CardContainer = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
+  displayName: "ImageCardcomponent__CardContainer",
+  componentId: "sc-1n1t3lq-0"
+})(["position:relative;overflow:hidden;cursor:pointer;"]);
+const Title = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
+  displayName: "ImageCardcomponent__Title",
+  componentId: "sc-1n1t3lq-1"
+})(["font-family:gill-sans-nova,sans-serif;font-weight:200;box-sizing:border-box;width:100%;height:100%;.title{font-size:", ";line-height:1.2;color:", ";}.sub-title{margin-top:1rem;font-size:", ";color:", ";}background:#fff;padding:1.6rem 2.4rem;z-index:100;position:absolute;top:0;left:0;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_4__["fontSizeXXL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_4__["colorGrey"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_4__["fontsizeM"], chroma_js__WEBPACK_IMPORTED_MODULE_5___default()(_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_4__["colorGrey"]).brighten());
+const CornerRibbon = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
+  displayName: "ImageCardcomponent__CornerRibbon",
+  componentId: "sc-1n1t3lq-2"
+})(["width:100px;position:absolute;font-weight:300;text-align:center;line-height:20px;letter-spacing:1px;color:#fff;background:", ";top:12px;right:-30px;transform:rotate(45deg);z-index:101;text-transform:uppercase;pointer-events:none;"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_4__["colorGrey"]);
+
+const ImageCardComponent = ({
+  title,
+  chartImage,
+  link,
+  date,
+  newVis
+}) => {
+  const {
+    0: showTitle,
+    1: setShowTitle
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+  return __jsx(next_link__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    href: link,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 75
+    },
+    __self: undefined
+  }, __jsx(CardContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 76
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_Card__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    onMouseEnter: () => setShowTitle(true),
+    onMouseLeave: () => setShowTitle(false),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 77
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_CardMedia__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    component: "img",
+    image: chartImage,
+    title: "Justice And Peace dashboard screenshot",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81
+    },
+    __self: undefined
+  }), newVis && __jsx(CornerRibbon, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 88
+    },
+    __self: undefined
+  }, "New"), showTitle && __jsx(Title, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94
+    },
+    __self: undefined
+  }, __jsx("div", {
+    className: "title",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: undefined
+  }, title), __jsx("div", {
+    className: "sub-title",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 98
+    },
+    __self: undefined
+  }, date)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ImageCardComponent);
+
+/***/ }),
+
+/***/ "./components/NavBar/Header.jsx":
+/*!**************************************!*\
+  !*** ./components/NavBar/Header.jsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/components/NavBar/Header.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const HeaderContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "Header__HeaderContainer",
+  componentId: "sc-82k9te-0"
+})(["position:fixed;left:0;top:0;width:100%;height:6rem;box-sizing:border-box;display:flex;justify-content:flex-end;align-items:center;"]);
+const ImageContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "Header__ImageContainer",
+  componentId: "sc-82k9te-1"
+})(["padding:1rem;img{cursor:pointer;height:2rem;fill:#94d31b;}"]);
+const IconsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "Header__IconsContainer",
+  componentId: "sc-82k9te-2"
+})(["", " display:flex;align-items:center;"], props => props.type === "socialMedia" ? Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["margin-right:2rem;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["margin-left:2rem;"])); // import IconChart from '../../chartComponents/IconChart/IconChart';
+
+const Header = () => {
+  return __jsx(HeaderContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: undefined
+  }, __jsx(IconsContainer, {
+    type: "socialMedia",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: undefined
+  }, __jsx(ImageContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 50
+    },
+    __self: undefined
+  }, __jsx("a", {
+    href: "https://twitter.com/AndSzesztai",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 51
+    },
+    __self: undefined
+  }, __jsx("img", {
+    src: "/static/icons/twitter.svg",
+    alt: "twitter icon",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56
+    },
+    __self: undefined
+  }))), __jsx(ImageContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59
+    },
+    __self: undefined
+  }, __jsx("a", {
+    href: "https://linkedin.com/in/andr%C3%A1s-szesztai-351a4379/",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 60
+    },
+    __self: undefined
+  }, __jsx("img", {
+    src: "/static/icons/linkedin.svg",
+    alt: "linkedin icon",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65
+    },
+    __self: undefined
+  }))), __jsx(ImageContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68
+    },
+    __self: undefined
+  }, __jsx("a", {
+    href: "https://github.com/andras-newzoo",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 69
+    },
+    __self: undefined
+  }, __jsx("img", {
+    src: "/static/icons/github.svg",
+    alt: "github icon",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 74
+    },
+    __self: undefined
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
 
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/map.js":
 /*!************************************************************!*\
@@ -134,6 +372,39 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/define-proper
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptor */ "core-js/library/fn/object/get-own-property-descriptor");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _extends; });
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
+
+function _extends() {
+  _extends = _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default.a || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
 
 /***/ }),
 
@@ -767,47 +1038,171 @@ module.exports = __webpack_require__(/*! ./dist/client/link */ "./node_modules/n
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Container */ "@material-ui/core/Container");
+/* harmony import */ var _material_ui_core_Container__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Paper */ "@material-ui/core/Paper");
+/* harmony import */ var _material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/Grid */ "@material-ui/core/Grid");
+/* harmony import */ var _material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_ImageCard_ImageCard_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/ImageCard/ImageCard.component */ "./components/ImageCard/ImageCard.component.jsx");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _static_data_mainContent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../static/data/mainContent */ "./static/data/mainContent.js");
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/styles */ "@material-ui/styles");
+/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_styles__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_NavBar_Header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/NavBar/Header */ "./components/NavBar/Header.jsx");
+
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/pages/visualisations/index.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-const Index = () => __jsx("div", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 5
-  },
-  __self: undefined
-}, __jsx("p", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 6
-  },
-  __self: undefined
-}, "Visualisations Page"), __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: "/visualisations/test-visualisation",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 7
-  },
-  __self: undefined
-}, __jsx("a", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 8
-  },
-  __self: undefined
-}, "Test Visualisation")));
+
+
+
+
+
+
+const ImageCardContainer = Object(_material_ui_styles__WEBPACK_IMPORTED_MODULE_8__["styled"])(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_3___default.a)({
+  overflow: 'hidden',
+  minHeight: '100%',
+  maxHeight: '100%'
+});
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_6__["makeStyles"])(theme => ({
+  placeholder: {
+    [theme.breakpoints.down('lg')]: {
+      height: '15rem'
+    },
+    [theme.breakpoints.down('md')]: {
+      height: '12.5rem'
+    },
+    [theme.breakpoints.down('sm')]: {
+      height: '10rem'
+    }
+  }
+}));
+
+const Index = () => {
+  const classes = useStyles();
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(_components_NavBar_Header__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    },
+    __self: undefined
+  }), __jsx("div", {
+    className: classes.placeholder,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    },
+    __self: undefined
+  }), __jsx(_material_ui_core_Container__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    container: true,
+    spacing: 4,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 37
+    },
+    __self: undefined
+  }, _static_data_mainContent__WEBPACK_IMPORTED_MODULE_7__["default"].map(c => __jsx(_material_ui_core_Grid__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    item: true,
+    xs: 12,
+    sm: 6,
+    md: 4,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: undefined
+  }, __jsx(ImageCardContainer, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 41
+    },
+    __self: undefined
+  }, __jsx(_components_ImageCard_ImageCard_component__WEBPACK_IMPORTED_MODULE_5__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, c, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 42
+    },
+    __self: undefined
+  }))))))));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
 
 /***/ }),
 
-/***/ 4:
+/***/ "./static/data/mainContent.js":
+/*!************************************!*\
+  !*** ./static/data/mainContent.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const mainContentData = [{
+  title: 'Hear Their Voices',
+  chartImage: "/static/images/JusticeAndPeace2019.png",
+  link: 'visualisations/justice-and-peace',
+  createdAt: 201908,
+  date: 'August 2019',
+  newVis: true
+}, {
+  title: 'Global Peace Gap',
+  chartImage: '/static/images/globalPeaceGap2019.png',
+  link: 'boringbarchart.com/global-peace-gap',
+  createdAt: 201906,
+  date: 'June 2019',
+  newVis: false
+}, {
+  title: 'They Gave Color to Our History',
+  chartImage: '/static/images/influentialPainters.png',
+  link: 'boringbarchart.com/influential-painters-of-our-history',
+  createdAt: 201904,
+  date: 'April 2019',
+  newVis: false
+}];
+/* harmony default export */ __webpack_exports__["default"] = (mainContentData);
+
+/***/ }),
+
+/***/ "./styles/sharedStyles.js":
+/*!********************************!*\
+  !*** ./styles/sharedStyles.js ***!
+  \********************************/
+/*! exports provided: colorGrey, fontSizeXXL, fontSizeXL, fontsizeM, fontsizeS, fontsizeXS */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorGrey", function() { return colorGrey; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXXL", function() { return fontSizeXXL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXL", function() { return fontSizeXL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontsizeM", function() { return fontsizeM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontsizeS", function() { return fontsizeS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontsizeXS", function() { return fontsizeXS; });
+const colorGrey = `#333333`;
+const fontSizeXXL = `3.6rem`;
+const fontSizeXL = `2.4rem`;
+const fontsizeM = `1.2rem`;
+const fontsizeS = `.9rem`;
+const fontsizeXS = `.6rem`;
+
+/***/ }),
+
+/***/ 5:
 /*!*********************************************!*\
   !*** multi ./pages/visualisations/index.js ***!
   \*********************************************/
@@ -816,6 +1211,94 @@ const Index = () => __jsx("div", {
 
 module.exports = __webpack_require__(/*! /Users/andrasszesztai/Desktop/boring-barchart-nextjs/pages/visualisations/index.js */"./pages/visualisations/index.js");
 
+
+/***/ }),
+
+/***/ "@material-ui/core/Card":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Card" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Card");
+
+/***/ }),
+
+/***/ "@material-ui/core/CardMedia":
+/*!**********************************************!*\
+  !*** external "@material-ui/core/CardMedia" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/CardMedia");
+
+/***/ }),
+
+/***/ "@material-ui/core/Container":
+/*!**********************************************!*\
+  !*** external "@material-ui/core/Container" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Container");
+
+/***/ }),
+
+/***/ "@material-ui/core/Grid":
+/*!*****************************************!*\
+  !*** external "@material-ui/core/Grid" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Grid");
+
+/***/ }),
+
+/***/ "@material-ui/core/Paper":
+/*!******************************************!*\
+  !*** external "@material-ui/core/Paper" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/Paper");
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/*!*******************************************!*\
+  !*** external "@material-ui/core/styles" ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "@material-ui/styles":
+/*!**************************************!*\
+  !*** external "@material-ui/styles" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/styles");
+
+/***/ }),
+
+/***/ "chroma-js":
+/*!****************************!*\
+  !*** external "chroma-js" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("chroma-js");
 
 /***/ }),
 
@@ -937,6 +1420,17 @@ module.exports = require("prop-types-exact");
 /***/ (function(module, exports) {
 
 module.exports = require("react");
+
+/***/ }),
+
+/***/ "styled-components":
+/*!************************************!*\
+  !*** external "styled-components" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-components");
 
 /***/ }),
 
