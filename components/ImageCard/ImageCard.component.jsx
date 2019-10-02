@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import styled from "styled-components";
-import { colorGrey, fontSizeXXL, fontsizeM } from '../../styles/sharedStyles'
-import chroma from 'chroma-js'
+import { colorGrey, fontSizeXXL, fontSizeM } from "../../styles/sharedStyles";
+import chroma from "chroma-js";
 import Link from "next/link";
 
 const CardContainer = styled.div`
   position: relative;
   overflow: hidden;
   cursor: pointer;
-`
+`;
 
 const Title = styled.div`
   font-family: gill-sans-nova, sans-serif;
@@ -27,7 +27,7 @@ const Title = styled.div`
 
   .sub-title {
     margin-top: 1rem;
-    font-size: ${fontsizeM};
+    font-size: ${fontSizeM};
     color: ${chroma(colorGrey).brighten()};
   }
 
@@ -43,8 +43,7 @@ const Title = styled.div`
   flex-direction: column;
   justify-content: space-between;
   pointer-events: none;
-
-`
+`;
 
 const CornerRibbon = styled.div`
   width: 100px;
@@ -61,16 +60,10 @@ const CornerRibbon = styled.div`
   z-index: 101;
   text-transform: uppercase;
   pointer-events: none;
-`
+`;
 
-const ImageCardComponent = ({
-  title,
-  chartImage,
-  link,
-  date,
-  newVis
-}) => {
-  const [ showTitle, setShowTitle ] = useState(false)
+const ImageCardComponent = ({ title, chartImage, link, date, newVis }) => {
+  const [showTitle, setShowTitle] = useState(false);
   return (
     <Link href={link}>
       <CardContainer>
@@ -78,28 +71,18 @@ const ImageCardComponent = ({
           onMouseEnter={() => setShowTitle(true)}
           onMouseLeave={() => setShowTitle(false)}
         >
-            <CardMedia
-              component="img"
-              image={chartImage}
-              title="Justice And Peace dashboard screenshot"
-            />
-              {
-                newVis && 
-                <CornerRibbon>
-                  New
-                </CornerRibbon>
-              }
-              {
-                showTitle &&
-                <Title>
-                  <div className="title">
-                    {title}
-                  </div>
-                  <div className="sub-title">
-                    {date}
-                  </div>
-                </Title>
-              }
+          <CardMedia
+            component="img"
+            image={chartImage}
+            title="Justice And Peace dashboard screenshot"
+          />
+          {newVis && <CornerRibbon>New</CornerRibbon>}
+          {showTitle && (
+            <Title>
+              <div className="title">{title}</div>
+              <div className="sub-title">{date}</div>
+            </Title>
+          )}
         </Card>
       </CardContainer>
     </Link>

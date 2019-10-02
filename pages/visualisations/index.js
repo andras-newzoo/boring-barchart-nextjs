@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import contentData from '../../static/data/mainContent'
 import { styled } from '@material-ui/styles';
 import Header from "../../components/NavBar/Header";
+import { Helmet } from 'react-helmet'
 
 const ImageCardContainer = styled(Paper)({
     overflow: 'hidden',
@@ -31,6 +32,9 @@ const useStyles = makeStyles(theme => ({
 const Index = () => {
   const classes = useStyles();
   return <>
+    <Helmet>
+      <title>Visualisations</title>
+    </Helmet>
     <Header/>
     <div className={classes.placeholder} />
     <Container>

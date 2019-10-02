@@ -1,46 +1,29 @@
-import React from "react";
-import App, { Container } from "next/app";
-import Head from "next/head";
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Container } from 'next/app';
+import withRedux from 'next-redux-wrapper';
+import { createStore } from 'redux';
+import initStore from '../store';
+import rootReducer from '../store'
+import furnitureBank2019 from '../store/furnitureBank2019/reducer'
 
-export default class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
+const makeStore = (initialState, options) => {
+  return createStore(rootReducer, initialState);
+};
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
-  render() {
-    const { Component, pageProps } = this.props;
-
-    return (
+const MyApp = ({ Component, pageProps, store }) => {
+  return (
       <Container>
-        <Head>
-          <link rel="stylesheet" href="https://use.typekit.net/hes1zwd.css"/>
-          <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico"/>
-        </Head>
-
-        <Component {...pageProps} />
-
-        <style global jsx>{`
-          body, html {
-            font-family: gill-sans-nova, sans-serif;
-            font-weight: 300;
-            font-style: normal;
-            font-size: 62.5%;
-            color: #333
-
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-
-            user-select: none;
-          }
-        `}</style>
+          <Provider store={store}>
+              <Component {...pageProps} />
+          </Provider>
       </Container>
-    );
-  }
-}
+  );
+};
+
+MyApp.getInitialProps = async ({ Component, ctx }) => {
+  const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
+  return { pageProps };
+};
+
+export default withRedux(makeStore)(MyApp);
