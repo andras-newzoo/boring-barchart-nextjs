@@ -3,8 +3,6 @@ import { createSelector } from 'reselect'
 const selectAllFurnitures = state => state.furnitureBankReducer.furnitures
 const selectFilter = state => state.furnitureBankReducer.filter
 
-console.log(selectFilter);
-
 
 export const selectAllLivingRoom = createSelector(
   selectAllFurnitures,

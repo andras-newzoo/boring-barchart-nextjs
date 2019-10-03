@@ -88,65 +88,10 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ "./components/IconComponents/SimpleDot.jsx":
-/*!*************************************************!*\
-  !*** ./components/IconComponents/SimpleDot.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/components/IconComponents/SimpleDot.jsx";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
-
-
-const SimpleDot = ({
-  fill = "#000",
-  width,
-  height,
-  stroke = "none",
-  className
-}) => __jsx("svg", {
-  width: width,
-  height: height,
-  viewBox: "0 0 272.5 272.5",
-  className: `${className || ""}`,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 10
-  },
-  __self: undefined
-}, __jsx("g", {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 16
-  },
-  __self: undefined
-}, __jsx("path", {
-  id: "error-icon",
-  stroke: stroke,
-  strokeWidth: "1",
-  fill: fill,
-  fillRule: "nonzero",
-  d: "M272.5,136.3c0,75.3-61,136.3-136.3,136.3S0,211.5,0,136.3S61,0,136.3,0S272.5,61,272.5,136.3z",
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 17
-  },
-  __self: undefined
-})));
-
-/* harmony default export */ __webpack_exports__["default"] = (SimpleDot);
-
-/***/ }),
 
 /***/ "./containers/FurnitureBank2019/index.js":
 /*!***********************************************!*\
@@ -157,188 +102,203 @@ const SimpleDot = ({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-helmet */ "react-helmet");
-/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/styles */ "@material-ui/styles");
-/* harmony import */ var _material_ui_styles__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_styles__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/furnitureBankReducer/actions */ "./store/furnitureBankReducer/actions.js");
-/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_IconComponents_SimpleDot__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/IconComponents/SimpleDot */ "./components/IconComponents/SimpleDot.jsx");
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "react-helmet");
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _styles_styledContainers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/styledContainers */ "./containers/FurnitureBank2019/styles/styledContainers.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/index.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-
-
-
-
-
-
-
-const MapContainer = Object(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["styled"])(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Paper"])({
-  height: 300,
-  maxHeight: "100%"
-});
+ // import { Container, Grid, styled as styledMaterial, Paper } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/styles";
+// import { useSelector, useDispatch } from "react-redux";
+// import styled from 'styled-components'
+// import { increment, decrement, updateFilter } from "../../store/furnitureBankReducer/actions";
+// import { selectAllLivingRoom, selectAllKitchen, selectLivingRoomAndKitchen, selectFilteredFurniture  } from "../../store/furnitureBankReducer/selectors";
+// import ReactMapGL, { Marker, Popup } from "react-map-gl";
+// import SimpleDot from "../../components/IconComponents/SimpleDot";
+// import { testBorder } from "../../styles/sharedStyles";
 
 const Dashboard = () => {
-  const viewport = {
-    width: "100%",
-    height: "100%",
-    latitude: 43.65107,
-    longitude: -79.347015,
-    zoom: 9
-  };
-  const {
-    count,
-    filter
-  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(state => state.furnitureBankReducer);
-  const kitchen = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__["selectAllKitchen"]);
-  const livingRoomAndKitchen = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__["selectLivingRoomAndKitchen"]);
-  const filteredFurnitures = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__["selectFilteredFurniture"]);
-  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useDispatch"])();
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
-    console.log(filteredFurnitures);
-  }, [kitchen, livingRoomAndKitchen, filteredFurnitures, filter]);
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_2__["Helmet"], {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_1__["Helmet"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 19
     },
     __self: undefined
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 20
     },
     __self: undefined
-  }, "Furniture Bank 2019")), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Container"], {
+  }, "Furniture Bank 2019")), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_2__["MainContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 22
     },
     __self: undefined
-  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Grid"], {
-    container: true,
+  }, __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_2__["DashboardContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 23
     },
     __self: undefined
-  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Grid"], {
-    item: true,
-    xs: 5,
+  }, __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_2__["ControlsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 24
     },
     __self: undefined
-  }, __jsx("p", {
+  }, __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_2__["LogoContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 25
     },
     __self: undefined
-  }, count), __jsx(MapContainer, {
+  }, __jsx("img", {
+    src: "/static/logos/furnitureBank.svg",
+    alt: "furniture bank icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 26
     },
     __self: undefined
-  }, __jsx(react_map_gl__WEBPACK_IMPORTED_MODULE_8___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    mapboxApiAccessToken: "pk.eyJ1Ijoic3plYW5kciIsImEiOiJjajlpeWxnNHUzbWNiMzNvcnF1ZGUzbG5rIn0.fk33YGLOHSZtT_CMEWoIag"
-  }, viewport, {
-    mapStyle: "mapbox://styles/szeandr/cje3v8qwedxub2st94yulcma7",
+  }))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_2__["ChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 29
     },
     __self: undefined
-  }))), __jsx("button", {
-    onClick: () => dispatch(Object(_store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__["decrement"])()),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65
-    },
-    __self: undefined
-  }, "Decrement"), __jsx("button", {
-    onClick: () => dispatch(Object(_store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__["increment"])()),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66
-    },
-    __self: undefined
-  }, "Increment"), __jsx("button", {
-    onClick: () => dispatch(Object(_store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__["updateFilter"])('living room')),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67
-    },
-    __self: undefined
-  }, "Living Room"), __jsx("button", {
-    onClick: () => dispatch(Object(_store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__["updateFilter"])('kitchen')),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68
-    },
-    __self: undefined
-  }, "Kitchen")))));
+  }, "Charts"))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Dashboard);
+/* harmony default export */ __webpack_exports__["default"] = (Dashboard); // const viewport = {
+//   width: "100%",
+//   height: "100%",
+//   latitude: 43.65107,
+//   longitude: -79.347015,
+//   zoom: 9
+// };
+// const {
+//   count,
+//   filter
+//  } = useSelector(state => state.furnitureBankReducer)
+//  const kitchen = useSelector(selectAllKitchen)
+//  const livingRoomAndKitchen = useSelector(selectLivingRoomAndKitchen)
+//  const filteredFurnitures = useSelector(selectFilteredFurniture)
+//  const dispatch = useDispatch()
+//  useEffect(() => {
+//    console.log(filteredFurnitures);
+//  }, [ kitchen, livingRoomAndKitchen, filteredFurnitures, filter ])
+// {/* <MapContainer>
+//   <ReactMapGL
+//     mapboxApiAccessToken="pk.eyJ1Ijoic3plYW5kciIsImEiOiJjajlpeWxnNHUzbWNiMzNvcnF1ZGUzbG5rIn0.fk33YGLOHSZtT_CMEWoIag"
+//     {...viewport}
+//     mapStyle="mapbox://styles/szeandr/cje3v8qwedxub2st94yulcma7"
+//   > */}
+//     {/* {
+//       coordinatesData.map(coor => (
+//         <Marker
+//           latitude={coor.latitude}
+//           longitude={coor.longitude}
+//         >
+//           <SimpleDot widht={5} height={5} />
+//         </Marker>
+//       ))
+//     } */}
+//   {/* </ReactMapGL>
+// </MapContainer> */}
+// {/* <button onClick={() => dispatch(decrement())}>Decrement</button>
+// <button onClick={() => dispatch(increment())}>Increment</button>
+// <button onClick={() => dispatch(updateFilter('living room'))}>Living Room</button>
+// <button onClick={() => dispatch(updateFilter('kitchen'))}>Kitchen</button> */}
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/assign.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/assign */ "core-js/library/fn/object/assign");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js ***!
-  \********************************************************************/
-/*! exports provided: default */
+/***/ "./containers/FurnitureBank2019/styles/styledContainers.js":
+/*!*****************************************************************!*\
+  !*** ./containers/FurnitureBank2019/styles/styledContainers.js ***!
+  \*****************************************************************/
+/*! exports provided: colorGreen, colorRedDark, colorRed, colorGreyLight, colorGreyDark, MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ChartsContainer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _extends; });
-/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
-/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorGreen", function() { return colorGreen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorRedDark", function() { return colorRedDark; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorRed", function() { return colorRed; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorGreyLight", function() { return colorGreyLight; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorGreyDark", function() { return colorGreyDark; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainContainer", function() { return MainContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardContainer", function() { return DashboardContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ControlsContainer", function() { return ControlsContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LogoContainer", function() { return LogoContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChartsContainer", function() { return ChartsContainer; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../styles/sharedStyles */ "./styles/sharedStyles.js");
+/* harmony import */ var _styles_mediaQueries__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../styles/mediaQueries */ "./styles/mediaQueries.js");
 
-function _extends() {
-  _extends = _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default.a || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
 
-    return target;
-  };
+const colorGreen = '#3db692';
+const colorRedDark = '#b02b2c';
+const colorRed = '#ec1c24';
+const colorGreyLight = 'lightgray';
+const colorGreyDark = '#333';
+const breakPoints = {
+  medium: 1024
+};
+const media = Object(_styles_mediaQueries__WEBPACK_IMPORTED_MODULE_2__["createBreakPoints"])(breakPoints); ////////////////* CONTAINERS ////////////////////////
 
-  return _extends.apply(this, arguments);
-}
+const MainContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "styledContainers__MainContainer",
+  componentId: "sc-86vxz-0"
+})(["margin:0;padding:0;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center;"]);
+const DashboardContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "styledContainers__DashboardContainer",
+  componentId: "sc-86vxz-1"
+})(["width:90%;height:650px;max-width:1440px;margin:5rem 0;display:grid;grid-template-columns:300px 1fr;grid-template-areas:\"control charts\";", ""], media.medium`
+    width: 80%;
+    margin: 2.5rem 0;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
+    grid-template-areas:  "control"
+                          "charts";
+  `);
+const ControlsContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "styledContainers__ControlsContainer",
+  componentId: "sc-86vxz-2"
+})(["display:grid;grid-area:control;grid-template-rows:150px 1fr;grid-template-areas:\"title panel\";", ""], media.medium`
+    width: 80%;
+
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:  "title panel";
+  `);
+const LogoContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "styledContainers__LogoContainer",
+  componentId: "sc-86vxz-3"
+})(["grid-area:title;display:flex;justify-content:center;align-items:center;", " img{width:80%;}"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["testBorder"]);
+const ChartsContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "styledContainers__ChartsContainer",
+  componentId: "sc-86vxz-4"
+})(["display:grid;grid-area:charts;", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["testBorder"]); ////////////////* OTHER ////////////////////////
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/keys.js ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "core-js/library/fn/object/keys");
 
 /***/ }),
 
@@ -368,83 +328,72 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 /***/ }),
 
-/***/ "./store/furnitureBankReducer/actions.js":
-/*!***********************************************!*\
-  !*** ./store/furnitureBankReducer/actions.js ***!
-  \***********************************************/
-/*! exports provided: increment, decrement, updateFilter */
+/***/ "./styles/mediaQueries.js":
+/*!********************************!*\
+  !*** ./styles/mediaQueries.js ***!
+  \********************************/
+/*! exports provided: default, createBreakPoints */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return increment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return decrement; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateFilter", function() { return updateFilter; });
-/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types */ "./store/furnitureBankReducer/types.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createBreakPoints", function() { return createBreakPoints; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
 
-const increment = () => ({
-  type: _types__WEBPACK_IMPORTED_MODULE_0__["INCREMENT"]
-});
-const decrement = () => ({
-  type: _types__WEBPACK_IMPORTED_MODULE_0__["DECREMENT"]
-});
-const updateFilter = filter => ({
-  type: _types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_FILTER"],
-  payload: {
-    filter
-  }
-});
+
+const sizes = {
+  largest: 1300,
+  large: 1100,
+  medium: 900,
+  small: 770,
+  smallest: 600,
+  tiny: 450
+};
+/* harmony default export */ __webpack_exports__["default"] = (_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["@media (max-width:", "px){", ";}"], sizes[label], Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(...args));
+
+  return acc;
+}, {}));
+const createBreakPoints = (customBreakpoints = sizes) => _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(customBreakpoints).reduce((acc, label) => {
+  acc[label] = (...args) => Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["@media (max-width:", "px){", ";}"], customBreakpoints[label], Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(...args));
+
+  return acc;
+}, {});
 
 /***/ }),
 
-/***/ "./store/furnitureBankReducer/selectors.js":
-/*!*************************************************!*\
-  !*** ./store/furnitureBankReducer/selectors.js ***!
-  \*************************************************/
-/*! exports provided: selectAllLivingRoom, selectAllKitchen, selectFilteredFurniture, selectLivingRoomAndKitchen */
+/***/ "./styles/sharedStyles.js":
+/*!********************************!*\
+  !*** ./styles/sharedStyles.js ***!
+  \********************************/
+/*! exports provided: colorGrey, fontSizeXXL, fontSizeXL, fontSizeM, fontSizeDefault, fontSizeS, fontSizeXS, testBorder */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllLivingRoom", function() { return selectAllLivingRoom; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllKitchen", function() { return selectAllKitchen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredFurniture", function() { return selectFilteredFurniture; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectLivingRoomAndKitchen", function() { return selectLivingRoomAndKitchen; });
-/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! reselect */ "reselect");
-/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(reselect__WEBPACK_IMPORTED_MODULE_0__);
-
-
-const selectAllFurnitures = state => state.furnitureBankReducer.furnitures;
-
-const selectFilter = state => state.furnitureBankReducer.filter;
-
-console.log(selectFilter);
-const selectAllLivingRoom = Object(reselect__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(selectAllFurnitures, allFurnitures => allFurnitures.filter(furn => furn.type === "living room"));
-const selectAllKitchen = Object(reselect__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(selectAllFurnitures, allFurnitures => allFurnitures.filter(furn => furn.type === "kitchen"));
-const selectFilteredFurniture = Object(reselect__WEBPACK_IMPORTED_MODULE_0__["createSelector"])(selectAllFurnitures, selectFilter, (allFurnitures, filter) => allFurnitures.filter(furn => furn.type === filter));
-const selectLivingRoomAndKitchen = Object(reselect__WEBPACK_IMPORTED_MODULE_0__["createSelector"])([selectAllLivingRoom, selectAllKitchen], (livingRoom, kitchen) => [...livingRoom, ...kitchen]);
-
-/***/ }),
-
-/***/ "./store/furnitureBankReducer/types.js":
-/*!*********************************************!*\
-  !*** ./store/furnitureBankReducer/types.js ***!
-  \*********************************************/
-/*! exports provided: INCREMENT, DECREMENT, UPDATE_FILTER */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INCREMENT", function() { return INCREMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECREMENT", function() { return DECREMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FILTER", function() { return UPDATE_FILTER; });
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
-const UPDATE_FILTER = 'UPDATE_FILTER';
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorGrey", function() { return colorGrey; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXXL", function() { return fontSizeXXL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXL", function() { return fontSizeXL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeM", function() { return fontSizeM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeDefault", function() { return fontSizeDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeS", function() { return fontSizeS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXS", function() { return fontSizeXS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testBorder", function() { return testBorder; });
+const colorGrey = `#333333`;
+const fontSizeXXL = `3.6rem`;
+const fontSizeXL = `2.4rem`;
+const fontSizeM = `1.2rem`;
+const fontSizeDefault = `1rem`;
+const fontSizeS = `.8rem`;
+const fontSizeXS = `.6rem`;
+const testBorder = `border: 1px solid black;`;
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!***********************************************************!*\
   !*** multi ./pages/visualisations/furniture-bank-2019.js ***!
   \***********************************************************/
@@ -456,36 +405,14 @@ module.exports = __webpack_require__(/*! /Users/andrasszesztai/Desktop/boring-ba
 
 /***/ }),
 
-/***/ "@material-ui/core":
-/*!************************************!*\
-  !*** external "@material-ui/core" ***!
-  \************************************/
+/***/ "core-js/library/fn/object/keys":
+/*!*************************************************!*\
+  !*** external "core-js/library/fn/object/keys" ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("@material-ui/core");
-
-/***/ }),
-
-/***/ "@material-ui/styles":
-/*!**************************************!*\
-  !*** external "@material-ui/styles" ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/styles");
-
-/***/ }),
-
-/***/ "core-js/library/fn/object/assign":
-/*!***************************************************!*\
-  !*** external "core-js/library/fn/object/assign" ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/object/assign");
+module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
@@ -511,36 +438,14 @@ module.exports = require("react-helmet");
 
 /***/ }),
 
-/***/ "react-map-gl":
-/*!*******************************!*\
-  !*** external "react-map-gl" ***!
-  \*******************************/
+/***/ "styled-components":
+/*!************************************!*\
+  !*** external "styled-components" ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-map-gl");
-
-/***/ }),
-
-/***/ "react-redux":
-/*!******************************!*\
-  !*** external "react-redux" ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-
-/***/ "reselect":
-/*!***************************!*\
-  !*** external "reselect" ***!
-  \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("reselect");
+module.exports = require("styled-components");
 
 /***/ })
 

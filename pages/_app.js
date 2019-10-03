@@ -13,11 +13,11 @@ const makeStore = (initialState, options) => {
 
 const MyApp = ({ Component, pageProps, store }) => {
   return (
-      <Container>
+      // <Container>
           <Provider store={store}>
               <Component {...pageProps} />
           </Provider>
-      </Container>
+      // </Container>
   );
 };
 
