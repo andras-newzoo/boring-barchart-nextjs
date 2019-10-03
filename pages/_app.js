@@ -5,7 +5,7 @@ import withRedux from 'next-redux-wrapper';
 import { createStore } from 'redux';
 import initStore from '../store';
 import rootReducer from '../store'
-import furnitureBank2019 from '../store/furnitureBank2019/reducer'
+import furnitureBank2019 from '../store/furnitureBankReducer/reducer'
 
 const makeStore = (initialState, options) => {
   return createStore(rootReducer, initialState);

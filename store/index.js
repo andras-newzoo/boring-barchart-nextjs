@@ -2,10 +2,10 @@
 
 import { combineReducers } from 'redux'
 
-import furnitureBank2019 from './furnitureBank2019/reducer'
+import furnitureBankReducer from './furnitureBankReducer/reducer'
 
 const rootReducer = combineReducers({
-  furnitureBank2019
+  furnitureBankReducer
 })
 
 export default rootReducer
