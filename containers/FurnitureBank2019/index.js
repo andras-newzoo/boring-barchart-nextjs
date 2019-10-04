@@ -1,6 +1,14 @@
-import React, { useEffect }  from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { MainContainer, DashboardContainer, ControlsContainer, ChartsContainer, LogoContainer } from "./styles/styledContainers";
+import {
+  MainContainer,
+  DashboardContainer,
+  ControlsContainer,
+  ChartsContainer,
+  LogoContainer,
+  ControlContainer
+} from "./styles/styledContainers";
+import { AutoComplete } from "../../components";
 // import { Container, Grid, styled as styledMaterial, Paper } from "@material-ui/core";
 // import { makeStyles } from "@material-ui/styles";
 // import { useSelector, useDispatch } from "react-redux";
@@ -13,7 +21,6 @@ import { MainContainer, DashboardContainer, ControlsContainer, ChartsContainer, 
 // import { testBorder } from "../../styles/sharedStyles";
 
 const Dashboard = () => {
-
   return (
     <>
       <Helmet>
@@ -23,12 +30,16 @@ const Dashboard = () => {
         <DashboardContainer>
           <ControlsContainer>
             <LogoContainer>
-              <img src="/static/logos/furnitureBank.svg" alt="furniture bank icon" />
+              <img
+                src="/static/logos/furnitureBank.svg"
+                alt="furniture bank icon"
+              />
             </LogoContainer>
+            <ControlContainer>
+              <AutoComplete />
+            </ControlContainer>
           </ControlsContainer>
-          <ChartsContainer>
-            Charts
-          </ChartsContainer>
+          <ChartsContainer>Charts</ChartsContainer>
         </DashboardContainer>
       </MainContainer>
     </>
@@ -55,28 +66,26 @@ export default Dashboard;
 //  useEffect(() => {
 //    console.log(filteredFurnitures);
 //  }, [ kitchen, livingRoomAndKitchen, filteredFurnitures, filter ])
- 
 
-
-            // {/* <MapContainer>
-            //   <ReactMapGL
-            //     mapboxApiAccessToken="pk.eyJ1Ijoic3plYW5kciIsImEiOiJjajlpeWxnNHUzbWNiMzNvcnF1ZGUzbG5rIn0.fk33YGLOHSZtT_CMEWoIag"
-            //     {...viewport}
-            //     mapStyle="mapbox://styles/szeandr/cje3v8qwedxub2st94yulcma7"
-            //   > */}
-            //     {/* {
-            //       coordinatesData.map(coor => (
-            //         <Marker
-            //           latitude={coor.latitude}
-            //           longitude={coor.longitude}
-            //         >
-            //           <SimpleDot widht={5} height={5} />
-            //         </Marker>
-            //       ))
-            //     } */}
-            //   {/* </ReactMapGL>
-            // </MapContainer> */}
-            // {/* <button onClick={() => dispatch(decrement())}>Decrement</button>
-            // <button onClick={() => dispatch(increment())}>Increment</button>
-            // <button onClick={() => dispatch(updateFilter('living room'))}>Living Room</button>
-            // <button onClick={() => dispatch(updateFilter('kitchen'))}>Kitchen</button> */}
+// {/* <MapContainer>
+//   <ReactMapGL
+//     mapboxApiAccessToken="pk.eyJ1Ijoic3plYW5kciIsImEiOiJjajlpeWxnNHUzbWNiMzNvcnF1ZGUzbG5rIn0.fk33YGLOHSZtT_CMEWoIag"
+//     {...viewport}
+//     mapStyle="mapbox://styles/szeandr/cje3v8qwedxub2st94yulcma7"
+//   > */}
+//     {/* {
+//       coordinatesData.map(coor => (
+//         <Marker
+//           latitude={coor.latitude}
+//           longitude={coor.longitude}
+//         >
+//           <SimpleDot widht={5} height={5} />
+//         </Marker>
+//       ))
+//     } */}
+//   {/* </ReactMapGL>
+// </MapContainer> */}
+// {/* <button onClick={() => dispatch(decrement())}>Decrement</button>
+// <button onClick={() => dispatch(increment())}>Increment</button>
+// <button onClick={() => dispatch(updateFilter('living room'))}>Living Room</button>
+// <button onClick={() => dispatch(updateFilter('kitchen'))}>Kitchen</button> */}

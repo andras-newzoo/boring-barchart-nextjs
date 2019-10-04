@@ -12,11 +12,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/visualisations/furniture-bank-2019": [
+    "/visualisations": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/visualisations/two": [
+    "/visualisations/furniture-bank-2019": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

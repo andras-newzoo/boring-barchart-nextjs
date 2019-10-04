@@ -14,8 +14,6 @@ const breakPoints = {
 
 const media = createBreakPoints(breakPoints)
 
-////////////////* CONTAINERS ////////////////////////
-
 export const MainContainer = styled.div`
   margin: 0;
   padding: 0;
@@ -76,8 +74,10 @@ export const LogoContainer = styled.div`
   img {
     width: 80%;
   }
-  
+`
 
+export const ControlContainer = styled.div`
+  
 `
 
 
@@ -86,6 +86,3 @@ export const ChartsContainer = styled.div`
   grid-area: charts;
   ${testBorder}
 `
-
-
-////////////////* OTHER ////////////////////////
