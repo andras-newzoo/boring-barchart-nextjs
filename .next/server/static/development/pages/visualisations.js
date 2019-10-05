@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2484,7 +2484,7 @@ const mainContentData = [{
 /*!********************************!*\
   !*** ./styles/sharedStyles.js ***!
   \********************************/
-/*! exports provided: colorGrey, fontSizeXXL, fontSizeXL, fontSizeM, fontSizeDefault, fontSizeS, fontSizeXS, testBorder */
+/*! exports provided: colorGrey, fontSizeXXL, fontSizeXL, fontSizeL, fontSizeM, fontSizeS, fontSizeXS, fontWeightXS, fontWeightS, fontWeightM, fontWeightL, fontWeightXL, testBorder */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2492,23 +2492,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colorGrey", function() { return colorGrey; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXXL", function() { return fontSizeXXL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXL", function() { return fontSizeXL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeL", function() { return fontSizeL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeM", function() { return fontSizeM; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeDefault", function() { return fontSizeDefault; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeS", function() { return fontSizeS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontSizeXS", function() { return fontSizeXS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontWeightXS", function() { return fontWeightXS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontWeightS", function() { return fontWeightS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontWeightM", function() { return fontWeightM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontWeightL", function() { return fontWeightL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fontWeightXL", function() { return fontWeightXL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testBorder", function() { return testBorder; });
 const colorGrey = `#333333`;
 const fontSizeXXL = `3.6rem`;
 const fontSizeXL = `2.4rem`;
+const fontSizeL = `1.6rem`;
 const fontSizeM = `1.2rem`;
-const fontSizeDefault = `1rem`;
 const fontSizeS = `.8rem`;
 const fontSizeXS = `.6rem`;
+const fontWeightXS = 200;
+const fontWeightS = 300;
+const fontWeightM = 400;
+const fontWeightL = 600;
+const fontWeightXL = 700;
 const testBorder = `border: 1px solid black;`;
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!*********************************************!*\
   !*** multi ./pages/visualisations/index.js ***!
   \*********************************************/

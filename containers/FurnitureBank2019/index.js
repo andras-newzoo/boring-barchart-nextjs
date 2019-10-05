@@ -6,12 +6,14 @@ import {
   ControlsContainer,
   ChartsContainer,
   LogoContainer,
-  ControlContainer
-} from "./styles/styledContainers";
+  ControlContainer,
+  MainTitle,
+  PanelContainer
+} from "./styles";
 import { AutoComplete } from "../../components";
 // import { Container, Grid, styled as styledMaterial, Paper } from "@material-ui/core";
 // import { makeStyles } from "@material-ui/styles";
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import styled from 'styled-components'
 
 // import { increment, decrement, updateFilter } from "../../store/furnitureBankReducer/actions";
@@ -21,6 +23,8 @@ import { AutoComplete } from "../../components";
 // import { testBorder } from "../../styles/sharedStyles";
 
 const Dashboard = () => {
+  const { productList } = useSelector(state => state.furnitureBankReducer);
+
   return (
     <>
       <Helmet>
@@ -36,7 +40,17 @@ const Dashboard = () => {
               />
             </LogoContainer>
             <ControlContainer>
-              <AutoComplete />
+              <MainTitle
+                gridArea="title"
+              > 
+                Items to Donate
+              </MainTitle>
+              <PanelContainer>
+                <AutoComplete 
+                  data={productList}
+                  itemKey="product_name"
+                />
+              </PanelContainer>
             </ControlContainer>
           </ControlsContainer>
           <ChartsContainer>Charts</ChartsContainer>

@@ -1,18 +1,6 @@
 import styled from "styled-components";
 import { testBorder } from "../../../styles/sharedStyles";
-import { createBreakPoints } from '../../../styles/mediaQueries'
- 
-export const colorGreen = '#3db692'
-export const colorRedDark = '#b02b2c'
-export const colorRed = '#ec1c24'
-export const colorGreyLight = 'lightgray'
-export const colorGreyDark = '#333'
-
-const breakPoints = {
-  medium: 1024
-}
-
-const media = createBreakPoints(breakPoints)
+import { media } from './variables'
 
 export const MainContainer = styled.div`
   margin: 0;
@@ -51,16 +39,16 @@ export const ControlsContainer = styled.div`
   grid-area: control;
 
   grid-template-rows: 150px 1fr;
-  grid-template-areas: "title panel";
+  grid-template-columns: 1fr;
+  grid-template-areas: "title"
+                        "panel";
 
   ${media.medium`
-    width: 80%;
-
+ 
     grid-template-columns: 200px 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:  "title panel";
   `}
-
 `
 
 export const LogoContainer = styled.div`
@@ -70,19 +58,33 @@ export const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${testBorder}
   img {
     width: 80%;
   }
 `
 
 export const ControlContainer = styled.div`
-  
+  grid-area: panel;
+  display: grid;
+
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "title"
+    "panel"
+`
+
+export const PanelContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  grid-area: panel;
+  ${testBorder}
 `
 
 
 export const ChartsContainer = styled.div`
   display: grid;
   grid-area: charts;
-  ${testBorder}
 `
