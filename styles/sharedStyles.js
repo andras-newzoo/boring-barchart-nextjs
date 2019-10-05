@@ -1,5 +1,7 @@
 
 
+export const fontFamilyMain = `gill-sans-nova, sans-serif`
+
 export const colorGrey = `#333333`;
 
 export const fontSizeXXL = `3.6rem`

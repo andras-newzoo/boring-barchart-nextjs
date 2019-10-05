@@ -57,8 +57,6 @@ const AutoComplete = ({
     value,
     onChange: handleOnChange
   };
-
-
   
   return (
     <Container
@@ -70,7 +68,10 @@ const AutoComplete = ({
         suggestions={suggestions}
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
         onSuggestionsClearRequested={onSuggestionsClearRequested}
-        onSuggestionSelected={(_, { suggestionValue}) => handleSelected(suggestionValue)}
+        onSuggestionSelected={(_, { suggestionValue}) => {
+          setValue('')
+          handleSelected(suggestionValue)
+        }}
         getSuggestionValue={suggestion => getSuggestionValue(suggestion, itemKey)}
         renderSuggestion={(suggestion, query) => renderSuggestion(suggestion, query, itemKey)}
         inputProps={inputProps}

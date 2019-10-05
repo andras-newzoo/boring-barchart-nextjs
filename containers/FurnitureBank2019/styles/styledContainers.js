@@ -1,4 +1,4 @@
-import { testBorder, paddingM, paddingS, paddingXS } from "../../../styles/sharedStyles";
+import { testBorder, paddingM, paddingS } from "../../../styles/sharedStyles";
 import styled from 'styled-components'
 import { media } from './variables'
 
@@ -62,7 +62,7 @@ export const LogoContainer = styled.div`
   padding: ${paddingS};
 
   img {
-    width: 90%;
+    width: 100%;
   }
 `
 
@@ -71,7 +71,6 @@ export const ControlContainer = styled.div`
   display: grid;
 
   padding: ${paddingS};
-  ${'' /* ${testBorder}; */}
 
   grid-template-rows: 50px 1fr;
   grid-template-areas: 
@@ -85,10 +84,14 @@ export const PanelContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: ${props => props.height}px;
+  overflow-y: scroll;
 
-  ${'' /* padding: ${paddingXS}; */}
+  &::-webkit-scrollbar {
+    display: none;
+  }
   grid-area: panel;
-  ${'' /* ${testBorder}; */}
+  ${'' /* ${testBorder} */}
 `
 
 

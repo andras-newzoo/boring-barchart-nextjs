@@ -1,0 +1,1 @@
+{"ast":null,"code":"import styled from 'styled-components';","map":{"version":3,"sources":["/Users/andrasszesztai/Desktop/boring-barchart-nextjs/components/ItemChip/index.jsx"],"names":["styled"],"mappings":"AAAA,OAAOA,MAAP,MAAmB,mBAAnB","sourcesContent":["import styled from 'styled-components'\n\n\n"]},"metadata":{},"sourceType":"module"}

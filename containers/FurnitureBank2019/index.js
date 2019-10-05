@@ -10,39 +10,40 @@ import {
   MainTitle,
   PanelContainer
 } from "./styles";
-import { AutoComplete } from "../../components";
-// import { Container, Grid, styled as styledMaterial, Paper } from "@material-ui/core";
-// import { makeStyles } from "@material-ui/styles";
+import { AutoComplete, ItemChip } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 // import styled from 'styled-components'
 
-import { AddItem } from "../../store/furnitureBankReducer/actions";
-import { selectAllSelected, selectAllUnselected } from "../../store/furnitureBankReducer/selectors";
-// import { selectAllLivingRoom, selectAllKitchen, selectLivingRoomAndKitchen, selectFilteredFurniture  } from "../../store/furnitureBankReducer/selectors";
+import {
+  addItem,
+  incrementItem,
+  decrementItem,
+  deleteItem
+} from "../../store/furnitureBankReducer/actions";
+import { selectAllUnselected } from "../../store/furnitureBankReducer/selectors";
 // import ReactMapGL, { Marker, Popup } from "react-map-gl";
 // import SimpleDot from "../../components/IconComponents/SimpleDot";
-// import { testBorder } from "../../styles/sharedStyles";
 
 const Dashboard = () => {
-  const { productList, selectedItems } = useSelector(state => state.furnitureBankReducer);
-  const [ width, setWidth ] = useState(undefined)
-  const panelContainerRef = useRef()
-  const dispatch = useDispatch()
+  const [dimensions, setDimensions] = useState(undefined);
+  const panelContainerRef = useRef();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const panelWidth = panelContainerRef.current.clientWidth
-    !width && setWidth(panelWidth)
-  }, [panelContainerRef, width])
+    const panelWidth = panelContainerRef.current.clientWidth;
+    const panelHeight = panelContainerRef.current.clientHeight;
+    !dimensions && setDimensions({ width: panelWidth, height: panelHeight });
+  }, [panelContainerRef, dimensions]);
 
-  const handleSelected = selected => {
-    dispatch(AddItem(selected))
-  }
+  const handleSelected = selected => dispatch(addItem(selected));
+  const handleIncrementClick = item => dispatch(incrementItem(item));
+  const handleDecrementClick = item => dispatch(decrementItem(item));
+  const handleDeleteClick = item => dispatch(deleteItem(item))
 
-  const allSelected = useSelector(selectAllSelected)
-  const allUnselected = useSelector(selectAllUnselected)
+  const { selectedItems } = useSelector(state => state.furnitureBankReducer);
+  const allUnselected = useSelector(selectAllUnselected);
 
   console.log(selectedItems);
-  console.log(allSelected);
 
   return (
     <>
@@ -59,20 +60,29 @@ const Dashboard = () => {
               />
             </LogoContainer>
             <ControlContainer>
-              <MainTitle
-                gridArea="title"
-              > 
-                Items to Donate
-              </MainTitle>
-              <PanelContainer
-                ref={panelContainerRef}
-              >
-                <AutoComplete 
+              <MainTitle gridArea="title">Items to Donate</MainTitle>
+              <PanelContainer ref={panelContainerRef} height={dimensions && dimensions.height}>
+                {selectedItems.length > 0 &&
+                  selectedItems.map(item => (
+                    <ItemChip
+                      key={item.name}
+                      handleIncrementClick={() =>
+                        handleIncrementClick(item.name)
+                      }
+                      handleDecrementClick={() =>
+                        handleDecrementClick(item.name)
+                      }
+                      handleDeleteClick={() => handleDeleteClick(item.name)}
+                      content={item.name}
+                      quantity={item.quantity}
+                    />
+                  ))}
+                <AutoComplete
                   data={allUnselected}
                   itemKey="product_name"
                   handleSelected={handleSelected}
-                  style={{
-                    width: width
+                  style={dimensions && {
+                    width: dimensions.width
                   }}
                 />
               </PanelContainer>
