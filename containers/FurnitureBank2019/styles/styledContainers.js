@@ -1,4 +1,4 @@
-import { testBorder, paddingM, paddingS } from "../../../styles/sharedStyles";
+import { paddingM, paddingS } from "../../../styles/sharedStyles";
 import styled from 'styled-components'
 import { media } from './variables'
 
@@ -58,7 +58,7 @@ export const LogoContainer = styled.div`
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: ${paddingS};
 
   img {

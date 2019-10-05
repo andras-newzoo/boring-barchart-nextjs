@@ -18,7 +18,7 @@ export const Container = styled.div`
     `}
     height: ${props => props.height || 30}px;
     padding: ${paddingXS};
-    margin: .6rem 0;
+    margin: .4rem 0;
     padding-left: ${props => !props.searched && 3}rem;
     font-weight: ${props => props.fontWeight || fontWeightXS};
     font-size: ${fontSizeM};
@@ -47,7 +47,7 @@ export const Container = styled.div`
   .react-autosuggest__suggestions-container {
     display: block;
     position: absolute;
-    top: calc(30px + 1.6rem - 1px);
+    top: calc(30px + 1.4rem - 1px);
     width: ${props => props.width - 2}px;
     border: 1px solid ${props => props.borderColor || '#aaa'};
     background-color: #fff;

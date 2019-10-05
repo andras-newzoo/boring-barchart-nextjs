@@ -26,6 +26,7 @@ const DeleteIcon = styled.div`
   font-weight: ${fontWeightXL};
   cursor: pointer;
   visibility: hidden;
+  trasition: all .3s;
 `;
 
 const Container = styled.div`
@@ -37,7 +38,7 @@ const Container = styled.div`
   width: calc(100% - 3.8rem);
   min-height: ${props => props.height || 30}px;
   padding: ${paddingXS};
-  margin: 0.6rem 0;
+  margin: 0.4rem 0;
   padding-left: 3rem;
   font-weight: ${props => props.fontWeight || fontWeightXS};
   font-size: ${fontSizeM};
@@ -66,6 +67,7 @@ const QuantityContainer = styled.div`
 
   font-weight: ${fontWeightXL};
 `;
+
 
 const ItemChip = ({
   style,
