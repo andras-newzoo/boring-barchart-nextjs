@@ -6,6 +6,7 @@ export const MainTitle = styled.div`
   font-size: ${fontSizeL};
   font-weight: ${fontWeightL};
   color: ${colorGreyDark};
+  text-transform: uppercase;
 
   display: flex;
   align-items: center;

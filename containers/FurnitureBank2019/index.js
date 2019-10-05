@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
 import {
   MainContainer,
@@ -16,14 +16,33 @@ import { AutoComplete } from "../../components";
 import { useSelector, useDispatch } from "react-redux";
 // import styled from 'styled-components'
 
-// import { increment, decrement, updateFilter } from "../../store/furnitureBankReducer/actions";
+import { AddItem } from "../../store/furnitureBankReducer/actions";
+import { selectAllSelected, selectAllUnselected } from "../../store/furnitureBankReducer/selectors";
 // import { selectAllLivingRoom, selectAllKitchen, selectLivingRoomAndKitchen, selectFilteredFurniture  } from "../../store/furnitureBankReducer/selectors";
 // import ReactMapGL, { Marker, Popup } from "react-map-gl";
 // import SimpleDot from "../../components/IconComponents/SimpleDot";
 // import { testBorder } from "../../styles/sharedStyles";
 
 const Dashboard = () => {
-  const { productList } = useSelector(state => state.furnitureBankReducer);
+  const { productList, selectedItems } = useSelector(state => state.furnitureBankReducer);
+  const [ width, setWidth ] = useState(undefined)
+  const panelContainerRef = useRef()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const panelWidth = panelContainerRef.current.clientWidth
+    !width && setWidth(panelWidth)
+  }, [panelContainerRef, width])
+
+  const handleSelected = selected => {
+    dispatch(AddItem(selected))
+  }
+
+  const allSelected = useSelector(selectAllSelected)
+  const allUnselected = useSelector(selectAllUnselected)
+
+  console.log(selectedItems);
+  console.log(allSelected);
 
   return (
     <>
@@ -45,10 +64,16 @@ const Dashboard = () => {
               > 
                 Items to Donate
               </MainTitle>
-              <PanelContainer>
+              <PanelContainer
+                ref={panelContainerRef}
+              >
                 <AutoComplete 
-                  data={productList}
+                  data={allUnselected}
                   itemKey="product_name"
+                  handleSelected={handleSelected}
+                  style={{
+                    width: width
+                  }}
                 />
               </PanelContainer>
             </ControlContainer>

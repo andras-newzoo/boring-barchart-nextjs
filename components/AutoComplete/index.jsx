@@ -3,6 +3,7 @@ import Autosuggest from "react-autosuggest";
 import match from "autosuggest-highlight/match";
 import parse from "autosuggest-highlight/parse";
 import { Container } from "./styles";
+import AddIcon from '@material-ui/icons/Add';
 
 const escapeRegexCharacters = str => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const getSuggestionValue = (suggestion, key) => suggestion[key]
@@ -42,7 +43,7 @@ const renderSuggestion = (suggestion, { query }, key) => {
 }
 
 const AutoComplete = ({
-  data, itemKey, style
+  data, itemKey, style, handleSelected
 }) => {
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -56,15 +57,20 @@ const AutoComplete = ({
     value,
     onChange: handleOnChange
   };
+
+
+  
   return (
     <Container
       {...style}
-      width={250}
+      searched={value.length}
     >
+      <AddIcon className={"icon"} fontSize="medium"/>
       <Autosuggest
         suggestions={suggestions}
         onSuggestionsFetchRequested={onSuggestionsFetchRequested}
         onSuggestionsClearRequested={onSuggestionsClearRequested}
+        onSuggestionSelected={(_, { suggestionValue}) => handleSelected(suggestionValue)}
         getSuggestionValue={suggestion => getSuggestionValue(suggestion, itemKey)}
         renderSuggestion={(suggestion, query) => renderSuggestion(suggestion, query, itemKey)}
         inputProps={inputProps}

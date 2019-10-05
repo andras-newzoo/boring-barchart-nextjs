@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { testBorder } from "../../../styles/sharedStyles";
+import { testBorder, paddingM, paddingS, paddingXS } from "../../../styles/sharedStyles";
+import styled from 'styled-components'
 import { media } from './variables'
 
 export const MainContainer = styled.div`
@@ -38,17 +38,19 @@ export const ControlsContainer = styled.div`
   display: grid;
   grid-area: control;
 
-  grid-template-rows: 150px 1fr;
+  grid-template-rows: 100px 1fr;
   grid-template-columns: 1fr;
   grid-template-areas: "title"
                         "panel";
 
+  padding: ${paddingM};
+    
   ${media.medium`
- 
     grid-template-columns: 200px 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:  "title panel";
   `}
+
 `
 
 export const LogoContainer = styled.div`
@@ -57,9 +59,10 @@ export const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: ${paddingS};
 
   img {
-    width: 80%;
+    width: 90%;
   }
 `
 
@@ -67,10 +70,14 @@ export const ControlContainer = styled.div`
   grid-area: panel;
   display: grid;
 
+  padding: ${paddingS};
+  ${'' /* ${testBorder}; */}
+
   grid-template-rows: 50px 1fr;
   grid-template-areas: 
     "title"
     "panel"
+
 `
 
 export const PanelContainer = styled.div`
@@ -79,8 +86,9 @@ export const PanelContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
 
+  ${'' /* padding: ${paddingXS}; */}
   grid-area: panel;
-  ${testBorder}
+  ${'' /* ${testBorder}; */}
 `
 
 

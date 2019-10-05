@@ -3,6 +3,9 @@ import { createSelector } from 'reselect'
 const selectAllFurnitures = state => state.furnitureBankReducer.furnitures
 const selectFilter = state => state.furnitureBankReducer.filter
 
+const selectFurnitureList = state => state.furnitureBankReducer.productList
+const selectedAllSelected = state => state.furnitureBankReducer.selectedItems
+
 
 export const selectAllLivingRoom = createSelector(
   selectAllFurnitures,
@@ -24,4 +27,15 @@ export const selectFilteredFurniture = createSelector(
 export const selectLivingRoomAndKitchen = createSelector(
   [ selectAllLivingRoom, selectAllKitchen ],
   (livingRoom, kitchen) => [ ...livingRoom, ...kitchen ]
+)
+
+export const selectAllSelected = createSelector(
+  selectedAllSelected,
+  selectedList => selectedList.map(el => el.name)
+)
+
+export const selectAllUnselected = createSelector(
+  selectFurnitureList,
+  selectAllSelected,
+  ( totalList, allSelected ) => totalList.filter(el => !allSelected.includes(el.product_name))
 )

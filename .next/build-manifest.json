@@ -12,14 +12,6 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/next/dist/pages/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/visualisations": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
     "/visualisations/furniture-bank-2019": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"

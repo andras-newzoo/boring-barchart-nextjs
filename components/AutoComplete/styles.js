@@ -1,20 +1,30 @@
-import styled from "styled-components";
-import { fontWeightL, fontWeightXS, fontSizeM } from "../../styles/sharedStyles";
+import styled, { css } from "styled-components";
+import { fontWeightL, fontWeightXS, fontSizeM, paddingXS } from "../../styles/sharedStyles";
+import { colorGreyDark } from "../../containers/FurnitureBank2019/styles";
 
 export const Container = styled.div`
+
+  position: relative;
 
   .react-autosuggest__container {
     position: relative;
   }
 
   .react-autosuggest__input {
-    width: calc(${props => props.width}px - 3.2rem);
+    ${props => props.searched ? css`
+      width: calc(${props => props.width}px - 1.8rem);
+    ` : css`
+      width: calc(${props => props.width}px - 4rem);
+    `}
     height: ${props => props.height || 30}px;
-    padding: .8rem 1.6rem;
+    padding: ${paddingXS};
+    padding-left: ${props => !props.searched && 3}rem;
     font-weight: ${props => props.fontWeight || fontWeightXS};
     font-size: ${fontSizeM};
     border: 1px solid ${props => props.borderColor || '#aaa'};
     border-radius: 4px;
+
+    transition: .5s all;
 
     &:focus {
       outline: none;
@@ -34,12 +44,12 @@ export const Container = styled.div`
   .react-autosuggest__suggestions-container {
     display: block;
     position: absolute;
-    top: calc(30px + 1.6rem + 1px);
-    width: ${props => props.width}px;
+    top: calc(30px + .8rem + 1px);
+    width: ${props => props.width - 2}px;
     border: 1px solid ${props => props.borderColor || '#aaa'};
     background-color: #fff;
     font-weight: ${props => props.fontWeight || fontWeightXS};
-    font-size: 1.6rem;
+    font-size: ${fontSizeM};
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     z-index: 2;
@@ -53,11 +63,21 @@ export const Container = styled.div`
 
   .react-autosuggest__suggestion {
     cursor: pointer;
-    padding: .8rem 1.6rem;
+    padding: ${paddingXS};
   }
 
   .highlight {
     color: ${props => props.highlight || '#333'};
     font-weight: ${fontWeightL};
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    z-index: 10;
+    fill: ${colorGreyDark};
+    visibility: ${props => props.searched ? 'hidden' : 'visible'};
   }
 `;
