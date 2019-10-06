@@ -16,6 +16,10 @@ const ControlElement = styled.div`
   cursor: pointer;
   font-weight: ${fontWeightL};
   visibility: hidden;
+
+  @media (any-hover: none) {
+    visibility: visible;
+  }
 `;
 
 const DeleteIcon = styled.div`
@@ -27,6 +31,10 @@ const DeleteIcon = styled.div`
   cursor: pointer;
   visibility: hidden;
   trasition: all .3s;
+
+  @media (any-hover: none) {
+    visibility: visible;
+  }
 `;
 
 const Container = styled.div`

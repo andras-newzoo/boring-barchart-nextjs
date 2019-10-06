@@ -7,7 +7,6 @@ import {
   ChartsContainer,
   LogoContainer,
   MainTitle,
-  colorRedDark,
   colorGreen
 } from "./styles";
 import { ControlContainer } from "./components";
@@ -25,22 +24,19 @@ import {
 } from "./styles/styledContainers";
 import styled from "styled-components";
 import ReactMapGL from "react-map-gl";
-import { heatMapStyles, HEATMAP_SOURCE_ID } from "./components/Map/styles";
+import { heatMapStyles, HEATMAP_SOURCE_ID } from "./components/Map/mapStyles";
 import _ from "lodash";
-import { Paper, Button } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import SendIcon from '@material-ui/icons/Send';
 import { makeStyles } from '@material-ui/core/styles';
 import { fontSizeM } from "../../styles/sharedStyles";
 import { config } from "../../config";
+import { ChartPaper } from "./styles/styledElements";
 
-const MapPaper = styled(Paper)`
-  height: 100%;
-  width: 100%;
-`;
 
 const useStyles = makeStyles(theme => ({
   rightIcon: {
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(1)
   },
   button: {
     background: colorGreen,
@@ -127,7 +123,7 @@ const Dashboard = () => {
                 What is the estimated social impact of your donation?
               </MainTitle>
               <MapContainer>
-                <MapPaper>
+                <ChartPaper>
                   <ReactMapGL
                     ref={mapRef}
                     mapboxApiAccessToken={config.MAP_API}
@@ -135,13 +131,13 @@ const Dashboard = () => {
                     mapStyle="mapbox://styles/szeandr/ck1664yzv02iq1crq35ea679o"
                     onLoad={handleMapLoaded}
                   ></ReactMapGL>
-                </MapPaper>
+                </ChartPaper>
               </MapContainer>
               <FamilyContainer>
-                <MapPaper></MapPaper>
+                <ChartPaper></ChartPaper>
               </FamilyContainer>
               <ValueContainer>
-                <MapPaper></MapPaper>
+                <ChartPaper></ChartPaper>
               </ValueContainer>
             </SocChartsContainer>
             <EnvChartsContainer>
@@ -149,10 +145,10 @@ const Dashboard = () => {
                 What is the estimated environmental impact of your donation?
               </MainTitle>
               <LandFillContainer>
-                <MapPaper></MapPaper>
+                <ChartPaper></ChartPaper>
               </LandFillContainer>
               <EmissionContainer>
-                <MapPaper></MapPaper>
+                <ChartPaper></ChartPaper>
               </EmissionContainer>
             </EnvChartsContainer>
             <ReqContainer>

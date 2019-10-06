@@ -1220,7 +1220,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
   render() {
     return __jsx("html", {
       lang: "en",
-      className: "jsx-834518436",
+      className: "jsx-2758722482",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 7
@@ -1235,7 +1235,7 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
     }, __jsx("meta", {
       name: "description",
       content: "A collaction of my data visualisations",
-      className: "jsx-834518436",
+      className: "jsx-2758722482",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 9
@@ -1243,82 +1243,82 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1___default.a {
       __self: this
     }), __jsx("meta", {
       charset: "utf-8",
-      className: "jsx-834518436",
+      className: "jsx-2758722482",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 10
+        lineNumber: 13
       },
       __self: this
     }), __jsx("meta", {
       name: "robots",
       content: "noindex, nofollow",
-      className: "jsx-834518436",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 11
-      },
-      __self: this
-    }), __jsx("meta", {
-      name: "viewport",
-      content: "width=device-width",
-      className: "jsx-834518436",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 12
-      },
-      __self: this
-    }), __jsx("link", {
-      rel: "stylesheet",
-      href: "https://use.typekit.net/hes1zwd.css",
-      className: "jsx-834518436",
+      className: "jsx-2758722482",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 14
       },
       __self: this
-    }), __jsx("link", {
-      rel: "shortcut icon",
-      type: "image/x-icon",
-      href: "../static/favicon.ico",
-      className: "jsx-834518436",
+    }), __jsx("meta", {
+      name: "viewport",
+      content: "width=device-width",
+      className: "jsx-2758722482",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 15
       },
       __self: this
     }), __jsx("link", {
+      rel: "stylesheet",
+      href: "https://use.typekit.net/hes1zwd.css",
+      className: "jsx-2758722482",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 17
+      },
+      __self: this
+    }), __jsx("link", {
       rel: "shortcut icon",
       type: "image/x-icon",
       href: "../static/favicon.ico",
-      className: "jsx-834518436",
+      className: "jsx-2758722482",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16
+        lineNumber: 18
       },
       __self: this
-    })), __jsx("body", {
-      className: "jsx-834518436",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 22
-      },
-      __self: this
-    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
+    }), __jsx("link", {
+      rel: "shortcut icon",
+      type: "image/x-icon",
+      href: "../static/favicon.ico",
+      className: "jsx-2758722482",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 23
       },
       __self: this
+    })), __jsx("body", {
+      className: "jsx-2758722482",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 29
+      },
+      __self: this
+    }, __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["Main"], {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 30
+      },
+      __self: this
     }), __jsx(next_document__WEBPACK_IMPORTED_MODULE_1__["NextScript"], {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 31
       },
       __self: this
     })), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-      id: "834518436",
+      id: "2758722482",
       __self: this
-    }, "body,html{font-family:gill-sans-nova,sans-serif;font-weight:300;font-style:normal;font-size:62.5%;color:#333;margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hbmRyYXNzemVzenRhaS9EZXNrdG9wL2JvcmluZy1iYXJjaGFydC1uZXh0anMvcGFnZXMvX2RvY3VtZW50LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXlCMkIsQUFHc0Qsc0NBQ3ZCLGdCQUNFLGtCQUNGLGdCQUNMLFdBRUYsU0FDQyxVQUNZLHNCQUVMLHFGQUNuQiIsImZpbGUiOiIvVXNlcnMvYW5kcmFzc3plc3p0YWkvRGVza3RvcC9ib3JpbmctYmFyY2hhcnQtbmV4dGpzL3BhZ2VzL19kb2N1bWVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBEb2N1bWVudCwgeyBIZWFkLCBNYWluLCBOZXh0U2NyaXB0IH0gZnJvbSBcIm5leHQvZG9jdW1lbnRcIjtcbmltcG9ydCBSZWFjdCBmcm9tIFwicmVhY3RcIjtcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgTXlEb2N1bWVudCBleHRlbmRzIERvY3VtZW50IHtcbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8aHRtbCBsYW5nPVwiZW5cIj5cbiAgICAgICAgPEhlYWQ+XG4gICAgICAgICAgPG1ldGEgbmFtZT1cImRlc2NyaXB0aW9uXCIgY29udGVudD1cIkEgY29sbGFjdGlvbiBvZiBteSBkYXRhIHZpc3VhbGlzYXRpb25zXCIvPlxuICAgICAgICAgIDxtZXRhIGNoYXJzZXQ9XCJ1dGYtOFwiLz5cbiAgICAgICAgICA8bWV0YSBuYW1lPVwicm9ib3RzXCIgIGNvbnRlbnQ9XCJub2luZGV4LCBub2ZvbGxvd1wiIC8+XG4gICAgICAgICAgPG1ldGEgbmFtZT1cInZpZXdwb3J0XCIgY29udGVudD1cIndpZHRoPWRldmljZS13aWR0aFwiIC8+XG4gICAgICAgICAgey8qIDx0aXRsZT5Cb3JpbmcgQmFyIENoYXJ0PC90aXRsZT4gKi99XG4gICAgICAgICAgPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIGhyZWY9XCJodHRwczovL3VzZS50eXBla2l0Lm5ldC9oZXMxendkLmNzc1wiIC8+XG4gICAgICAgICAgPGxpbmsgcmVsPVwic2hvcnRjdXQgaWNvblwiIHR5cGU9XCJpbWFnZS94LWljb25cIiBocmVmPVwiLi4vc3RhdGljL2Zhdmljb24uaWNvXCIvPlxuICAgICAgICAgIDxsaW5rXG4gICAgICAgICAgICByZWw9XCJzaG9ydGN1dCBpY29uXCJcbiAgICAgICAgICAgIHR5cGU9XCJpbWFnZS94LWljb25cIlxuICAgICAgICAgICAgaHJlZj1cIi4uL3N0YXRpYy9mYXZpY29uLmljb1wiXG4gICAgICAgICAgLz5cbiAgICAgICAgPC9IZWFkPlxuICAgICAgICA8Ym9keT5cbiAgICAgICAgICA8TWFpbi8+XG4gICAgICAgICAgPE5leHRTY3JpcHQvPlxuICAgICAgICA8L2JvZHk+XG4gICAgICAgIDxzdHlsZSBnbG9iYWwganN4PntgXG4gICAgICAgICAgYm9keSwgaHRtbCB7XG4gICAgICAgICAgICAgIGZvbnQtZmFtaWx5OiBnaWxsLXNhbnMtbm92YSwgc2Fucy1zZXJpZjtcbiAgICAgICAgICAgICAgZm9udC13ZWlnaHQ6IDMwMDtcbiAgICAgICAgICAgICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgICAgICAgICAgICBmb250LXNpemU6IDYyLjUlO1xuICAgICAgICAgICAgICBjb2xvcjogIzMzMztcblxuICAgICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG5cbiAgICAgICAgICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gICAgICAgICAgICB9XG4gICAgICAgIGB9PC9zdHlsZT5cbiAgICAgIDwvaHRtbD5cbiAgICApO1xuICB9XG59XG4iXX0= */\n/*@ sourceURL=/Users/andrasszesztai/Desktop/boring-barchart-nextjs/pages/_document.js */"));
+    }, "body,html{font-family:gill-sans-nova,sans-serif;font-weight:300;font-style:normal;font-size:62.5%;color:#333;margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9hbmRyYXNzemVzenRhaS9EZXNrdG9wL2JvcmluZy1iYXJjaGFydC1uZXh0anMvcGFnZXMvX2RvY3VtZW50LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWdDMkIsQUFHc0Qsc0NBQ3ZCLGdCQUNFLGtCQUNGLGdCQUVMLFdBRUYsU0FDQyxVQUNZLHNCQUVMLHFGQUNuQiIsImZpbGUiOiIvVXNlcnMvYW5kcmFzc3plc3p0YWkvRGVza3RvcC9ib3JpbmctYmFyY2hhcnQtbmV4dGpzL3BhZ2VzL19kb2N1bWVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBEb2N1bWVudCwgeyBIZWFkLCBNYWluLCBOZXh0U2NyaXB0IH0gZnJvbSBcIm5leHQvZG9jdW1lbnRcIjtcbmltcG9ydCBSZWFjdCBmcm9tIFwicmVhY3RcIjtcblxuZXhwb3J0IGRlZmF1bHQgY2xhc3MgTXlEb2N1bWVudCBleHRlbmRzIERvY3VtZW50IHtcbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8aHRtbCBsYW5nPVwiZW5cIj5cbiAgICAgICAgPEhlYWQ+XG4gICAgICAgICAgPG1ldGFcbiAgICAgICAgICAgIG5hbWU9XCJkZXNjcmlwdGlvblwiXG4gICAgICAgICAgICBjb250ZW50PVwiQSBjb2xsYWN0aW9uIG9mIG15IGRhdGEgdmlzdWFsaXNhdGlvbnNcIlxuICAgICAgICAgIC8+XG4gICAgICAgICAgPG1ldGEgY2hhcnNldD1cInV0Zi04XCIgLz5cbiAgICAgICAgICA8bWV0YSBuYW1lPVwicm9ib3RzXCIgY29udGVudD1cIm5vaW5kZXgsIG5vZm9sbG93XCIgLz5cbiAgICAgICAgICA8bWV0YSBuYW1lPVwidmlld3BvcnRcIiBjb250ZW50PVwid2lkdGg9ZGV2aWNlLXdpZHRoXCIgLz5cbiAgICAgICAgICB7LyogPHRpdGxlPkJvcmluZyBCYXIgQ2hhcnQ8L3RpdGxlPiAqL31cbiAgICAgICAgICA8bGluayByZWw9XCJzdHlsZXNoZWV0XCIgaHJlZj1cImh0dHBzOi8vdXNlLnR5cGVraXQubmV0L2hlczF6d2QuY3NzXCIgLz5cbiAgICAgICAgICA8bGlua1xuICAgICAgICAgICAgcmVsPVwic2hvcnRjdXQgaWNvblwiXG4gICAgICAgICAgICB0eXBlPVwiaW1hZ2UveC1pY29uXCJcbiAgICAgICAgICAgIGhyZWY9XCIuLi9zdGF0aWMvZmF2aWNvbi5pY29cIlxuICAgICAgICAgIC8+XG4gICAgICAgICAgPGxpbmtcbiAgICAgICAgICAgIHJlbD1cInNob3J0Y3V0IGljb25cIlxuICAgICAgICAgICAgdHlwZT1cImltYWdlL3gtaWNvblwiXG4gICAgICAgICAgICBocmVmPVwiLi4vc3RhdGljL2Zhdmljb24uaWNvXCJcbiAgICAgICAgICAvPlxuICAgICAgICA8L0hlYWQ+XG4gICAgICAgIDxib2R5PlxuICAgICAgICAgIDxNYWluIC8+XG4gICAgICAgICAgPE5leHRTY3JpcHQgLz5cbiAgICAgICAgPC9ib2R5PlxuICAgICAgICA8c3R5bGUgZ2xvYmFsIGpzeD57YFxuICAgICAgICAgIGJvZHksIGh0bWwge1xuICAgICAgICAgICAgICBmb250LWZhbWlseTogZ2lsbC1zYW5zLW5vdmEsIHNhbnMtc2VyaWY7XG4gICAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiAzMDA7XG4gICAgICAgICAgICAgIGZvbnQtc3R5bGU6IG5vcm1hbDtcbiAgICAgICAgICAgICAgZm9udC1zaXplOiA2Mi41JTtcblxuICAgICAgICAgICAgICBjb2xvcjogIzMzMztcblxuICAgICAgICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgICAgICAgIHBhZGRpbmc6IDA7XG4gICAgICAgICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG5cbiAgICAgICAgICAgICAgdXNlci1zZWxlY3Q6IG5vbmU7XG4gICAgICAgICAgICB9XG4gICAgICAgIGB9PC9zdHlsZT5cbiAgICAgIDwvaHRtbD5cbiAgICApO1xuICB9XG59XG4iXX0= */\n/*@ sourceURL=/Users/andrasszesztai/Desktop/boring-barchart-nextjs/pages/_document.js */"));
   }
 
 }
