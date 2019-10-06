@@ -14,5 +14,6 @@ export const gridGapS = '1.2rem'
 
 export const media = createBreakPoints({
   medium: 1024,
-  small: 768
+  small: 768,
+  extraSmall: 545
 })

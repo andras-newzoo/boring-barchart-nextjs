@@ -1,6 +1,6 @@
 import { paddingM, paddingS, testBorder } from "../../../styles/sharedStyles";
 import styled from "styled-components";
-import { media, titleHeightM, gridGapM, gridGapS } from "./variables";
+import { media, titleHeightM, gridGapM, gridGapS, colorGreen } from "./variables";
 // import { border } from "@material-ui/system";
 
 export const MainContainer = styled.div`
@@ -13,8 +13,8 @@ export const DashboardContainer = styled.div`
   max-width: 1440px;
 
   margin: 0 auto;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -34,10 +34,14 @@ export const DashboardContainer = styled.div`
   `}
 
   ${media.small`
-    width: 95%;
-    padding-top: 2rem;
+    width: 100%;
+    padding-top: 0;
     padding-bottom: 2rem;
     grid-template-rows: 300px 1fr;
+    height: 1350px;
+  `}
+
+  ${media.extraSmall`
     height: 1300px;
   `}
 `;
@@ -66,18 +70,27 @@ export const ControlsContainer = styled.div`
 
   ${media.small`
     grid-template-columns: 1fr;
-    grid-template-rows: 70px 1fr;
+    grid-template-rows: 80px 1fr;
     grid-template-areas:  
       "title" 
       "panel";
     grid-column-gap: 0;
-    grid-row-gap: ${gridGapM};
+    grid-row-gap: ${gridGapS};
+  `}
+
+  ${media.extraSmall`
+    grid-template-rows: 70px 1fr;
   `}
 `;
 
 export const LogoContainer = styled.div`
   grid-area: title;
   padding: ${paddingS};
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #fff;
 
   ${'' /* ${testBorder}; */}
 
@@ -87,6 +100,20 @@ export const LogoContainer = styled.div`
 
   ${media.medium`
     padding: 0;
+    align-items: center;
+  `}
+
+  ${media.small`
+    background: ${colorGreen};
+    img {
+      width: 300px;
+    }
+  `}
+
+  ${media.extraSmall`
+    img {
+      width: 250px;
+    }
   `}
 `;
 
@@ -106,6 +133,10 @@ export const ControlContainer = styled.div`
   ${media.medium`
     padding: 0;
     grid-column-gap: ${gridGapM};
+  `}
+
+  ${media.small`
+    padding: ${paddingS};
   `}
 `;
 
@@ -129,6 +160,10 @@ export const PanelContainer = styled.div`
   `}
 
   ${media.small`
+    height: 160px;
+  `}
+
+  ${media.extraSmall`
     height: 170px;
   `}
 `;
@@ -139,15 +174,19 @@ export const ChartsContainer = styled.div`
   grid-row-gap: ${gridGapS};
   padding: ${paddingM};
 
-  ${media.medium`
-    padding: 0;
-  `}
-
   grid-template-rows: 3fr 2fr ${titleHeightM};
   grid-template-areas:
     "soc"
     "env"
     "req";
+
+  ${media.medium`
+    padding: 0;
+  `}
+
+  ${media.small`
+    padding: ${paddingS};
+  `}
 `;
 
 export const SocChartsContainer = styled.div`
@@ -230,6 +269,6 @@ export const ReqContainer = styled.div`
   grid-area: req;
   display: flex;
   margin-top: 1.6rem;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;

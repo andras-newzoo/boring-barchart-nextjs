@@ -426,16 +426,25 @@ const ControlContainer = () => {
     0: dimensions,
     1: setDimensions
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(undefined);
+  const {
+    0: windowWidth,
+    1: setWindowWidth
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])();
   const panelContainerRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useDispatch"])();
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     const panelWidth = panelContainerRef.current.clientWidth;
     const panelHeight = panelContainerRef.current.clientHeight;
-    !dimensions && setDimensions({
+    setDimensions({
       width: panelWidth,
       height: panelHeight
     });
-  }, [panelContainerRef, dimensions]);
+  }, [panelContainerRef, windowWidth]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    window.addEventListener('resize', handleResize);
+  }, []);
+
+  const handleResize = () => setWindowWidth(window.innerWidth);
 
   const handleSelected = selected => dispatch(Object(_store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_4__["addItem"])(selected));
 
@@ -453,20 +462,20 @@ const ControlContainer = () => {
   return __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["ControlContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 48
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 49
     },
     __self: undefined
   }, "Items to Donate ", __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 50
     },
     __self: undefined
   }, "\xA0 ( ", totalQuantity, " )")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["PanelContainer"], {
@@ -474,7 +483,7 @@ const ControlContainer = () => {
     height: dimensions && dimensions.height,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 52
     },
     __self: undefined
   }, selectedItems.length > 0 && selectedItems.map(item => __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["ItemChip"], {
@@ -486,7 +495,7 @@ const ControlContainer = () => {
     quantity: item.quantity,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 58
     },
     __self: undefined
   })), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["AutoComplete"], {
@@ -498,13 +507,132 @@ const ControlContainer = () => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 67
     },
     __self: undefined
   })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ControlContainer);
+
+/***/ }),
+
+/***/ "./containers/FurnitureBank2019/components/Map/MapContent.jsx":
+/*!********************************************************************!*\
+  !*** ./containers/FurnitureBank2019/components/Map/MapContent.jsx ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
+/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _styles_styledContainers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/styledContainers */ "./containers/FurnitureBank2019/styles/styledContainers.js");
+/* harmony import */ var _styles_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles/styledElements */ "./containers/FurnitureBank2019/styles/styledElements.js");
+/* harmony import */ var _mapStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapStyles */ "./containers/FurnitureBank2019/components/Map/mapStyles.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../config */ "./config.js");
+
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/Map/MapContent.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
+
+
+const MapContent = () => {
+  const filteredCoordinates = Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__["selectFilteredCoordinates"]);
+  const {
+    0: initMap,
+    1: setInitMap
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  const mapRef = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
+  const viewport = {
+    width: "100%",
+    height: "100%",
+    latitude: 43.66107,
+    longitude: -79.477015,
+    zoom: 8
+  };
+
+  const handleMapLoaded = () => {
+    mapRef.current.getMap().addSource(_mapStyles__WEBPACK_IMPORTED_MODULE_5__["HEATMAP_SOURCE_ID"], {
+      type: "geojson",
+      data: makeGeoJSON(filteredCoordinates)
+    });
+    mapRef.current.getMap().addLayer(_mapStyles__WEBPACK_IMPORTED_MODULE_5__["heatMapStyles"]);
+    setInitMap(true);
+  };
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
+    if (initMap) {
+      mapRef.current.getMap().getSource(_mapStyles__WEBPACK_IMPORTED_MODULE_5__["HEATMAP_SOURCE_ID"]).setData(makeGeoJSON(filteredCoordinates));
+    }
+  }, [filteredCoordinates, initMap]);
+
+  const makeGeoJSON = data => {
+    if (!data) return undefined;
+    return {
+      type: "FeatureCollection",
+      features: data.map(feature => {
+        return {
+          type: "Feature",
+          properties: {
+            id: feature.postal_code
+          },
+          geometry: {
+            type: "Point",
+            coordinates: feature.coors ? [feature.coors.longitude, feature.coors.latitude, 0] : [0, 0, 0]
+          }
+        };
+      })
+    };
+  };
+
+  return __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_3__["MapContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 65
+    },
+    __self: undefined
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_4__["ChartPaper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
+    },
+    __self: undefined
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_4__["ChartTitle"], {
+    withBG: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
+    },
+    __self: undefined
+  }, "In Which areas will your donated furniture be received?"), __jsx(react_map_gl__WEBPACK_IMPORTED_MODULE_2___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: mapRef,
+    mapboxApiAccessToken: _config__WEBPACK_IMPORTED_MODULE_8__["config"].MAP_API
+  }, viewport, {
+    mapStyle: "mapbox://styles/szeandr/ck1664yzv02iq1crq35ea679o",
+    onLoad: handleMapLoaded,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
+    },
+    __self: undefined
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MapContent);
 
 /***/ }),
 
@@ -549,13 +677,17 @@ const heatMapStyles = {
 /*!**********************************************************!*\
   !*** ./containers/FurnitureBank2019/components/index.js ***!
   \**********************************************************/
-/*! exports provided: ControlContainer */
+/*! exports provided: ControlContainer, MapContent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ControlContainer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ControlContainer */ "./containers/FurnitureBank2019/components/ControlContainer.jsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ControlContainer", function() { return _ControlContainer__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _Map_MapContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Map/MapContent */ "./containers/FurnitureBank2019/components/Map/MapContent.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MapContent", function() { return _Map_MapContent__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
 
 
 
@@ -571,36 +703,25 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-helmet */ "react-helmet");
-/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styles */ "./containers/FurnitureBank2019/styles/index.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components */ "./containers/FurnitureBank2019/components/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
-/* harmony import */ var _styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./styles/styledContainers */ "./containers/FurnitureBank2019/styles/styledContainers.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_Map_mapStyles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Map/mapStyles */ "./containers/FurnitureBank2019/components/Map/mapStyles.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash */ "lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @material-ui/icons/Send */ "@material-ui/icons/Send");
-/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
-/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../styles/sharedStyles */ "./styles/sharedStyles.js");
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../config */ "./config.js");
-/* harmony import */ var _styles_styledElements__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./styles/styledElements */ "./containers/FurnitureBank2019/styles/styledElements.js");
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "react-helmet");
+/* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles */ "./containers/FurnitureBank2019/styles/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./containers/FurnitureBank2019/components/index.js");
+/* harmony import */ var _styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/styledContainers */ "./containers/FurnitureBank2019/styles/styledContainers.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/icons/Send */ "@material-ui/icons/Send");
+/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
+/* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../styles/sharedStyles */ "./styles/sharedStyles.js");
+/* harmony import */ var _styles_styledElements__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/styledElements */ "./containers/FurnitureBank2019/styles/styledElements.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/index.jsx";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
@@ -612,111 +733,57 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-
-
-
-
-
-
-const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_14__["makeStyles"])(theme => ({
+const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__["makeStyles"])(theme => ({
   rightIcon: {
     marginLeft: theme.spacing(1)
   },
   button: {
-    background: _styles__WEBPACK_IMPORTED_MODULE_3__["colorGreen"],
-    color: 'white',
-    fontSize: _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_15__["fontSizeM"],
-    '&:hover': {
-      background: _styles__WEBPACK_IMPORTED_MODULE_3__["colorGreen"],
-      color: 'white'
+    background: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+    color: "white",
+    fontSize: _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_9__["fontSizeM"],
+    "&:hover": {
+      background: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+      color: "white"
     }
   }
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
-  const filteredCoordinates = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_6__["selectFilteredCoordinates"]);
-  const {
-    0: initMap,
-    1: setInitMap
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
-  const mapRef = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
-  const viewport = {
-    width: "100%",
-    height: "100%",
-    latitude: 43.66107,
-    longitude: -79.477015,
-    zoom: 8
-  };
-
-  const handleMapLoaded = () => {
-    mapRef.current.getMap().addSource(_components_Map_mapStyles__WEBPACK_IMPORTED_MODULE_10__["HEATMAP_SOURCE_ID"], {
-      type: "geojson",
-      data: makeGeoJSON(filteredCoordinates)
-    });
-    mapRef.current.getMap().addLayer(_components_Map_mapStyles__WEBPACK_IMPORTED_MODULE_10__["heatMapStyles"]);
-    setInitMap(true);
-  };
-
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
-    if (initMap) {
-      mapRef.current.getMap().getSource(_components_Map_mapStyles__WEBPACK_IMPORTED_MODULE_10__["HEATMAP_SOURCE_ID"]).setData(makeGeoJSON(filteredCoordinates));
-    }
-  }, [filteredCoordinates, initMap]);
-
-  const makeGeoJSON = data => {
-    if (!data) return undefined;
-    return {
-      type: "FeatureCollection",
-      features: data.map(feature => {
-        return {
-          type: "Feature",
-          properties: {
-            id: feature.postal_code
-          },
-          geometry: {
-            type: "Point",
-            coordinates: feature.coors ? [feature.coors.longitude, feature.coors.latitude, 0] : [0, 0, 0]
-          }
-        };
-      })
-    };
-  };
-
-  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_2__["Helmet"], {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_1__["Helmet"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 49
     },
     __self: undefined
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 50
     },
     __self: undefined
-  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["MainContainer"], {
+  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 109
+      lineNumber: 52
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["DashboardContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["DashboardContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 53
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["ControlsContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ControlsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 54
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["LogoContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["LogoContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 55
     },
     __self: undefined
   }, __jsx("img", {
@@ -724,146 +791,122 @@ const Dashboard = () => {
     alt: "furniture bank icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 56
     },
     __self: undefined
-  })), __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["ControlContainer"], {
+  })), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 61
     },
     __self: undefined
-  })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["ChartsContainer"], {
+  })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 120
+      lineNumber: 63
     },
     __self: undefined
-  }, __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["SocChartsContainer"], {
+  }, __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["SocChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 121
+      lineNumber: 64
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["MainTitle"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 65
     },
     __self: undefined
-  }, "What is the estimated social impact of your donation?"), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["MapContainer"], {
+  }, "What is the estimated social impact of your donation?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["MapContent"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 125
+      lineNumber: 68
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_17__["ChartPaper"], {
+  }), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["FamilyContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126
+      lineNumber: 69
     },
     __self: undefined
-  }, __jsx(react_map_gl__WEBPACK_IMPORTED_MODULE_9___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    ref: mapRef,
-    mapboxApiAccessToken: _config__WEBPACK_IMPORTED_MODULE_16__["config"].MAP_API
-  }, viewport, {
-    mapStyle: "mapbox://styles/szeandr/ck1664yzv02iq1crq35ea679o",
-    onLoad: handleMapLoaded,
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 127
+      lineNumber: 70
     },
     __self: undefined
-  })))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["FamilyContainer"], {
+  })), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["ValueContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 72
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_17__["ChartPaper"], {
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 137
+      lineNumber: 73
     },
     __self: undefined
-  })), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["ValueContainer"], {
+  }))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["EnvChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 139
+      lineNumber: 76
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_17__["ChartPaper"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 140
-    },
-    __self: undefined
-  }))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["EnvChartsContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 143
-    },
-    __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["MainTitle"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 144
+      lineNumber: 77
     },
     __self: undefined
-  }, "What is the estimated environmental impact of your donation?"), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["LandFillContainer"], {
+  }, "What is the estimated environmental impact of your donation?"), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["LandFillContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 147
+      lineNumber: 80
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_17__["ChartPaper"], {
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 148
+      lineNumber: 81
     },
     __self: undefined
-  })), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["EmissionContainer"], {
+  })), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["EmissionContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 150
+      lineNumber: 83
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_17__["ChartPaper"], {
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 151
+      lineNumber: 84
     },
     __self: undefined
-  }))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_7__["ReqContainer"], {
+  }))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["ReqContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 154
+      lineNumber: 87
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["MainTitle"], {
-    spec: true,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 155
-    },
-    __self: undefined
-  }), __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_12__["Button"], {
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["Button"], {
     className: classes.button,
     variant: "contained",
     disableRipple: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 158
+      lineNumber: 88
     },
     __self: undefined
-  }, "Request a Pickup", __jsx(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_13___default.a, {
+  }, "Request a Pickup", __jsx(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7___default.a, {
     fontSize: "small",
     className: classes.rightIcon,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164
+      lineNumber: 94
     },
     __self: undefined
   })))))));
@@ -961,7 +1004,7 @@ const MainContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.d
 const DashboardContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__DashboardContainer",
   componentId: "sc-86vxz-1"
-})(["width:90%;height:650px;max-width:1440px;margin:0 auto;padding-top:5rem;padding-bottom:5rem;display:grid;grid-template-columns:300px 1fr;grid-template-areas:\"control charts\";", " ", " ", ""], ''
+})(["width:90%;height:650px;max-width:1440px;margin:0 auto;padding-top:4rem;padding-bottom:4rem;display:grid;grid-template-columns:300px 1fr;grid-template-areas:\"control charts\";", " ", " ", " ", ""], ''
 /* ${testBorder}; */
 , _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     padding-top: 3rem;
@@ -973,16 +1016,18 @@ const DashboardContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___defaul
       "control"
       "charts";
   `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
-    width: 95%;
-    padding-top: 2rem;
+    width: 100%;
+    padding-top: 0;
     padding-bottom: 2rem;
     grid-template-rows: 300px 1fr;
+    height: 1350px;
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].extraSmall`
     height: 1300px;
   `);
 const ControlsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ControlsContainer",
   componentId: "sc-86vxz-2"
-})(["display:grid;grid-area:control;grid-template-rows:100px 1fr;grid-template-columns:1fr;grid-template-areas:\"title\" \"panel\";", " padding:", ";", " ", ""], ''
+})(["display:grid;grid-area:control;grid-template-rows:100px 1fr;grid-template-columns:1fr;grid-template-areas:\"title\" \"panel\";", " padding:", ";", " ", " ", ""], ''
 /* ${testBorder}; */
 , _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingM"], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     grid-template-columns: 250px 1fr;
@@ -992,46 +1037,64 @@ const ControlsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default
     grid-column-gap: ${_variables__WEBPACK_IMPORTED_MODULE_2__["gridGapM"]};
   `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
     grid-template-columns: 1fr;
-    grid-template-rows: 70px 1fr;
+    grid-template-rows: 80px 1fr;
     grid-template-areas:  
       "title" 
       "panel";
     grid-column-gap: 0;
-    grid-row-gap: ${_variables__WEBPACK_IMPORTED_MODULE_2__["gridGapM"]};
+    grid-row-gap: ${_variables__WEBPACK_IMPORTED_MODULE_2__["gridGapS"]};
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].extraSmall`
+    grid-template-rows: 70px 1fr;
   `);
 const LogoContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__LogoContainer",
   componentId: "sc-86vxz-3"
-})(["grid-area:title;padding:", ";", " img{width:100%;}", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingS"], ''
+})(["grid-area:title;padding:", ";display:flex;align-items:flex-start;justify-content:center;background:#fff;", " img{width:100%;}", " ", " ", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingS"], ''
 /* ${testBorder}; */
 , _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     padding: 0;
+    align-items: center;
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
+    background: ${_variables__WEBPACK_IMPORTED_MODULE_2__["colorGreen"]};
+    img {
+      width: 300px;
+    }
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].extraSmall`
+    img {
+      width: 250px;
+    }
   `);
 const ControlContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ControlContainer",
   componentId: "sc-86vxz-4"
-})(["grid-area:panel;display:grid;padding:", ";", " grid-template-rows:", " 1fr;grid-template-areas:\"title\" \"panel\";", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingS"], ''
+})(["grid-area:panel;display:grid;padding:", ";", " grid-template-rows:", " 1fr;grid-template-areas:\"title\" \"panel\";", " ", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingS"], ''
 /* ${testBorder}; */
 , _variables__WEBPACK_IMPORTED_MODULE_2__["titleHeightM"], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     padding: 0;
     grid-column-gap: ${_variables__WEBPACK_IMPORTED_MODULE_2__["gridGapM"]};
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
+    padding: ${_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingS"]};
   `);
 const PanelContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__PanelContainer",
   componentId: "sc-86vxz-5"
-})(["display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:350px;overflow-y:scroll;", " &::-webkit-scrollbar{display:none;}grid-area:panel;", " ", ""], ''
+})(["display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:350px;overflow-y:scroll;", " &::-webkit-scrollbar{display:none;}grid-area:panel;", " ", " ", ""], ''
 /* ${testBorder}; */
 , _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     height: 150px;
   `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
+    height: 160px;
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].extraSmall`
     height: 170px;
   `);
 const ChartsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ChartsContainer",
   componentId: "sc-86vxz-6"
-})(["display:grid;grid-area:charts;grid-row-gap:", ";padding:", ";", " grid-template-rows:3fr 2fr ", ";grid-template-areas:\"soc\" \"env\" \"req\";"], _variables__WEBPACK_IMPORTED_MODULE_2__["gridGapS"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingM"], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
+})(["display:grid;grid-area:charts;grid-row-gap:", ";padding:", ";grid-template-rows:3fr 2fr ", ";grid-template-areas:\"soc\" \"env\" \"req\";", " ", ""], _variables__WEBPACK_IMPORTED_MODULE_2__["gridGapS"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingM"], _variables__WEBPACK_IMPORTED_MODULE_2__["titleHeightM"], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     padding: 0;
-  `, _variables__WEBPACK_IMPORTED_MODULE_2__["titleHeightM"]);
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
+    padding: ${_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingS"]};
+  `);
 const SocChartsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__SocChartsContainer",
   componentId: "sc-86vxz-7"
@@ -1078,7 +1141,7 @@ const EmissionContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default
 const ReqContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ReqContainer",
   componentId: "sc-86vxz-14"
-})(["grid-area:req;display:flex;margin-top:1.6rem;justify-content:space-between;align-items:center;"]);
+})(["grid-area:req;display:flex;margin-top:1.6rem;justify-content:flex-end;align-items:center;"]);
 
 /***/ }),
 
@@ -1086,12 +1149,13 @@ const ReqContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.di
 /*!***************************************************************!*\
   !*** ./containers/FurnitureBank2019/styles/styledElements.js ***!
   \***************************************************************/
-/*! exports provided: MainTitle, ChartPaper */
+/*! exports provided: MainTitle, ChartTitle, ChartPaper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MainTitle", function() { return MainTitle; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChartTitle", function() { return ChartTitle; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChartPaper", function() { return ChartPaper; });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_0__);
@@ -1106,17 +1170,23 @@ __webpack_require__.r(__webpack_exports__);
 const MainTitle = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "styledElements__MainTitle",
   componentId: "sc-1j0zlij-0"
-})(["font-size:", ";font-weight:", ";color:", ";text-transform:uppercase;grid-area:", ";display:flex;align-items:center;justify-content:flex-start;grid-area:", ";", " span{font-weight:", ";font-size:", ";}"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightL"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.gridArea, props => props.gridArea, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
+})(["font-size:", ";font-weight:", ";color:", ";text-transform:uppercase;grid-area:", ";display:flex;align-items:center;justify-content:flex-start;grid-area:", ";", " span{font-weight:", ";font-size:", ";}"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightL"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.gridArea, props => props.gridArea, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
     font-size: ${_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"]};
     
     span {
       font-size: ${_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeS"]};
     }
-  `, _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightS"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"]);
+  `, _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightM"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"]);
+const ChartTitle = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
+  displayName: "styledElements__ChartTitle",
+  componentId: "sc-1j0zlij-1"
+})(["font-size:", ";font-weight:", ";color:", ";text-transform:uppercase;background:", ";position:absolute;top:.25rem;left:.25rem;z-index:100;padding:", ";display:flex;align-items:center;justify-content:flex-start;grid-area:", ";", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightM"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.withBG && '#fff', _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["paddingXS"], props => props.gridArea, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
+    font-size: ${_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeS"]};
+  `);
 const ChartPaper = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Paper"]).withConfig({
   displayName: "styledElements__ChartPaper",
-  componentId: "sc-1j0zlij-1"
-})(["height:100%;width:100%;"]);
+  componentId: "sc-1j0zlij-2"
+})(["height:100%;width:100%;position:relative;"]);
 
 /***/ }),
 
@@ -1152,7 +1222,8 @@ const gridGapM = '2.4rem';
 const gridGapS = '1.2rem';
 const media = Object(_styles_mediaQueries__WEBPACK_IMPORTED_MODULE_0__["createBreakPoints"])({
   medium: 1024,
-  small: 768
+  small: 768,
+  extraSmall: 545
 });
 
 /***/ }),
@@ -1693,17 +1764,6 @@ module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/keys");
-
-/***/ }),
-
-/***/ "lodash":
-/*!*************************!*\
-  !*** external "lodash" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("lodash");
 
 /***/ }),
 

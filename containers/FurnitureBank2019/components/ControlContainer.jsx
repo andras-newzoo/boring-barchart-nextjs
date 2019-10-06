@@ -20,15 +20,21 @@ import {
 
 const ControlContainer = () => {
   const [dimensions, setDimensions] = useState(undefined);
+  const [ windowWidth, setWindowWidth ] = useState()
   const panelContainerRef = useRef();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const panelWidth = panelContainerRef.current.clientWidth;
     const panelHeight = panelContainerRef.current.clientHeight;
-    !dimensions && setDimensions({ width: panelWidth, height: panelHeight });
-  }, [panelContainerRef, dimensions]);
+    setDimensions({ width: panelWidth, height: panelHeight });
+  }, [panelContainerRef, windowWidth]);
 
+  useEffect(() => {
+    window.addEventListener('resize', handleResize)
+  },[])
+
+  const handleResize = () => setWindowWidth(window.innerWidth)
   const handleSelected = selected => dispatch(addItem(selected));
   const handleIncrementClick = item => dispatch(incrementItem(item));
   const handleDecrementClick = item => dispatch(decrementItem(item));
