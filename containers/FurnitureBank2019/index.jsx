@@ -5,30 +5,56 @@ import {
   DashboardContainer,
   ControlsContainer,
   ChartsContainer,
-  LogoContainer
+  LogoContainer,
+  MainTitle,
+  colorRedDark,
+  colorGreen
 } from "./styles";
 import { ControlContainer } from "./components";
 import { useSelector } from "react-redux";
+import { selectFilteredCoordinates } from "../../store/furnitureBankReducer/selectors";
 import {
-  selectFilteredCoordinates,
-  selectFilteredDonationPostalCode
-} from "../../store/furnitureBankReducer/selectors";
-import { MapContainer } from "./styles/styledContainers";
+  MapContainer,
+  SocChartsContainer,
+  FamilyContainer,
+  ValueContainer,
+  EnvChartsContainer,
+  LandFillContainer,
+  EmissionContainer,
+  ReqContainer
+} from "./styles/styledContainers";
 import styled from "styled-components";
 import ReactMapGL from "react-map-gl";
-import SimpleDot from "../../components/IconComponents/SimpleDot";
 import { heatMapStyles, HEATMAP_SOURCE_ID } from "./components/Map/styles";
-import coors from "./test.json";
 import _ from "lodash";
-import { Paper } from "@material-ui/core";
-
+import { Paper, Button } from "@material-ui/core";
+import SendIcon from '@material-ui/icons/Send';
+import { makeStyles } from '@material-ui/core/styles';
+import { fontSizeM } from "../../styles/sharedStyles";
+import { config } from "../../config";
 
 const MapPaper = styled(Paper)`
   height: 100%;
   width: 100%;
-  background: black;
-`
+`;
+
+const useStyles = makeStyles(theme => ({
+  rightIcon: {
+    marginLeft: theme.spacing(1),
+  },
+  button: {
+    background: colorGreen,
+    color: 'white',
+    fontSize: fontSizeM,
+    '&:hover': {
+      background: colorGreen,
+      color: 'white'
+    }
+  }
+}));
+
 const Dashboard = () => {
+  const classes = useStyles();
   const filteredCoordinates = useSelector(selectFilteredCoordinates);
   const [initMap, setInitMap] = useState(false);
   const mapRef = useRef();
@@ -40,15 +66,11 @@ const Dashboard = () => {
     zoom: 8
   };
 
-  console.log(_.groupBy(filteredCoordinates, "postal_code"));
-
   const handleMapLoaded = () => {
-    mapRef.current
-      .getMap()
-      .addSource(HEATMAP_SOURCE_ID, {
-        type: "geojson",
-        data: makeGeoJSON(filteredCoordinates)
-      });
+    mapRef.current.getMap().addSource(HEATMAP_SOURCE_ID, {
+      type: "geojson",
+      data: makeGeoJSON(filteredCoordinates)
+    });
     mapRef.current.getMap().addLayer(heatMapStyles);
     setInitMap(true);
   };
@@ -100,27 +122,52 @@ const Dashboard = () => {
             <ControlContainer />
           </ControlsContainer>
           <ChartsContainer>
-            <MapContainer>
+            <SocChartsContainer>
+              <MainTitle gridArea="title">
+                What is the estimated social impact of your donation?
+              </MainTitle>
+              <MapContainer>
                 <MapPaper>
                   <ReactMapGL
                     ref={mapRef}
-                    mapboxApiAccessToken="pk.eyJ1Ijoic3plYW5kciIsImEiOiJjajlpeWxnNHUzbWNiMzNvcnF1ZGUzbG5rIn0.fk33YGLOHSZtT_CMEWoIag"
+                    mapboxApiAccessToken={config.MAP_API}
                     {...viewport}
                     mapStyle="mapbox://styles/szeandr/ck1664yzv02iq1crq35ea679o"
                     onLoad={handleMapLoaded}
-                  >
-                    {/* <Source type="geojson" data={myGeoJSONData}>
-                    <Layer {...heatmapLayer} />
-                  </Source> */}
-                    {/* <HeatmapOverlay locations={cities} {...viewport}/> */}
-                    {/* {coordinatesData.map(coor => (
-                      <Marker latitude={coor.latitude} longitude={coor.longitude}>
-                        <SimpleDot widht={5} height={5} />
-                      </Marker>
-                    ))} */}
-                  </ReactMapGL>
+                  ></ReactMapGL>
                 </MapPaper>
-            </MapContainer>
+              </MapContainer>
+              <FamilyContainer>
+                <MapPaper></MapPaper>
+              </FamilyContainer>
+              <ValueContainer>
+                <MapPaper></MapPaper>
+              </ValueContainer>
+            </SocChartsContainer>
+            <EnvChartsContainer>
+              <MainTitle gridArea="title">
+                What is the estimated environmental impact of your donation?
+              </MainTitle>
+              <LandFillContainer>
+                <MapPaper></MapPaper>
+              </LandFillContainer>
+              <EmissionContainer>
+                <MapPaper></MapPaper>
+              </EmissionContainer>
+            </EnvChartsContainer>
+            <ReqContainer>
+              <MainTitle spec>
+                
+              </MainTitle>
+              <Button
+                className={classes.button}
+                variant="contained"
+                disableRipple
+              >      
+                Request a Pickup
+                <SendIcon fontSize="small" className={classes.rightIcon} />
+              </Button>
+            </ReqContainer>
           </ChartsContainer>
         </DashboardContainer>
       </MainContainer>

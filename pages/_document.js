@@ -29,7 +29,7 @@ export default class MyDocument extends Document {
               font-weight: 300;
               font-style: normal;
               font-size: 62.5%;
-              color: #333
+              color: #333;
 
               margin: 0;
               padding: 0;
