@@ -12,7 +12,7 @@ import productList from "../../static/data/chartDataSets/FurnitureBank2019/produ
 import { createReducer } from "../utils/reducerUtils";
 
 const initialState = {
-  selectedItems: [],
+  selectedItems: [{ name: 'Armchair', quantity: 1 }, { name: 'Air Conditioner', quantity: 1 }],
   coordinatesData,
   donationsData,
   familyData,

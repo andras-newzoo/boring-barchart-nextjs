@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import {
   MainContainer,
@@ -8,11 +8,81 @@ import {
   LogoContainer
 } from "./styles";
 import { ControlContainer } from "./components";
-// import styled from 'styled-components'
-// import ReactMapGL, { Marker, Popup } from "react-map-gl";
-// import SimpleDot from "../../components/IconComponents/SimpleDot";
+import { useSelector } from "react-redux";
+import {
+  selectFilteredCoordinates,
+  selectFilteredDonationPostalCode
+} from "../../store/furnitureBankReducer/selectors";
+import { MapContainer } from "./styles/styledContainers";
+import styled from "styled-components";
+import ReactMapGL from "react-map-gl";
+import SimpleDot from "../../components/IconComponents/SimpleDot";
+import { heatMapStyles, HEATMAP_SOURCE_ID } from "./components/Map/styles";
+import coors from "./test.json";
+import _ from "lodash";
+import { Paper } from "@material-ui/core";
 
+
+const MapPaper = styled(Paper)`
+  height: 100%;
+  width: 100%;
+  background: black;
+`
 const Dashboard = () => {
+  const filteredCoordinates = useSelector(selectFilteredCoordinates);
+  const [initMap, setInitMap] = useState(false);
+  const mapRef = useRef();
+  const viewport = {
+    width: "100%",
+    height: "100%",
+    latitude: 43.66107,
+    longitude: -79.477015,
+    zoom: 8
+  };
+
+  console.log(_.groupBy(filteredCoordinates, "postal_code"));
+
+  const handleMapLoaded = () => {
+    mapRef.current
+      .getMap()
+      .addSource(HEATMAP_SOURCE_ID, {
+        type: "geojson",
+        data: makeGeoJSON(filteredCoordinates)
+      });
+    mapRef.current.getMap().addLayer(heatMapStyles);
+    setInitMap(true);
+  };
+
+  useEffect(() => {
+    if (initMap) {
+      mapRef.current
+        .getMap()
+        .getSource(HEATMAP_SOURCE_ID)
+        .setData(makeGeoJSON(filteredCoordinates));
+    }
+  }, [filteredCoordinates, initMap]);
+
+  const makeGeoJSON = data => {
+    if (!data) return undefined;
+    return {
+      type: "FeatureCollection",
+      features: data.map(feature => {
+        return {
+          type: "Feature",
+          properties: {
+            id: feature.postal_code
+          },
+          geometry: {
+            type: "Point",
+            coordinates: feature.coors
+              ? [feature.coors.longitude, feature.coors.latitude, 0]
+              : [0, 0, 0]
+          }
+        };
+      })
+    };
+  };
+
   return (
     <>
       <Helmet>
@@ -29,37 +99,32 @@ const Dashboard = () => {
             </LogoContainer>
             <ControlContainer />
           </ControlsContainer>
-          <ChartsContainer>Charts</ChartsContainer>
+          <ChartsContainer>
+            <MapContainer>
+                <MapPaper>
+                  <ReactMapGL
+                    ref={mapRef}
+                    mapboxApiAccessToken="pk.eyJ1Ijoic3plYW5kciIsImEiOiJjajlpeWxnNHUzbWNiMzNvcnF1ZGUzbG5rIn0.fk33YGLOHSZtT_CMEWoIag"
+                    {...viewport}
+                    mapStyle="mapbox://styles/szeandr/ck1664yzv02iq1crq35ea679o"
+                    onLoad={handleMapLoaded}
+                  >
+                    {/* <Source type="geojson" data={myGeoJSONData}>
+                    <Layer {...heatmapLayer} />
+                  </Source> */}
+                    {/* <HeatmapOverlay locations={cities} {...viewport}/> */}
+                    {/* {coordinatesData.map(coor => (
+                      <Marker latitude={coor.latitude} longitude={coor.longitude}>
+                        <SimpleDot widht={5} height={5} />
+                      </Marker>
+                    ))} */}
+                  </ReactMapGL>
+                </MapPaper>
+            </MapContainer>
+          </ChartsContainer>
         </DashboardContainer>
       </MainContainer>
     </>
   );
 };
 export default Dashboard;
-
-// const viewport = {
-//   width: "100%",
-//   height: "100%",
-//   latitude: 43.65107,
-//   longitude: -79.347015,
-//   zoom: 9
-// };
-
-// {/* <MapContainer>
-//   <ReactMapGL
-//     mapboxApiAccessToken="pk.eyJ1Ijoic3plYW5kciIsImEiOiJjajlpeWxnNHUzbWNiMzNvcnF1ZGUzbG5rIn0.fk33YGLOHSZtT_CMEWoIag"
-//     {...viewport}
-//     mapStyle="mapbox://styles/szeandr/cje3v8qwedxub2st94yulcma7"
-//   > */}
-//     {/* {
-//       coordinatesData.map(coor => (
-//         <Marker
-//           latitude={coor.latitude}
-//           longitude={coor.longitude}
-//         >
-//           <SimpleDot widht={5} height={5} />
-//         </Marker>
-//       ))
-//     } */}
-//   {/* </ReactMapGL>
-// </MapContainer> */}

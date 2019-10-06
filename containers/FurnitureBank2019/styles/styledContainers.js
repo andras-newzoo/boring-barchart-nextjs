@@ -99,3 +99,8 @@ export const ChartsContainer = styled.div`
   display: grid;
   grid-area: charts;
 `
+
+export const MapContainer = styled.div`
+  height: 200px;
+  width: 350px;
+`
