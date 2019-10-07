@@ -13,6 +13,18 @@ import { createReducer } from "../utils/reducerUtils";
 
 const initialState = {
   selectedItems: [{ name: 'Armchair', quantity: 1 }, { name: 'Air Conditioner', quantity: 1 }],
+  groups: [
+    "Refugees",
+    "Women and/or Children",
+    "Formerly Homeless",
+    "Indigenous",
+    "Immigrants",
+    "Mental Illness",
+    "Immigrants & Newcomers",
+    "Women & Children",
+    "At Risk Youth",
+    "LGBTQ"
+  ],
   coordinatesData,
   donationsData,
   familyData,

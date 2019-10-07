@@ -177,7 +177,8 @@ const AutoComplete = ({
   data,
   itemKey,
   style,
-  handleSelected
+  handleSelected,
+  iconColor
 }) => {
   const {
     0: value,
@@ -205,6 +206,7 @@ const AutoComplete = ({
   };
   return __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["Container"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, style, {
     searched: value.length,
+    color: iconColor,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 62
@@ -215,7 +217,7 @@ const AutoComplete = ({
     fontSize: "medium",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 67
     },
     __self: undefined
   }), __jsx(react_autosuggest__WEBPACK_IMPORTED_MODULE_2___default.a, {
@@ -233,7 +235,7 @@ const AutoComplete = ({
     inputProps: inputProps,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 68
     },
     __self: undefined
   }));
@@ -263,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 const Container = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "styles__Container",
   componentId: "sc-1xf7u5x-0"
-})(["position:relative;.react-autosuggest__container{position:relative;}.react-autosuggest__input{", " height:", "px;padding:", ";margin:.4rem 0;padding-left:", "rem;font-weight:", ";font-size:", ";border:1px solid ", ";border-radius:4px;font-family:", ";color:", ";transition:.5s all;&:focus{outline:none;}}.react-autosuggest__container--open .react-autosuggest__input{border-bottom-left-radius:0;border-bottom-right-radius:0;}.react-autosuggest__suggestions-container{display:none;}.react-autosuggest__container--open .react-autosuggest__suggestions-container{display:block;position:absolute;top:calc(30px + 1.4rem - 1px);width:", "px;border:1px solid ", ";background-color:#fff;font-weight:", ";font-size:", ";border-bottom-left-radius:4px;border-bottom-right-radius:4px;z-index:2;}.react-autosuggest__suggestions-list{margin:0;padding:0;list-style-type:none;}.react-autosuggest__suggestion{cursor:pointer;padding:", ";}.highlight{color:", ";font-weight:", ";}.icon{position:absolute;top:50%;left:1rem;transform:translateY(-50%);z-index:10;fill:", ";visibility:", ";}"], props => props.searched ? Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["width:calc(", "px - 1.8rem);"], props => props.width) : Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["width:calc(", "px - 4rem);"], props => props.width), props => props.height || 30, _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["paddingXS"], props => !props.searched && 3, props => props.fontWeight || _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightXS"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], props => props.borderColor || '#aaa', _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontFamilyMain"], _containers_FurnitureBank2019_styles__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.width - 2, props => props.borderColor || '#aaa', props => props.fontWeight || _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightXS"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["paddingXS"], props => props.highlight || '#333', _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightL"], _containers_FurnitureBank2019_styles__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.searched ? 'hidden' : 'visible');
+})(["position:relative;.react-autosuggest__container{position:relative;}.react-autosuggest__input{", " height:", "px;padding:", ";margin:.4rem 0;padding-left:", "rem;font-weight:", ";font-size:", ";border:1px solid ", ";border-radius:4px;font-family:", ";color:", ";transition:.5s all;&:focus{outline:none;}}.react-autosuggest__container--open .react-autosuggest__input{border-bottom-left-radius:0;border-bottom-right-radius:0;}.react-autosuggest__suggestions-container{display:none;}.react-autosuggest__container--open .react-autosuggest__suggestions-container{display:block;position:absolute;top:calc(30px + 1.4rem - 1px);width:", "px;border:1px solid ", ";background-color:#fff;font-weight:", ";font-size:", ";border-bottom-left-radius:4px;border-bottom-right-radius:4px;z-index:2;}.react-autosuggest__suggestions-list{margin:0;padding:0;list-style-type:none;}.react-autosuggest__suggestion{cursor:pointer;padding:", ";}.highlight{color:", ";font-weight:", ";}.icon{position:absolute;top:50%;left:1rem;transform:translateY(-50%);z-index:10;fill:", ";visibility:", ";}"], props => props.searched ? Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["width:calc(", "px - 1.8rem);"], props => props.width) : Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["width:calc(", "px - 4rem);"], props => props.width), props => props.height || 30, _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["paddingXS"], props => !props.searched && 3, props => props.fontWeight || _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightXS"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], props => props.borderColor || '#aaa', _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontFamilyMain"], _containers_FurnitureBank2019_styles__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.width - 2, props => props.borderColor || '#aaa', props => props.fontWeight || _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightXS"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["paddingXS"], props => props.highlight || '#333', _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightL"], props => props.color || _containers_FurnitureBank2019_styles__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.searched ? 'hidden' : 'visible');
 
 /***/ }),
 
@@ -462,20 +464,20 @@ const ControlContainer = () => {
   return __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["ControlContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 49
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 50
     },
     __self: undefined
   }, "Items to Donate ", __jsx("span", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 51
     },
     __self: undefined
   }, "\xA0 ( ", totalQuantity, " )")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["PanelContainer"], {
@@ -483,7 +485,7 @@ const ControlContainer = () => {
     height: dimensions && dimensions.height,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: undefined
   }, selectedItems.length > 0 && selectedItems.map(item => __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["ItemChip"], {
@@ -495,19 +497,20 @@ const ControlContainer = () => {
     quantity: item.quantity,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 59
     },
     __self: undefined
   })), __jsx(_components__WEBPACK_IMPORTED_MODULE_2__["AutoComplete"], {
     data: allUnselected,
     itemKey: "product_name",
     handleSelected: handleSelected,
+    iconColor: _styles__WEBPACK_IMPORTED_MODULE_1__["colorGreen"],
     style: dimensions && {
       width: dimensions.width
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 68
     },
     __self: undefined
   })));
@@ -527,20 +530,22 @@ const ControlContainer = () => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
-/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _styles_styledContainers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/styledContainers */ "./containers/FurnitureBank2019/styles/styledContainers.js");
-/* harmony import */ var _styles_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles/styledElements */ "./containers/FurnitureBank2019/styles/styledElements.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-map-gl */ "react-map-gl");
+/* harmony import */ var react_map_gl__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_map_gl__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../styles */ "./containers/FurnitureBank2019/styles/index.js");
 /* harmony import */ var _mapStyles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./mapStyles */ "./containers/FurnitureBank2019/components/Map/mapStyles.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../config */ "./config.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! .. */ "./containers/FurnitureBank2019/components/index.js");
+
 
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/Map/MapContent.jsx";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
 
@@ -549,21 +554,23 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+const initialViewport = {
+  latitude: 43.702702563904154,
+  longitude: -79.5290090619582,
+  zoom: 9.070378236162412
+};
 
 const MapContent = () => {
   const filteredCoordinates = Object(react_redux__WEBPACK_IMPORTED_MODULE_6__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_7__["selectFilteredCoordinates"]);
   const {
     0: initMap,
     1: setInitMap
-  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
-  const mapRef = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
-  const viewport = {
-    width: "100%",
-    height: "100%",
-    latitude: 43.66107,
-    longitude: -79.477015,
-    zoom: 8
-  };
+  } = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(false);
+  const {
+    0: viewport,
+    1: setViewPort
+  } = Object(react__WEBPACK_IMPORTED_MODULE_2__["useState"])(initialViewport);
+  const mapRef = Object(react__WEBPACK_IMPORTED_MODULE_2__["useRef"])();
 
   const handleMapLoaded = () => {
     mapRef.current.getMap().addSource(_mapStyles__WEBPACK_IMPORTED_MODULE_5__["HEATMAP_SOURCE_ID"], {
@@ -574,7 +581,7 @@ const MapContent = () => {
     setInitMap(true);
   };
 
-  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
+  Object(react__WEBPACK_IMPORTED_MODULE_2__["useEffect"])(() => {
     if (initMap) {
       mapRef.current.getMap().getSource(_mapStyles__WEBPACK_IMPORTED_MODULE_5__["HEATMAP_SOURCE_ID"]).setData(makeGeoJSON(filteredCoordinates));
     }
@@ -599,34 +606,45 @@ const MapContent = () => {
     };
   };
 
-  return __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_3__["MapContainer"], {
+  return __jsx(_styles__WEBPACK_IMPORTED_MODULE_4__["MapContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_4__["ChartPaper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 64
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_4__["ChartTitle"], {
+    withBG: true,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 65
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_4__["ChartPaper"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66
-    },
-    __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_4__["ChartTitle"], {
+  }, "In Which areas will your donated furniture be received?"), __jsx(___WEBPACK_IMPORTED_MODULE_9__["Message"], {
+    noData: true,
     withBG: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 68
     },
     __self: undefined
-  }, "In Which areas will your donated furniture be received?"), __jsx(react_map_gl__WEBPACK_IMPORTED_MODULE_2___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  }), __jsx(react_map_gl__WEBPACK_IMPORTED_MODULE_3___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     ref: mapRef,
     mapboxApiAccessToken: _config__WEBPACK_IMPORTED_MODULE_8__["config"].MAP_API
   }, viewport, {
-    mapStyle: "mapbox://styles/szeandr/ck1664yzv02iq1crq35ea679o",
+    width: "100%",
+    height: "100%",
+    onViewportChange: viewport => setViewPort(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, viewport)),
+    mapStyle: "mapbox://styles/szeandr/ck1f4skvt0xyl1ct93ti7k1s6",
     onLoad: handleMapLoaded,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 69
     },
     __self: undefined
   }))));
@@ -663,13 +681,136 @@ const heatMapStyles = {
     // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
     // Begin color ramp at 0-stop with a 0-transparancy color
     // to create a blur-like effect.
-    "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(33,102,172,0)", 0.2, "#3db692", 0.4, "#6bbca0", 0.8, "#ccc", 1, "#333"],
+    "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(33,102,172,0)", 0.2, "#c4f6e3", 0.4, "#9be1c7", 0.8, "#70cbac", 1, "#3db692"],
     // Adjust the heatmap radius by zoom level
     "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 0, 2, MAX_ZOOM_LEVEL, 20],
     // // Transition from heatmap to circle layer by zoom level
-    "heatmap-opacity": ["interpolate", ["linear"], ["zoom"], 5, 1, 20, 0]
+    "heatmap-opacity": ["interpolate", ["linear"], ["zoom"], 10, 1, 20, 0]
   }
 };
+
+/***/ }),
+
+/***/ "./containers/FurnitureBank2019/components/Message.jsx":
+/*!*************************************************************!*\
+  !*** ./containers/FurnitureBank2019/components/Message.jsx ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/Message.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const Message = ({
+  noData,
+  withBG
+}) => {
+  const selected = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAllSelected"]);
+  const adults = Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_3__["selectAdults"]);
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, selected.length === 0 && __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["ChartTitle"], {
+    message: true,
+    withBG: withBG,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }, "Please start by adding furnitures!"), noData && selected.length > 0 && !adults && __jsx(_styles__WEBPACK_IMPORTED_MODULE_1__["ChartTitle"], {
+    message: true,
+    withBG: withBG,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    },
+    __self: undefined
+  }, "Sorry, we don't have data for the selected ", selected.length === 1 ? 'item' : 'items', "!"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Message);
+
+/***/ }),
+
+/***/ "./containers/FurnitureBank2019/components/PersonsIcons.jsx":
+/*!******************************************************************!*\
+  !*** ./containers/FurnitureBank2019/components/PersonsIcons.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/array/from */ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
+
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/PersonsIcons.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+const PersonsIcon = () => {
+  const adults = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_4__["selectAdults"]);
+  const children = Object(react_redux__WEBPACK_IMPORTED_MODULE_3__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_4__["selectChildren"]);
+
+  const adultsArray = _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default()(Array(Math.round(adults || 0)).keys());
+
+  const childrenArray = _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default()(Array(Math.round(children || 0)).keys());
+
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["PersonsContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: undefined
+  }, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    },
+    __self: undefined
+  }, adultsArray.map(el => __jsx("img", {
+    key: el,
+    className: "adult",
+    src: "/static/icons/furnitureBank/person.svg",
+    alt: "adult person icon",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 21
+    },
+    __self: undefined
+  })), childrenArray.map(el => __jsx("img", {
+    key: el,
+    className: "child",
+    src: "/static/icons/furnitureBank/person.svg",
+    alt: "child person icon",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: undefined
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PersonsIcon);
 
 /***/ }),
 
@@ -677,7 +818,7 @@ const heatMapStyles = {
 /*!**********************************************************!*\
   !*** ./containers/FurnitureBank2019/components/index.js ***!
   \**********************************************************/
-/*! exports provided: ControlContainer, MapContent */
+/*! exports provided: ControlContainer, MapContent, Message */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -687,6 +828,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _Map_MapContent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Map/MapContent */ "./containers/FurnitureBank2019/components/Map/MapContent.jsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MapContent", function() { return _Map_MapContent__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _Message__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Message */ "./containers/FurnitureBank2019/components/Message.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Message", function() { return _Message__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
 
 
 
@@ -707,21 +852,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-helmet */ "react-helmet");
 /* harmony import */ var react_helmet__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_helmet__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles */ "./containers/FurnitureBank2019/styles/index.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./containers/FurnitureBank2019/components/index.js");
-/* harmony import */ var _styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styles/styledContainers */ "./containers/FurnitureBank2019/styles/styledContainers.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material-ui/icons/Send */ "@material-ui/icons/Send");
-/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material-ui/icons/Send */ "@material-ui/icons/Send");
+/* harmony import */ var _material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./styles */ "./containers/FurnitureBank2019/styles/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components */ "./containers/FurnitureBank2019/components/index.js");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material-ui/core/styles */ "@material-ui/core/styles");
 /* harmony import */ var _material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../styles/sharedStyles */ "./styles/sharedStyles.js");
 /* harmony import */ var _styles_styledElements__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./styles/styledElements */ "./containers/FurnitureBank2019/styles/styledElements.js");
+/* harmony import */ var _components_PersonsIcons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/PersonsIcons */ "./containers/FurnitureBank2019/components/PersonsIcons.jsx");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/index.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -738,11 +886,11 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_8__["
     marginLeft: theme.spacing(1)
   },
   button: {
-    background: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+    background: _styles__WEBPACK_IMPORTED_MODULE_6__["colorGreen"],
     color: "white",
     fontSize: _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_9__["fontSizeM"],
     "&:hover": {
-      background: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+      background: _styles__WEBPACK_IMPORTED_MODULE_6__["colorGreen"],
       color: "white"
     }
   }
@@ -753,37 +901,37 @@ const Dashboard = () => {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_1__["Helmet"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 50
     },
     __self: undefined
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 51
     },
     __self: undefined
-  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 52
-    },
-    __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["DashboardContainer"], {
+  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["MainContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 53
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ControlsContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["DashboardContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 54
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["LogoContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["ControlsContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 55
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["LogoContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56
     },
     __self: undefined
   }, __jsx("img", {
@@ -791,122 +939,160 @@ const Dashboard = () => {
     alt: "furniture bank icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 57
     },
     __self: undefined
-  })), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"], {
+  })), __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["ControlContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 62
     },
     __self: undefined
-  })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartsContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63
-    },
-    __self: undefined
-  }, __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["SocChartsContainer"], {
+  })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["ChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 64
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainTitle"], {
-    gridArea: "title",
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["SocChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 65
     },
     __self: undefined
-  }, "What is the estimated social impact of your donation?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_3__["MapContent"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["MainTitle"], {
+    gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 66
     },
     __self: undefined
-  }), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["FamilyContainer"], {
+  }, "What is the estimated social impact of your donation?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["MapContent"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 69
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
+  }), __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
+    gridArea: "families",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 70
     },
     __self: undefined
-  })), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["ValueContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["FamilyContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 71
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["ChartTitle"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 72
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
+  }, "Who will be likely to receive your donation?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
+    noData: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 75
     },
     __self: undefined
-  }))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["EnvChartsContainer"], {
+  }), __jsx(_components_PersonsIcons__WEBPACK_IMPORTED_MODULE_11__["default"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 76
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainTitle"], {
-    gridArea: "title",
+  }))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["ValueContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 79
     },
     __self: undefined
-  }, "What is the estimated environmental impact of your donation?"), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["LandFillContainer"], {
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 80
     },
     __self: undefined
-  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 81
     },
     __self: undefined
-  })), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["EmissionContainer"], {
+  })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["EnvChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 85
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["MainTitle"], {
+    gridArea: "title",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: undefined
+  }, "What is the estimated environmental impact of your donation?"), __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["LandFillContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89
     },
     __self: undefined
   }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 90
     },
     __self: undefined
-  }))), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_4__["ReqContainer"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 91
     },
     __self: undefined
-  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_6__["Button"], {
+  }))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["EmissionContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94
+    },
+    __self: undefined
+  }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_10__["ChartPaper"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: undefined
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: undefined
+  })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_6__["ReqContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 100
+    },
+    __self: undefined
+  }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_4__["Button"], {
     className: classes.button,
     variant: "contained",
     disableRipple: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 101
     },
     __self: undefined
-  }, "Request a Pickup", __jsx(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_7___default.a, {
+  }, "Request a Pickup", __jsx(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_5___default.a, {
     fontSize: "small",
     className: classes.rightIcon,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 107
     },
     __self: undefined
   })))))));
@@ -920,7 +1106,7 @@ const Dashboard = () => {
 /*!******************************************************!*\
   !*** ./containers/FurnitureBank2019/styles/index.js ***!
   \******************************************************/
-/*! exports provided: colorGreen, colorRedDark, colorRed, colorGreyLight, colorGreyDark, media, MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, MainTitle */
+/*! exports provided: colorGreen, colorRedDark, colorRed, colorGreyLight, colorGreyDark, media, MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, SocChartsContainer, MapContainer, FamilyContainer, PersonsContainer, ValueContainer, EnvChartsContainer, LandFillContainer, EmissionContainer, ReqContainer, MainTitle, ChartTitle, ChartPaper */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -953,8 +1139,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ChartsContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["ChartsContainer"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SocChartsContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["SocChartsContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MapContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["MapContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FamilyContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["FamilyContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PersonsContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["PersonsContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ValueContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["ValueContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EnvChartsContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["EnvChartsContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "LandFillContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["LandFillContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "EmissionContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["EmissionContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ReqContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["ReqContainer"]; });
+
 /* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styledElements */ "./containers/FurnitureBank2019/styles/styledElements.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MainTitle", function() { return _styledElements__WEBPACK_IMPORTED_MODULE_2__["MainTitle"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ChartTitle", function() { return _styledElements__WEBPACK_IMPORTED_MODULE_2__["ChartTitle"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ChartPaper", function() { return _styledElements__WEBPACK_IMPORTED_MODULE_2__["ChartPaper"]; });
 
 
 
@@ -969,7 +1177,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*****************************************************************!*\
   !*** ./containers/FurnitureBank2019/styles/styledContainers.js ***!
   \*****************************************************************/
-/*! exports provided: MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, SocChartsContainer, MapContainer, FamilyContainer, ValueContainer, EnvChartsContainer, LandFillContainer, EmissionContainer, ReqContainer */
+/*! exports provided: MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, SocChartsContainer, MapContainer, FamilyContainer, PersonsContainer, ValueContainer, EnvChartsContainer, LandFillContainer, EmissionContainer, ReqContainer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -984,6 +1192,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SocChartsContainer", function() { return SocChartsContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapContainer", function() { return MapContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FamilyContainer", function() { return FamilyContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PersonsContainer", function() { return PersonsContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ValueContainer", function() { return ValueContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnvChartsContainer", function() { return EnvChartsContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandFillContainer", function() { return LandFillContainer; });
@@ -1078,7 +1287,7 @@ const ControlContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.
 const PanelContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__PanelContainer",
   componentId: "sc-86vxz-5"
-})(["display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:350px;overflow-y:scroll;", " &::-webkit-scrollbar{display:none;}grid-area:panel;", " ", " ", ""], ''
+})(["display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:490px;overflow-y:scroll;", " &::-webkit-scrollbar{display:none;}grid-area:panel;", " ", " ", ""], ''
 /* ${testBorder}; */
 , _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     height: 150px;
@@ -1114,14 +1323,20 @@ const MapContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.di
 const FamilyContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__FamilyContainer",
   componentId: "sc-86vxz-9"
-})(["grid-area:families;height:100%;width:100%;"]);
+})(["display:grid;grid-template-columns:repeat(2,2fr);grid-template-areas:\"chart persons\";height:100%;width:100%;"]);
+const PersonsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "styledContainers__PersonsContainer",
+  componentId: "sc-86vxz-10"
+})(["grid-area:persons;display:flex;align-items:center;justify-content:center;", " div{display:flex;align-items:flex-end;justify-content:center;}img{margin-right:1rem;}.adult{height:100px;}.child{height:65px;}"], ''
+/* ${testBorder}; */
+);
 const ValueContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ValueContainer",
-  componentId: "sc-86vxz-10"
+  componentId: "sc-86vxz-11"
 })(["grid-area:value;height:100%;width:100%;"]);
 const EnvChartsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__EnvChartsContainer",
-  componentId: "sc-86vxz-11"
+  componentId: "sc-86vxz-12"
 })(["display:grid;grid-area:env;grid-row-gap:", ";grid-column-gap:", ";grid-template-rows:", " 1fr;grid-template-columns:repeat(2,1fr);grid-template-areas:\"title title\" \"landfill emission\";", ""], _variables__WEBPACK_IMPORTED_MODULE_2__["gridGapS"], _variables__WEBPACK_IMPORTED_MODULE_2__["gridGapM"], _variables__WEBPACK_IMPORTED_MODULE_2__["titleHeightM"], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
     grid-template-rows: ${_variables__WEBPACK_IMPORTED_MODULE_2__["titleHeightM"]} repeat(2, 1fr);
     grid-template-columns: 1fr;
@@ -1132,15 +1347,15 @@ const EnvChartsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___defaul
   `);
 const LandFillContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__LandFillContainer",
-  componentId: "sc-86vxz-12"
+  componentId: "sc-86vxz-13"
 })(["grid-area:landfill;height:100%;width:100%;"]);
 const EmissionContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__EmissionContainer",
-  componentId: "sc-86vxz-13"
+  componentId: "sc-86vxz-14"
 })(["grid-area:emission;height:100%;width:100%;"]);
 const ReqContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ReqContainer",
-  componentId: "sc-86vxz-14"
+  componentId: "sc-86vxz-15"
 })(["grid-area:req;display:flex;margin-top:1.6rem;justify-content:flex-end;align-items:center;"]);
 
 /***/ }),
@@ -1163,6 +1378,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _variables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./variables */ "./containers/FurnitureBank2019/styles/variables.js");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core */ "@material-ui/core");
 /* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! . */ "./containers/FurnitureBank2019/styles/index.js");
+
 
 
 
@@ -1180,13 +1397,13 @@ const MainTitle = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.w
 const ChartTitle = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "styledElements__ChartTitle",
   componentId: "sc-1j0zlij-1"
-})(["font-size:", ";font-weight:", ";color:", ";text-transform:uppercase;background:", ";position:absolute;top:.25rem;left:.25rem;z-index:100;padding:", ";display:flex;align-items:center;justify-content:flex-start;grid-area:", ";", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightM"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.withBG && '#fff', _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["paddingXS"], props => props.gridArea, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
+})(["font-size:", ";font-weight:", ";color:", ";text-transform:uppercase;background:", ";position:absolute;", " z-index:100;padding:", ";display:flex;align-items:center;justify-content:flex-start;grid-area:", ";", ""], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontWeightM"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorGreyDark"], props => props.withBG && '#fff', props => props.message ? Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;color:", ";"], ___WEBPACK_IMPORTED_MODULE_4__["colorGreen"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["top:0;left:0;"]), _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["paddingXS"], props => props.gridArea, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
     font-size: ${_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_1__["fontSizeS"]};
   `);
 const ChartPaper = styled_components__WEBPACK_IMPORTED_MODULE_0___default()(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Paper"]).withConfig({
   displayName: "styledElements__ChartPaper",
   componentId: "sc-1j0zlij-2"
-})(["height:100%;width:100%;position:relative;"]);
+})(["grid-area:", ";height:100%;width:100%;position:relative;"], props => props.gridArea);
 
 /***/ }),
 
@@ -1214,7 +1431,7 @@ __webpack_require__.r(__webpack_exports__);
 const colorGreen = '#3db692';
 const colorRedDark = '#b02b2c';
 const colorRed = '#ec1c24';
-const colorGreyLight = 'lightgray';
+const colorGreyLight = '#D3D3D3';
 const colorGreyDark = '#333';
 const titleHeightM = '3rem';
 const titleHeightS = '2rem';
@@ -1225,6 +1442,17 @@ const media = Object(_styles_mediaQueries__WEBPACK_IMPORTED_MODULE_0__["createBr
   small: 768,
   extraSmall: 545
 });
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/array/from.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/array/from */ "core-js/library/fn/array/from");
 
 /***/ }),
 
@@ -1280,6 +1508,28 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "core-js/library/fn/object/keys");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/parse-int.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/parse-int */ "core-js/library/fn/parse-int");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/set.js":
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/set.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/set */ "core-js/library/fn/set");
 
 /***/ }),
 
@@ -1476,7 +1726,7 @@ const deleteItem = item => ({
 /*!*************************************************!*\
   !*** ./store/furnitureBankReducer/selectors.js ***!
   \*************************************************/
-/*! exports provided: selectAllSelected, selectTotalQuantity, selectAllUnselected, selectFilteredDonationPostalCode, selectFilteredFamilies, selectFilteredCoordinates, selectFilteredDonationsCoordinates */
+/*! exports provided: selectAllSelected, selectTotalQuantity, selectAllUnselected, selectFilteredDonationPostalCode, selectFilteredFamilies, selectFilteredCoordinates, selectUniqueCoordinates, selectPostalCodeFamilies, selectGroups, selectTopGroups, selectAdults, selectChildren */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1487,12 +1737,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredDonationPostalCode", function() { return selectFilteredDonationPostalCode; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredFamilies", function() { return selectFilteredFamilies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredCoordinates", function() { return selectFilteredCoordinates; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredDonationsCoordinates", function() { return selectFilteredDonationsCoordinates; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reselect */ "reselect");
-/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(reselect__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectUniqueCoordinates", function() { return selectUniqueCoordinates; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectPostalCodeFamilies", function() { return selectPostalCodeFamilies; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectGroups", function() { return selectGroups; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectTopGroups", function() { return selectTopGroups; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAdults", function() { return selectAdults; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectChildren", function() { return selectChildren; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/parse-int */ "./node_modules/@babel/runtime-corejs2/core-js/parse-int.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_set__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/set */ "./node_modules/@babel/runtime-corejs2/core-js/set.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_set__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_set__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reselect */ "reselect");
+/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reselect__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
 
 
+
+
+
+
+const selectGroupList = state => state.furnitureBankReducer.groups;
 
 const selectFurnitureList = state => state.furnitureBankReducer.productList;
 
@@ -1505,19 +1771,33 @@ const selectAllFamily = state => state.furnitureBankReducer.familyData;
 const selectAllCoordinates = state => state.furnitureBankReducer.coordinatesData; //* Array of all selected items
 
 
-const selectAllSelected = Object(reselect__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(selectedAllSelected, selectedList => selectedList.map(el => el.name));
-const selectTotalQuantity = Object(reselect__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(selectedAllSelected, selectedList => selectedList.reduce((acc, curr) => acc + curr.quantity, 0));
-const selectAllUnselected = Object(reselect__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(selectFurnitureList, selectAllSelected, (totalList, allSelected) => totalList.filter(el => !allSelected.map(el => el.toLowerCase()).includes(el.product_name.toLowerCase()))); //* Get relevant postal code list
+const selectAllSelected = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectedAllSelected, selectedList => selectedList.map(el => el.name));
+const selectTotalQuantity = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectedAllSelected, selectedList => selectedList.reduce((acc, curr) => acc + curr.quantity, 0));
+const selectAllUnselected = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectFurnitureList, selectAllSelected, (totalList, allSelected) => totalList.filter(el => !allSelected.map(el => el.toLowerCase()).includes(el.product_name.toLowerCase()))); //* Get relevant postal code list
 
-const selectFilteredDonationPostalCode = Object(reselect__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(selectAllDonation, selectAllSelected, (donations, selectedItems) => donations.filter(el => selectedItems.includes(el.product_name))); //* Get family data for postal codes
+const selectFilteredDonationPostalCode = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllDonation, selectAllSelected, (donations, selectedItems) => donations.filter(el => selectedItems.includes(el.product_name))); //* Get family data for postal codes
 
-const selectFilteredFamilies = Object(reselect__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(selectAllFamily, selectFilteredDonationPostalCode, (families, selectedPostalCodes) => families.filter(el => selectedPostalCodes.includes(el.postal_code))); //* Get cooordinates for singe postal codes
+const selectFilteredFamilies = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllFamily, selectFilteredDonationPostalCode, (families, selectedPostalCodes) => families.filter(el => selectedPostalCodes.includes(el.postal_code))); //* Get coordinates for filtere items
 
-const selectFilteredCoordinates = Object(reselect__WEBPACK_IMPORTED_MODULE_1__["createSelector"])(selectAllCoordinates, selectFilteredDonationPostalCode, (coordinates, selectedPostalCodes) => selectedPostalCodes.map(el => Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, el, {
+const selectFilteredCoordinates = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllCoordinates, selectFilteredDonationPostalCode, (coordinates, selectedPostalCodes) => selectedPostalCodes.map(el => Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_2__["default"])({}, el, {
   coors: coordinates.find(d => d.postal_code === el.postal_code)
-}))); //* Get coordinates for all postal codes
+}))); //* Get unique list of postal codes
 
-const selectFilteredDonationsCoordinates = Object(reselect__WEBPACK_IMPORTED_MODULE_1__["createSelector"])();
+const selectUniqueCoordinates = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectFilteredDonationPostalCode, filteredPostalCodes => [...new _babel_runtime_corejs2_core_js_set__WEBPACK_IMPORTED_MODULE_1___default.a(filteredPostalCodes.map(el => el.postal_code))]); //* Get families from filtered postal codes
+
+const selectPostalCodeFamilies = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectUniqueCoordinates, selectAllFamily, (postalCodes, families) => families.filter(el => postalCodes.includes(el.postal_code))); //* Top Groups
+
+const selectGroups = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectPostalCodeFamilies, families => lodash__WEBPACK_IMPORTED_MODULE_4___default.a.groupBy(families, "segment"));
+const selectTopGroups = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectGroups, selectGroupList, selectPostalCodeFamilies, (groups, groupList, total) => groupList.map(el => groups[el] ? {
+  group: el,
+  share: groups[el].length / total.length
+} : {
+  group: el,
+  share: 0
+})); //* Persons
+
+const selectAdults = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectPostalCodeFamilies, families => lodash__WEBPACK_IMPORTED_MODULE_4___default.a.mean(families.map(el => _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(el.adults) || 0)));
+const selectChildren = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectPostalCodeFamilies, families => lodash__WEBPACK_IMPORTED_MODULE_4___default.a.mean(families.map(el => _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(el.children) || 0)));
 
 /***/ }),
 
@@ -1712,6 +1992,17 @@ module.exports = require("autosuggest-highlight/parse");
 
 /***/ }),
 
+/***/ "core-js/library/fn/array/from":
+/*!************************************************!*\
+  !*** external "core-js/library/fn/array/from" ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/array/from");
+
+/***/ }),
+
 /***/ "core-js/library/fn/object/assign":
 /*!***************************************************!*\
   !*** external "core-js/library/fn/object/assign" ***!
@@ -1764,6 +2055,39 @@ module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/keys");
+
+/***/ }),
+
+/***/ "core-js/library/fn/parse-int":
+/*!***********************************************!*\
+  !*** external "core-js/library/fn/parse-int" ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/parse-int");
+
+/***/ }),
+
+/***/ "core-js/library/fn/set":
+/*!*****************************************!*\
+  !*** external "core-js/library/fn/set" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/set");
+
+/***/ }),
+
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
 
 /***/ }),
 

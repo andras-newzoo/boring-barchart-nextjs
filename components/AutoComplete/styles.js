@@ -80,7 +80,7 @@ export const Container = styled.div`
     left: 1rem;
     transform: translateY(-50%);
     z-index: 10;
-    fill: ${colorGreyDark};
+    fill: ${props => props.color || colorGreyDark};
     visibility: ${props => props.searched ? 'hidden' : 'visible'};
   }
 `;

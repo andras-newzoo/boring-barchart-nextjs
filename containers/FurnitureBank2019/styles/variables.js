@@ -3,7 +3,7 @@ import { createBreakPoints } from '../../../styles/mediaQueries'
 export const colorGreen = '#3db692'
 export const colorRedDark = '#b02b2c'
 export const colorRed = '#ec1c24'
-export const colorGreyLight = 'lightgray'
+export const colorGreyLight = '#D3D3D3'
 export const colorGreyDark = '#333'
 
 export const titleHeightM = '3rem'

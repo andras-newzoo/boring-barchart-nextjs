@@ -145,7 +145,7 @@ export const PanelContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 350px;
+  height: 490px;
   overflow-y: scroll;
 
   ${'' /* ${testBorder}; */}
@@ -220,10 +220,39 @@ export const MapContainer = styled.div`
 `;
 
 export const FamilyContainer = styled.div`
-  grid-area: families;
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-areas: "chart persons";
+
   height: 100%;
-  width: 100%; 
+  width: 100%;
 `;
+
+export const PersonsContainer = styled.div`
+  grid-area: persons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ${'' /* ${testBorder}; */}
+
+  div {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  img {
+    margin-right: 1rem;
+  }
+  .adult {
+    height: 100px;
+    
+  }
+  .child {
+    height: 65px;
+  }
+`
 
 export const ValueContainer = styled.div`
   grid-area: value;

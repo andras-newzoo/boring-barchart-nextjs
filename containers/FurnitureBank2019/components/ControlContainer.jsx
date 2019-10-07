@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   ControlContainer as Control,
   MainTitle,
-  PanelContainer
+  PanelContainer,
+  colorGreen
 } from "./../styles";
 import { AutoComplete, ItemChip } from "../../../components"
 import { useSelector, useDispatch } from "react-redux";
@@ -68,6 +69,7 @@ const ControlContainer = () => {
           data={allUnselected}
           itemKey="product_name"
           handleSelected={handleSelected}
+          iconColor={colorGreen}
           style={
             dimensions && {
               width: dimensions.width

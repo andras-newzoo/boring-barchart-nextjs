@@ -43,7 +43,7 @@ const renderSuggestion = (suggestion, { query }, key) => {
 }
 
 const AutoComplete = ({
-  data, itemKey, style, handleSelected
+  data, itemKey, style, handleSelected, iconColor
 }) => {
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
@@ -62,6 +62,7 @@ const AutoComplete = ({
     <Container
       {...style}
       searched={value.length}
+      color={iconColor}
     >
       <AddIcon className={"icon"} fontSize="medium"/>
       <Autosuggest

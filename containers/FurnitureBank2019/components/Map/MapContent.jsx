@@ -1,25 +1,24 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 import ReactMapGL from "react-map-gl";
 
-import { MapContainer } from '../../styles/styledContainers';
-import { ChartPaper, ChartTitle } from '../../styles/styledElements';
-import { HEATMAP_SOURCE_ID, heatMapStyles } from './mapStyles';
-import { useSelector } from 'react-redux';
-import { selectFilteredCoordinates } from '../../../../store/furnitureBankReducer/selectors';
-import { config } from '../../../../config';
+import { MapContainer, ChartPaper, ChartTitle } from "../../styles";
+import { HEATMAP_SOURCE_ID, heatMapStyles } from "./mapStyles";
+import { useSelector } from "react-redux";
+import { selectFilteredCoordinates } from "../../../../store/furnitureBankReducer/selectors";
+import { config } from "../../../../config";
+import { Message } from "..";
+
+const initialViewport = {
+  latitude: 43.702702563904154,
+  longitude: -79.5290090619582,
+  zoom: 9.070378236162412
+};
 
 const MapContent = () => {
-
   const filteredCoordinates = useSelector(selectFilteredCoordinates);
   const [initMap, setInitMap] = useState(false);
+  const [viewport, setViewPort] = useState(initialViewport);
   const mapRef = useRef();
-  const viewport = {
-    width: "100%",
-    height: "100%",
-    latitude: 43.66107,
-    longitude: -79.477015,
-    zoom: 8
-  };
 
   const handleMapLoaded = () => {
     mapRef.current.getMap().addSource(HEATMAP_SOURCE_ID, {
@@ -60,25 +59,26 @@ const MapContent = () => {
     };
   };
 
-
   return (
     <MapContainer>
-    <ChartPaper>
-      <ChartTitle
-        withBG
-      >
-        In Which areas will your donated furniture be received?
-      </ChartTitle>
-      <ReactMapGL
-        ref={mapRef}
-        mapboxApiAccessToken={config.MAP_API}
-        {...viewport}
-        mapStyle="mapbox://styles/szeandr/ck1664yzv02iq1crq35ea679o"
-        onLoad={handleMapLoaded}
-      ></ReactMapGL>
-    </ChartPaper>
-  </MapContainer>
-  )
-}
+      <ChartPaper>
+        <ChartTitle withBG>
+          In Which areas will your donated furniture be received?
+        </ChartTitle>
+        <Message noData withBG/>
+        <ReactMapGL
+          ref={mapRef}
+          mapboxApiAccessToken={config.MAP_API}
+          {...viewport}
+          width="100%"
+          height="100%"
+          onViewportChange={viewport => setViewPort({ ...viewport })}
+          mapStyle="mapbox://styles/szeandr/ck1f4skvt0xyl1ct93ti7k1s6"
+          onLoad={handleMapLoaded}
+        ></ReactMapGL>
+      </ChartPaper>
+    </MapContainer>
+  );
+};
 
-export default MapContent
+export default MapContent;

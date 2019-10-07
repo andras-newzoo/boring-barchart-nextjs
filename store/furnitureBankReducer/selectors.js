@@ -1,5 +1,7 @@
 import { createSelector } from "reselect";
+import _ from "lodash";
 
+const selectGroupList = state => state.furnitureBankReducer.groups;
 const selectFurnitureList = state => state.furnitureBankReducer.productList;
 const selectedAllSelected = state => state.furnitureBankReducer.selectedItems;
 const selectAllDonation = state => state.furnitureBankReducer.donationsData;
@@ -46,7 +48,7 @@ export const selectFilteredFamilies = createSelector(
     families.filter(el => selectedPostalCodes.includes(el.postal_code))
 );
 
-//* Get cooordinates for singe postal codes
+//* Get coordinates for filtere items
 export const selectFilteredCoordinates = createSelector(
   selectAllCoordinates,
   selectFilteredDonationPostalCode,
@@ -57,5 +59,45 @@ export const selectFilteredCoordinates = createSelector(
     }))
 );
 
-//* Get coordinates for all postal codes
-export const selectFilteredDonationsCoordinates = createSelector();
+//* Get unique list of postal codes
+export const selectUniqueCoordinates = createSelector(
+  selectFilteredDonationPostalCode,
+  filteredPostalCodes => [
+    ...new Set(filteredPostalCodes.map(el => el.postal_code))
+  ]
+);
+
+//* Get families from filtered postal codes
+export const selectPostalCodeFamilies = createSelector(
+  selectUniqueCoordinates,
+  selectAllFamily,
+  (postalCodes, families) =>
+    families.filter(el => postalCodes.includes(el.postal_code))
+);
+
+//* Top Groups
+export const selectGroups = createSelector(
+  selectPostalCodeFamilies,
+  families => _.groupBy(families, "segment")
+);
+export const selectTopGroups = createSelector(
+  selectGroups,
+  selectGroupList,
+  selectPostalCodeFamilies,
+  (groups, groupList, total) =>
+    groupList.map(el =>
+      groups[el]
+        ? { group: el, share: groups[el].length / total.length }
+        : { group: el, share: 0 }
+    )
+);
+
+//* Persons
+export const selectAdults = createSelector(
+  selectPostalCodeFamilies,
+  families => _.mean(families.map(el => parseInt(el.adults) || 0 ))
+)
+export const selectChildren = createSelector(
+  selectPostalCodeFamilies,
+  families => _.mean(families.map(el => parseInt(el.children) || 0 ))
+)

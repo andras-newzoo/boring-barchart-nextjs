@@ -13,10 +13,21 @@ import {
   LogoContainer,
   ControlContainer,
   PanelContainer,
-  ChartsContainer
+  ChartsContainer,
+  SocChartsContainer,
+  MapContainer,
+  FamilyContainer,
+  PersonsContainer,
+  ValueContainer,
+  EnvChartsContainer,
+  LandFillContainer,
+  EmissionContainer,
+  ReqContainer
 } from './styledContainers'
 import {
-  MainTitle
+  MainTitle,
+  ChartTitle,
+  ChartPaper
 } from './styledElements'
 
 export {
@@ -34,8 +45,19 @@ export {
   LogoContainer,
   ControlContainer,
   PanelContainer,
-  ChartsContainer
+  ChartsContainer,
+  SocChartsContainer,
+  MapContainer,
+  FamilyContainer,
+  PersonsContainer,
+  ValueContainer,
+  EnvChartsContainer,
+  LandFillContainer,
+  EmissionContainer,
+  ReqContainer
 }
 export {
-  MainTitle
+  MainTitle,
+  ChartTitle,
+  ChartPaper
 }

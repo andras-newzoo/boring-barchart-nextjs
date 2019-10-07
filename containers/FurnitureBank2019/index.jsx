@@ -1,5 +1,9 @@
 import React from "react";
 import { Helmet } from "react-helmet";
+import styled from "styled-components";
+import _ from "lodash";
+import { Button } from "@material-ui/core";
+import SendIcon from "@material-ui/icons/Send";
 import {
   MainContainer,
   DashboardContainer,
@@ -7,10 +11,8 @@ import {
   ChartsContainer,
   LogoContainer,
   MainTitle,
-  colorGreen
-} from "./styles";
-import { ControlContainer, MapContent } from "./components";
-import {
+  ChartTitle,
+  colorGreen,
   SocChartsContainer,
   FamilyContainer,
   ValueContainer,
@@ -18,13 +20,12 @@ import {
   LandFillContainer,
   EmissionContainer,
   ReqContainer
-} from "./styles/styledContainers";
-import styled from "styled-components";
-import { Button } from "@material-ui/core";
-import SendIcon from "@material-ui/icons/Send";
+} from "./styles";
+import { ControlContainer, MapContent, Message } from "./components";
 import { makeStyles } from "@material-ui/core/styles";
 import { fontSizeM } from "../../styles/sharedStyles";
 import { ChartPaper } from "./styles/styledElements";
+import PersonsIcon from "./components/PersonsIcons";
 
 const useStyles = makeStyles(theme => ({
   rightIcon: {
@@ -66,11 +67,19 @@ const Dashboard = () => {
                 What is the estimated social impact of your donation?
               </MainTitle>
               <MapContent />
-              <FamilyContainer>
-                <ChartPaper></ChartPaper>
-              </FamilyContainer>
+              <ChartPaper gridArea="families">
+                <FamilyContainer>
+                  <ChartTitle>
+                    Who will be likely to receive your donation?
+                  </ChartTitle>
+                  <Message noData />
+                  <PersonsIcon />
+                </FamilyContainer>
+              </ChartPaper>
               <ValueContainer>
-                <ChartPaper />
+                <ChartPaper>
+                  <Message />
+                </ChartPaper>
               </ValueContainer>
             </SocChartsContainer>
             <EnvChartsContainer>
@@ -78,10 +87,14 @@ const Dashboard = () => {
                 What is the estimated environmental impact of your donation?
               </MainTitle>
               <LandFillContainer>
-                <ChartPaper />
+                <ChartPaper>
+                  <Message />
+                </ChartPaper>
               </LandFillContainer>
               <EmissionContainer>
-                <ChartPaper />
+                <ChartPaper>
+                  <Message />
+                </ChartPaper>
               </EmissionContainer>
             </EnvChartsContainer>
             <ReqContainer>

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   fontSizeL,
   fontWeightL,
@@ -9,6 +9,7 @@ import {
 } from "../../../styles/sharedStyles";
 import { colorGreyDark, media } from "./variables";
 import { Paper } from "@material-ui/core";
+import { colorGreen } from ".";
 
 export const MainTitle = styled.div`
   font-size: ${fontSizeL};
@@ -44,8 +45,16 @@ export const ChartTitle = styled.div`
   text-transform: uppercase;
   background: ${props => props.withBG && '#fff'};
   position: absolute;
-  top: .25rem;
-  left: .25rem;
+  ${props => props.message ? css`
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    color: ${colorGreen};
+  ` : css`
+    top: 0;
+    left: 0;
+  `}
   z-index: 100;
   padding: ${paddingXS};
 
@@ -61,6 +70,7 @@ export const ChartTitle = styled.div`
 `;
 
 export const ChartPaper = styled(Paper)`
+  grid-area: ${props => props.gridArea};
   height: 100%;
   width: 100%;
 

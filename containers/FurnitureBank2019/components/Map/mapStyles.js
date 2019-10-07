@@ -30,13 +30,13 @@ export const heatMapStyles = {
       0,
       "rgba(33,102,172,0)",
       0.2,
-      "#3db692",
+      "#c4f6e3",
       0.4,
-      "#6bbca0",
+      "#9be1c7",
       0.8,
-      "#ccc",
+      "#70cbac",
       1,
-      "#333"
+      "#3db692"
     ],
     // Adjust the heatmap radius by zoom level
     "heatmap-radius": [
@@ -49,6 +49,6 @@ export const heatMapStyles = {
       20
     ],
     // // Transition from heatmap to circle layer by zoom level
-    "heatmap-opacity": ["interpolate", ["linear"], ["zoom"], 5, 1, 20, 0]
+    "heatmap-opacity": ["interpolate", ["linear"], ["zoom"], 10, 1, 20, 0]
   }
 };
