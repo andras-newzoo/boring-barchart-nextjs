@@ -599,6 +599,179 @@ const config = {
 
 /***/ }),
 
+/***/ "./containers/FurnitureBank2019/components/BarChart.jsx":
+/*!**************************************************************!*\
+  !*** ./containers/FurnitureBank2019/components/BarChart.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var d3_scale__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! d3-scale */ "d3-scale");
+/* harmony import */ var d3_scale__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(d3_scale__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! d3-selection */ "d3-selection");
+/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(d3_selection__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var d3_array__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! d3-array */ "d3-array");
+/* harmony import */ var d3_array__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(d3_array__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../hooks */ "./hooks/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../utils */ "./utils/index.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../styles */ "./styles/index.js");
+/* harmony import */ var d3_ease__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! d3-ease */ "d3-ease");
+/* harmony import */ var d3_ease__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(d3_ease__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var d3_format__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! d3-format */ "d3-format");
+/* harmony import */ var d3_format__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(d3_format__WEBPACK_IMPORTED_MODULE_12__);
+
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/BarChart.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
+
+
+
+
+
+const ChartWrapper = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "BarChart__ChartWrapper",
+  componentId: "sc-1lmwodk-0"
+})(["height:100%;width:100%;border-left:1px solid ", ";rect{fill:", ";}.variable{fill:", ";font-size:1rem;}.value{fill:#fff;font-size:", ";font-weight:", ";text-anchor:end;}"], _styles__WEBPACK_IMPORTED_MODULE_10__["colorGrey"], _styles__WEBPACK_IMPORTED_MODULE_7__["colorGreen"], _styles__WEBPACK_IMPORTED_MODULE_10__["colorGrey"], _styles__WEBPACK_IMPORTED_MODULE_10__["fontSizeM"], _styles__WEBPACK_IMPORTED_MODULE_10__["fontWeightL"]);
+
+const BarChart = ({
+  data,
+  updateDuration = 1000
+}) => {
+  const divRef = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
+  const storedValues = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])();
+  const prevData = Object(_hooks__WEBPACK_IMPORTED_MODULE_8__["usePrevious"])(data);
+  const {
+    0: init,
+    1: setInit
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  let initVis, updateData, updateDims;
+  const dims = Object(_hooks__WEBPACK_IMPORTED_MODULE_8__["useSvgResize"])(divRef);
+  const prevDims = Object(_hooks__WEBPACK_IMPORTED_MODULE_8__["usePrevious"])(dims);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
+    if (data && dims.height && dims.width && !init) {
+      initVis();
+      setInit(true);
+    }
+
+    if (init && !lodash__WEBPACK_IMPORTED_MODULE_3___default.a.isEqual(data, prevData)) {
+      updateData();
+    }
+  }, [data, dims, init, initVis, prevData, updateData]);
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(() => {
+    if (init) {
+      !lodash__WEBPACK_IMPORTED_MODULE_3___default.a.isEqual(dims, prevDims) && updateDims();
+    }
+  }, [dims, init, prevDims, updateDims]);
+
+  initVis = () => {
+    const area = Object(d3_selection__WEBPACK_IMPORTED_MODULE_5__["select"])(divRef.current);
+    const {
+      chartArea
+    } = Object(_utils__WEBPACK_IMPORTED_MODULE_9__["createUpdateSvg"])({
+      area,
+      dims,
+      append: true
+    });
+    const yScale = Object(d3_scale__WEBPACK_IMPORTED_MODULE_4__["scaleBand"])().range([0, dims.height]).paddingOuter(.3).paddingInner(.4);
+    const xScale = Object(d3_scale__WEBPACK_IMPORTED_MODULE_4__["scaleLinear"])().range([0, dims.width]);
+    storedValues.current = {
+      chartArea,
+      yScale,
+      xScale
+    };
+    updateData();
+  };
+
+  updateData = () => {
+    const {
+      yScale,
+      xScale
+    } = storedValues.current;
+    yScale.domain(data.map(d => d.group));
+    xScale.domain([0, Object(d3_array__WEBPACK_IMPORTED_MODULE_6__["max"])(data, d => d.share)]);
+    storedValues.current = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, storedValues.current, {
+      yScale,
+      xScale
+    });
+    createUpdateRects();
+    createUpdateValueText();
+    createUpdateVariableText();
+  };
+
+  const createUpdateRects = () => {
+    const {
+      chartArea,
+      yScale,
+      xScale
+    } = storedValues.current;
+    const rects = chartArea.selectAll('rect').data(data, d => d.group);
+    removeElement(rects);
+    rects.enter().append('rect').attr('x', 0).attr('y', d => yScale(d.group)).attr('height', yScale.bandwidth()).attr('width', 0).merge(rects).transition().duration(updateDuration).ease(d3_ease__WEBPACK_IMPORTED_MODULE_11__["easeCubicInOut"]).attr('width', d => xScale(d.share));
+  };
+
+  updateDims = () => {
+    console.log('updatig dims'); // TODO
+  };
+
+  const createUpdateValueText = () => {
+    const {
+      chartArea,
+      yScale,
+      xScale
+    } = storedValues.current;
+    const texts = chartArea.selectAll('.value').data(data, d => d.group);
+
+    const centerText = d => yScale(d.group) + yScale.bandwidth() / 2 + 4;
+
+    removeElement(texts);
+    texts.enter().append('text').attr('class', 'value').attr('x', 0).attr('y', centerText).attr('opacity', 0).text(0).merge(texts).transition().duration(updateDuration).ease(d3_ease__WEBPACK_IMPORTED_MODULE_11__["easeCubicInOut"]).attr('x', d => xScale(d.share) - 2).tween('text', (d, i, n) => Object(_utils__WEBPACK_IMPORTED_MODULE_9__["numberTween"])(d, i, n, 'share', '.1%')).attr('opacity', 1);
+  };
+
+  const createUpdateVariableText = () => {
+    const {
+      chartArea,
+      yScale
+    } = storedValues.current;
+    const texts = chartArea.selectAll('.variable').data(data, d => d.group);
+
+    const yPos = d => yScale(d.group) - 3;
+
+    removeElement(texts);
+    texts.enter().append('text').attr('class', 'variable').attr('x', 1).attr('y', yPos).attr('opacity', 0).text(d => d.group).merge(texts).transition().duration(updateDuration).ease(d3_ease__WEBPACK_IMPORTED_MODULE_11__["easeCubicInOut"]).attr('y', yPos).attr('opacity', 1);
+  };
+
+  const removeElement = el => el.exit().transition().duration(updateDuration).ease(d3_ease__WEBPACK_IMPORTED_MODULE_11__["easeCubicInOut"]).attr('y', dims.height * 2).remove();
+
+  return __jsx(ChartWrapper, {
+    ref: divRef,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 183
+    },
+    __self: undefined
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (BarChart);
+
+/***/ }),
+
 /***/ "./containers/FurnitureBank2019/components/Message.jsx":
 /*!*************************************************************!*\
   !*** ./containers/FurnitureBank2019/components/Message.jsx ***!
@@ -674,8 +847,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../hooks */ "./hooks/index.js");
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../utils */ "./utils/index.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../styles */ "./styles/index.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/PercentageChart.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
 
 
 
@@ -688,7 +863,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const ChartWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "PercentageChart__ChartWrapper",
   componentId: "sc-18c8aar-0"
-})(["position:relative;height:100%;width:90%;border:1px solid ", ";border-radius:20px;overflow:hidden;svg{position:absolute;rect{fill:", ";}}"], _styles__WEBPACK_IMPORTED_MODULE_7__["colorGreen"], _styles__WEBPACK_IMPORTED_MODULE_7__["colorGreen"]);
+})(["height:100%;width:90%;border:1px solid ", ";border-radius:20px;overflow:hidden;rect{fill:", ";}"], _styles__WEBPACK_IMPORTED_MODULE_9__["colorGrey"], _styles__WEBPACK_IMPORTED_MODULE_7__["colorGreen"]);
 
 const PercentageChart = ({
   data,
@@ -717,11 +892,11 @@ const PercentageChart = ({
     if (init) {
       !lodash__WEBPACK_IMPORTED_MODULE_2___default.a.isEqual(dims, prevDims) && updateDims();
     }
-  });
+  }, [dims, init, prevDims, updateDims]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     if (init && prevData !== data) {
-      prevCount < fullCount && resetChart('end');
-      fullCount < prevCount && resetChart('start');
+      prevCount < fullCount && resetChart("end");
+      fullCount < prevCount && resetChart("start");
       fullCount === prevCount && updateRect();
     }
   }, [data, init, prevData, fullCount, prevCount, resetChart, updateDuration, resetDelay, updateRect, dims.width]);
@@ -759,7 +934,7 @@ const PercentageChart = ({
     const {
       chartArea
     } = storedValues.current;
-    const toEnd = resetPoint === 'end';
+    const toEnd = resetPoint === "end";
     chartArea.select("rect").transition().duration(updateDuration / 2).ease(d3_ease__WEBPACK_IMPORTED_MODULE_4__["easeCubicInOut"]).attr("width", toEnd ? dims.width : 0).transition().delay(resetDelay).duration(0).attr("width", toEnd ? 0 : dims.width).transition().delay(updateDuration / 2).duration(updateDuration / 2).ease(d3_ease__WEBPACK_IMPORTED_MODULE_4__["easeCubicInOut"]).attr("width", dims.width * (data - fullCount));
   };
 
@@ -774,7 +949,7 @@ const PercentageChart = ({
     ref: divRef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 126
+      lineNumber: 134
     },
     __self: undefined
   });
@@ -860,7 +1035,7 @@ const PersonsIcon = () => {
 /*!**********************************************************!*\
   !*** ./containers/FurnitureBank2019/components/index.js ***!
   \**********************************************************/
-/*! exports provided: Message, PercentageChart, PersonIcons */
+/*! exports provided: Message, PercentageChart, PersonIcons, BarChart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -873,6 +1048,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _PersonsIcons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PersonsIcons */ "./containers/FurnitureBank2019/components/PersonsIcons.jsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "PersonIcons", function() { return _PersonsIcons__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
+/* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BarChart */ "./containers/FurnitureBank2019/components/BarChart.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BarChart", function() { return _BarChart__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
 
 
 
@@ -1180,20 +1359,20 @@ const ValueContainer = () => {
     gridArea: "value",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 31
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ValueContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 32
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartTitle"], {
     contained: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 33
     },
     __self: undefined
   }, "What is the estimated value of your donation?"), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -1201,13 +1380,13 @@ const ValueContainer = () => {
     area: "abs",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 36
     },
     __self: undefined
   }, !smallLayout && __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: undefined
   }), !!totalPrice && __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["ConvertedNumber"], {
@@ -1219,21 +1398,21 @@ const ValueContainer = () => {
     prefix: "$",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 39
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["DonationPercentageContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 49
     },
     __self: undefined
   }, !!perc && __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
     area: "chart",
-    height: smallLayout ? "40%" : "70%",
+    height: smallLayout ? "35%" : "70%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 52
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_8__["PercentageChart"], {
@@ -1242,7 +1421,7 @@ const ValueContainer = () => {
     direction: "horizontal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -1251,7 +1430,7 @@ const ValueContainer = () => {
     justify: smallLayout && "flex-end",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 59
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -1261,7 +1440,7 @@ const ValueContainer = () => {
     height: "90%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 64
     },
     __self: undefined
   }, _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default()(Array(Math.floor(perc)), (_, i) => i + 1).map(el => __jsx("img", {
@@ -1275,7 +1454,7 @@ const ValueContainer = () => {
     alt: "completed bar icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 72
     },
     __self: undefined
   })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -1283,7 +1462,7 @@ const ValueContainer = () => {
     align: smallLayout && "flex-start",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 83
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -1293,7 +1472,7 @@ const ValueContainer = () => {
     direction: smallLayout && "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 87
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["ConvertedNumber"], {
@@ -1302,22 +1481,25 @@ const ValueContainer = () => {
     weight: _styles__WEBPACK_IMPORTED_MODULE_3__["fontWeightL"],
     color: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
     animate: true,
+    smallSuffix: true,
+    suffixSize: _styles__WEBPACK_IMPORTED_MODULE_3__["fontSizeM"],
+    suffixLineHeight: 1.35,
     perc: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 93
     },
     __self: undefined
   }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["TextSpan"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 104
     },
     __self: undefined
   }, "\xA0of avg. donation value"))))), __jsx(_components__WEBPACK_IMPORTED_MODULE_8__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 110
     },
     __self: undefined
   })));
@@ -1375,8 +1557,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./containers */ "./containers/FurnitureBank2019/containers/index.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components */ "./containers/FurnitureBank2019/components/index.js");
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../styles */ "./styles/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/index.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -1403,40 +1590,41 @@ const useStyles = Object(_material_ui_core_styles__WEBPACK_IMPORTED_MODULE_4__["
 
 const Dashboard = () => {
   const classes = useStyles();
+  const clientGroups = Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_10__["selectTopGroups"]);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_1__["Helmet"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 50
-    },
-    __self: undefined
-  }, __jsx("title", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 51
-    },
-    __self: undefined
-  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 53
-    },
-    __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["DashboardContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 54
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ControlsContainer"], {
+  }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 55
     },
     __self: undefined
+  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["DashboardContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 58
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ControlsContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 59
+    },
+    __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["LogoContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 60
     },
     __self: undefined
   }, __jsx("img", {
@@ -1444,131 +1632,147 @@ const Dashboard = () => {
     alt: "furniture bank icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 61
     },
     __self: undefined
   })), __jsx(_containers__WEBPACK_IMPORTED_MODULE_6__["ControlContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 66
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 68
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["SocChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 69
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 70
     },
     __self: undefined
   }, "What is the estimated social impact of your donation?"), __jsx(_containers__WEBPACK_IMPORTED_MODULE_6__["MapContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 73
     },
     __self: undefined
   }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartPaper"], {
     gridArea: "families",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 74
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["FamilyContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 75
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartTitle"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 76
     },
     __self: undefined
   }, "Who will be likely to receive your donation?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
     noData: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 79
     },
     __self: undefined
   }), __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["PersonIcons"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 80
     },
     __self: undefined
-  }))), __jsx(_containers__WEBPACK_IMPORTED_MODULE_6__["ValueContainer"], {
+  }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_8__["FlexContainer"], {
+    height: "75%",
+    width: "85%",
+    marginTop: 1,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79
+      lineNumber: 81
+    },
+    __self: undefined
+  }, !!clientGroups[0].share && __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["BarChart"], {
+    data: clientGroups,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 87
+    },
+    __self: undefined
+  })))), __jsx(_containers__WEBPACK_IMPORTED_MODULE_6__["ValueContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 94
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["EnvChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 96
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 97
     },
     __self: undefined
   }, "What is the estimated environmental impact of your donation?"), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["LandFillContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 100
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 101
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 102
     },
     __self: undefined
   }))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["EmissionContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 105
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 106
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 107
     },
     __self: undefined
   })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ReqContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 111
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_2__["Button"], {
@@ -1577,7 +1781,7 @@ const Dashboard = () => {
     disableRipple: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 112
     },
     __self: undefined
   }, "Request a Pickup", __jsx(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_3___default.a, {
@@ -1585,7 +1789,7 @@ const Dashboard = () => {
     className: classes.rightIcon,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 118
     },
     __self: undefined
   })))))));
@@ -1862,11 +2066,11 @@ const MapContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.di
 const FamilyContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__FamilyContainer",
   componentId: "sc-86vxz-9"
-})(["display:grid;grid-template-columns:repeat(2,2fr);grid-template-areas:\"chart persons\";height:100%;width:100%;"]);
+})(["display:grid;grid-template-columns:repeat(2,2fr);grid-template-areas:\"chart persons\";align-items:center;justify-items:center;height:100%;width:100%;"]);
 const PersonsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__PersonsContainer",
   componentId: "sc-86vxz-10"
-})(["grid-area:persons;display:flex;align-items:center;justify-content:center;div{display:flex;align-items:flex-end;justify-content:center;}img{margin-right:1rem;}.adult{height:100px;}.child{height:65px;}"]);
+})(["grid-area:persons;display:flex;align-items:center;justify-content:center;padding-top:.5rem;div{display:flex;align-items:flex-end;justify-content:center;}img{margin-right:1rem;}.adult{height:110px;}.child{height:75px;}"]);
 const ValueContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ValueContainer",
   componentId: "sc-86vxz-11"
@@ -2486,7 +2690,7 @@ const selectTopGroups = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSele
 } : {
   group: el,
   share: 0
-})); //* Persons
+}).sort((a, b) => b.share - a.share).slice(0, 3)); //* Persons
 
 const selectAdults = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectPostalCodeFamilies, families => lodash__WEBPACK_IMPORTED_MODULE_4___default.a.mean(families.map(el => _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(el.adults) || 0)));
 const selectChildren = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectPostalCodeFamilies, families => lodash__WEBPACK_IMPORTED_MODULE_4___default.a.mean(families.map(el => _babel_runtime_corejs2_core_js_parse_int__WEBPACK_IMPORTED_MODULE_0___default()(el.children) || 0)));
@@ -2644,7 +2848,7 @@ __webpack_require__.r(__webpack_exports__);
 const FlexContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "sharedStyledComponents__FlexContainer",
   componentId: "sc-1q45dof-0"
-})(["display:flex;position:", ";flex-direction:", ";justify-content:", ";;align-items:", ";grid-area:", ";width:", ";height:", ";padding-left:", "rem;", ""], props => props.position || 'relative', props => props.direction || 'row', props => props.justify || 'center', props => props.align || 'center', props => props.area, props => props.width || '100%', props => props.height || '100%', props => props.paddingLeft || 0, props => props.border && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["border:1px solid black;"]));
+})(["display:flex;position:", ";flex-direction:", ";justify-content:", ";;align-items:", ";grid-area:", ";width:", ";height:", ";padding-left:", "rem;margin-top:", "rem;", ""], props => props.position || 'relative', props => props.direction || 'row', props => props.justify || 'center', props => props.align || 'center', props => props.area, props => props.width || '100%', props => props.height || '100%', props => props.paddingLeft || 0, props => props.marginTop || 0, props => props.border && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["border:1px solid black;"]));
 const TextSpan = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "sharedStyledComponents__TextSpan",
   componentId: "sc-1q45dof-1"
@@ -2717,18 +2921,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(d3_selection__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3-interpolate */ "d3-interpolate");
 /* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(d3_interpolate__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! numeral */ "numeral");
-/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var d3_format__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! d3-format */ "d3-format");
+/* harmony import */ var d3_format__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(d3_format__WEBPACK_IMPORTED_MODULE_2__);
 
 
 
-const numberTween = (d, i, n, format) => {
-  const that = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__["select"])(n[i]),
-        num = +that.text().substring(0, that.text().length - 1) * 0.01,
-        newNum = d[0][1] - d[0][0],
-        index = Object(d3_interpolate__WEBPACK_IMPORTED_MODULE_1__["interpolateNumber"])(num, newNum);
+const numberTween = (d, i, n, key, numFormat) => {
+  const that = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__["select"])(n[i]);
+  const num = +that.text().substring(0, that.text().length - 1) * 0.01;
+  const newNum = d[key];
+  const index = Object(d3_interpolate__WEBPACK_IMPORTED_MODULE_1__["interpolateNumber"])(num, newNum);
   return function (t) {
-    that.text(`${numeral__WEBPACK_IMPORTED_MODULE_2___default()(index(t)).format(format)}`);
+    that.text(`${Object(d3_format__WEBPACK_IMPORTED_MODULE_2__["format"])(numFormat)(index(t))}`);
   };
 };
 const createUpdateSvg = ({
@@ -2755,7 +2959,7 @@ const createUpdateSvg = ({
     const svg = area.select("svg");
     setDims(svg);
     svg.append("g").attr("class", "chart-area").attr("transform", `translate(${margin.left}, ${margin.top})`);
-    chartArea = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__["select"])(".chart-area");
+    chartArea = area.select(".chart-area");
   }
 
   ;
@@ -2958,6 +3162,17 @@ module.exports = require("core-js/library/fn/set");
 
 /***/ }),
 
+/***/ "d3-array":
+/*!***************************!*\
+  !*** external "d3-array" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("d3-array");
+
+/***/ }),
+
 /***/ "d3-ease":
 /*!**************************!*\
   !*** external "d3-ease" ***!
@@ -2991,6 +3206,17 @@ module.exports = require("d3-interpolate");
 
 /***/ }),
 
+/***/ "d3-scale":
+/*!***************************!*\
+  !*** external "d3-scale" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("d3-scale");
+
+/***/ }),
+
 /***/ "d3-selection":
 /*!*******************************!*\
   !*** external "d3-selection" ***!
@@ -3021,17 +3247,6 @@ module.exports = require("d3-transition");
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
-
-/***/ }),
-
-/***/ "numeral":
-/*!**************************!*\
-  !*** external "numeral" ***!
-  \**************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("numeral");
 
 /***/ }),
 

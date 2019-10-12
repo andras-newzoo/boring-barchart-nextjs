@@ -222,6 +222,8 @@ export const FamilyContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 2fr);
   grid-template-areas: "chart persons";
+  align-items: center;
+  justify-items: center;
 
   height: 100%;
   width: 100%;
@@ -232,6 +234,7 @@ export const PersonsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: .5rem;
 
   div {
     display: flex;
@@ -243,11 +246,11 @@ export const PersonsContainer = styled.div`
     margin-right: 1rem;
   }
   .adult {
-    height: 100px;
+    height: 110px;
     
   }
   .child {
-    height: 65px;
+    height: 75px;
   }
 `
 

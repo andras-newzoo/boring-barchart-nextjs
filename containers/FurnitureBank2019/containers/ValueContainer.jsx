@@ -10,7 +10,8 @@ import {
   FlexContainer,
   fontSizeXL,
   fontWeightL,
-  TextSpan
+  TextSpan,
+  fontSizeM
 } from "../../../styles";
 import { useWindowSize } from "../../../hooks";
 import { useSelector } from "react-redux";
@@ -48,7 +49,7 @@ const ValueContainer = () => {
         <DonationPercentageContainer>
           {!!perc && (
             <>
-              <FlexContainer area="chart" height={smallLayout ? "40%" : "70%"}>
+              <FlexContainer area="chart" height={smallLayout ? "35%" : "70%"}>
                 <PercentageChart
                   data={perc}
                   fullCount={fullCount}
@@ -95,6 +96,9 @@ const ValueContainer = () => {
                     weight={fontWeightL}
                     color={colorGreen}
                     animate
+                    smallSuffix
+                    suffixSize={fontSizeM}
+                    suffixLineHeight={1.35}
                     perc
                   />
                   <TextSpan>&nbsp;of avg. donation value</TextSpan>

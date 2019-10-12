@@ -22,8 +22,10 @@ import {
   ChartPaper
 } from "./styles";
 import { ValueContainer, MapContainer, ControlContainer } from './containers'
-import { Message, PersonIcons } from "./components";
-import { fontSizeM } from "../../styles";
+import { Message, PersonIcons, BarChart } from "./components";
+import { fontSizeM, FlexContainer } from "../../styles";
+import { useSelector } from "react-redux";
+import { selectTopGroups, selectGroups } from "../../store/furnitureBankReducer/selectors";
 
 const useStyles = makeStyles(theme => ({
   rightIcon: {
@@ -44,6 +46,8 @@ const useStyles = makeStyles(theme => ({
 
 const Dashboard = () => {
   const classes = useStyles();
+
+  const clientGroups = useSelector(selectTopGroups)
   
   return (
     <>
@@ -74,6 +78,17 @@ const Dashboard = () => {
                   </ChartTitle>
                   <Message noData />
                   <PersonIcons />
+                  <FlexContainer
+                    height="75%"
+                    width="85%"
+                    marginTop={1}
+                  >
+                  { !!clientGroups[0].share &&
+                    <BarChart
+                      data={clientGroups}
+                    />
+                  }
+                  </FlexContainer>
                 </FamilyContainer>
               </ChartPaper>
               <ValueContainer/>

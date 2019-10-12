@@ -102,7 +102,7 @@ export const selectTopGroups = createSelector(
       groups[el]
         ? { group: el, share: groups[el].length / total.length }
         : { group: el, share: 0 }
-    )
+    ).sort((a,b) => b.share - a.share).slice(0,3)
 );
 
 //* Persons

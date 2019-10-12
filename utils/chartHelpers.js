@@ -1,14 +1,14 @@
 import { select } from "d3-selection";
 import { interpolateNumber } from "d3-interpolate";
-import numeral from "numeral";
+import {format} from 'd3-format'
 
-export const numberTween = (d, i, n, format) => {
-  const that = select(n[i]),
-    num = +that.text().substring(0, that.text().length - 1) * 0.01,
-    newNum = d[0][1] - d[0][0],
-    index = interpolateNumber(num, newNum);
+export const numberTween = (d, i, n, key, numFormat) => {
+  const that = select(n[i])
+  const num = +that.text().substring(0, that.text().length - 1) * 0.01
+  const newNum = d[key]
+  const index = interpolateNumber(num, newNum);  
   return function(t) {
-    that.text(`${numeral(index(t)).format(format)}`);
+    that.text(`${format(numFormat)(index(t))}`);
   };
 };
 
@@ -31,7 +31,7 @@ export const createUpdateSvg = ({
       .append("g")
       .attr("class", "chart-area")
       .attr("transform", `translate(${margin.left}, ${margin.top})`);
-    chartArea = select(".chart-area");
+    chartArea = area.select(".chart-area");
   };
   if(update){
     setDims(area.select("svg"))

@@ -13,6 +13,8 @@ export const FlexContainer = styled.div`
   height: ${props => props.height || '100%'};
 
   padding-left: ${props => props.paddingLeft || 0}rem;
+  
+  margin-top: ${props => props.marginTop || 0}rem;
 
   ${props => props.border && css`
     border: 1px solid black;

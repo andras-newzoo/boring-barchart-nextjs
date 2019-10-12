@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
-import _  from 'lodash'
+import _ from "lodash";
 import { select } from "d3-selection";
 import { easeCubicInOut } from "d3-ease";
 import "d3-transition";
@@ -8,22 +8,19 @@ import "d3-transition";
 import { useSvgResize, usePrevious } from "../../../hooks";
 import { colorGreen } from "../styles";
 import { createUpdateSvg } from "../../../utils";
+import { colorGrey } from "../../../styles";
 
 const ChartWrapper = styled.div`
-  position: relative;
   height: 100%;
   width: 90%;
 
-  border: 1px solid ${colorGreen};
+  border: 1px solid ${colorGrey};
 
   border-radius: 20px;
   overflow: hidden;
 
-  svg {
-    position: absolute;
-    rect {
-      fill: ${colorGreen};
-    }
+  rect {
+    fill: ${colorGreen};
   }
 `;
 
@@ -38,8 +35,8 @@ const PercentageChart = ({
   const prevData = usePrevious(data);
   const prevCount = usePrevious(fullCount);
   const [init, setInit] = useState(false);
-  let initVis, resetChart, updateRect, updateDims
-  
+  let initVis, resetChart, updateRect, updateDims;
+
   const dims = useSvgResize(divRef);
   const prevDims = usePrevious(dims);
 
@@ -51,18 +48,29 @@ const PercentageChart = ({
   }, [data, dims.height, dims.width, init, initVis]);
 
   useEffect(() => {
-    if (init){
-      !_.isEqual(dims,prevDims) && updateDims()
-    } 
-  });
+    if (init) {
+      !_.isEqual(dims, prevDims) && updateDims();
+    }
+  }, [dims, init, prevDims, updateDims]);
 
   useEffect(() => {
     if (init && prevData !== data) {
-      prevCount < fullCount && resetChart('end');
-      fullCount < prevCount && resetChart('start');
+      prevCount < fullCount && resetChart("end");
+      fullCount < prevCount && resetChart("start");
       fullCount === prevCount && updateRect();
     }
-  }, [data, init, prevData, fullCount, prevCount, resetChart, updateDuration, resetDelay, updateRect, dims.width]);
+  }, [
+    data,
+    init,
+    prevData,
+    fullCount,
+    prevCount,
+    resetChart,
+    updateDuration,
+    resetDelay,
+    updateRect,
+    dims.width
+  ]);
 
   initVis = () => {
     const area = select(divRef.current);
@@ -86,31 +94,31 @@ const PercentageChart = ({
 
   updateDims = () => {
     const { chartArea } = storedValues.current;
-    createUpdateSvg({area: select(divRef.current), dims, update: true})
+    createUpdateSvg({ area: select(divRef.current), dims, update: true });
     chartArea
       .select("rect")
       .attr("height", dims.height)
       .attr("width", dims.width * (data - fullCount));
-  }
+  };
 
   resetChart = resetPoint => {
     const { chartArea } = storedValues.current;
-    const toEnd = resetPoint === 'end'
+    const toEnd = resetPoint === "end";
     chartArea
       .select("rect")
       .transition()
-      .duration(updateDuration/2)
+      .duration(updateDuration / 2)
       .ease(easeCubicInOut)
-      .attr("width", toEnd ? dims.width : 0 )
+      .attr("width", toEnd ? dims.width : 0)
       .transition()
       .delay(resetDelay)
       .duration(0)
       .attr("width", toEnd ? 0 : dims.width)
       .transition()
-      .delay(updateDuration/2)
-      .duration(updateDuration/2)
+      .delay(updateDuration / 2)
+      .duration(updateDuration / 2)
       .ease(easeCubicInOut)
-      .attr("width",  dims.width * (data - fullCount));
+      .attr("width", dims.width * (data - fullCount));
   };
 
   updateRect = () => {
@@ -121,7 +129,7 @@ const PercentageChart = ({
       .duration(updateDuration)
       .ease(easeCubicInOut)
       .attr("width", dims.width * (data - fullCount));
-  }
+  };
 
   return <ChartWrapper ref={divRef} />;
 };
