@@ -1,15 +1,17 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useSvgResize, usePrevious } from "../../../hooks";
+import _  from 'lodash'
 import { select } from "d3-selection";
-import { colorGreen, colorGreyDark } from "../styles";
 import { easeCubicInOut } from "d3-ease";
 import "d3-transition";
+
+import { useSvgResize, usePrevious } from "../../../hooks";
+import { colorGreen } from "../styles";
 import { createUpdateSvg } from "../../../utils";
 
 const ChartWrapper = styled.div`
   position: relative;
-  height: 70%;
+  height: 100%;
   width: 90%;
 
   border: 1px solid ${colorGreen};
@@ -19,7 +21,6 @@ const ChartWrapper = styled.div`
 
   svg {
     position: absolute;
-
     rect {
       fill: ${colorGreen};
     }
@@ -38,8 +39,9 @@ const PercentageChart = ({
   const prevCount = usePrevious(fullCount);
   const [init, setInit] = useState(false);
   let initVis, resetChart, updateRect, updateDims
-
+  
   const dims = useSvgResize(divRef);
+  const prevDims = usePrevious(dims);
 
   useEffect(() => {
     if (dims.width && dims.height && data && !init) {
@@ -50,9 +52,9 @@ const PercentageChart = ({
 
   useEffect(() => {
     if (init){
-      updateDims()
+      !_.isEqual(dims,prevDims) && updateDims()
     } 
-  }, [dims, init, updateDims]);
+  });
 
   useEffect(() => {
     if (init && prevData !== data) {
@@ -69,19 +71,16 @@ const PercentageChart = ({
       dims,
       append: true
     });
-
     chartArea
       .append("rect")
       .attr("x", 0)
       .attr("y", 0)
       .attr("height", dims.height)
       .attr("width", 0);
-
     storedValues.current = {
       area,
       chartArea
     };
-
     updateRect();
   };
 

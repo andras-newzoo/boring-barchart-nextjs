@@ -71,9 +71,9 @@ export const ChartTitle = styled.div`
 
   grid-area: ${props => props.gridArea};
 
-  ${media.small`
+  /* ${media.small`
     font-size: ${fontSizeS};
-  `}
+  `} */
 `;
 
 export const ChartPaper = styled(Paper)`

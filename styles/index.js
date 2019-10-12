@@ -1,5 +1,6 @@
 import {
-  FlexContainer
+  FlexContainer,
+  TextSpan
 } from './sharedStyledComponents'
 import defaultBreakPoints, {
   createBreakPoints
@@ -28,7 +29,8 @@ import {
 
 
 export {
-  FlexContainer
+  FlexContainer,
+  TextSpan
 }
 export {
   defaultBreakPoints,

@@ -233,8 +233,6 @@ export const PersonsContainer = styled.div`
   align-items: center;
   justify-content: center;
 
-  ${'' /* ${testBorder}; */}
-
   div {
     display: flex;
     align-items: flex-end;
@@ -256,30 +254,37 @@ export const PersonsContainer = styled.div`
 export const ValueContainer = styled.div`
   display: grid;
   grid-template-columns: 2fr 5fr;
+  grid-template-areas: "abs perc";
   height: 100%;
 
   ${media.small`
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr repeat(2, 2fr);
+    grid-template-columns: 2fr 5fr;
+    grid-template-areas:
+    ". ."
+    "abs perc"
+    ". perc";  
   `}
 `
 
 export const DonationPercentageContainer = styled.div`
   display: grid;
+  grid-area: perc;
   grid-template-columns: 3fr 2fr;
   grid-template-rows: repeat(3, 1fr);
-  justify-items: center;
   grid-template-areas:
     ". ."
     "chart percentage"
     "subchart .";
+  justify-items: center;
+  align-items: center;
     
   ${media.small`
-    /* grid-template-rows: ${titleHeightM} repeat(2, 1fr);
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-template-areas:
-      "title"
-      "landfill"
-      "emission"; */
+      "chart chart"
+      "subchart percentage";
   `}
 `
 

@@ -1,11 +1,11 @@
-import { 
+import {
   colorGreen,
   colorRedDark,
   colorRed,
   colorGreyLight,
   colorGreyDark,
   media
-} from './variables'
+} from "./variables";
 import {
   MainContainer,
   DashboardContainer,
@@ -22,13 +22,11 @@ import {
   EnvChartsContainer,
   LandFillContainer,
   EmissionContainer,
-  ReqContainer
-} from './styledContainers'
-import {
-  MainTitle,
-  ChartTitle,
-  ChartPaper
-} from './styledElements'
+  ReqContainer,
+  DonationPercentageContainer
+} from "./styledContainers";
+import { MainTitle, ChartTitle, ChartPaper } from "./styledElements";
+import { HEATMAP_SOURCE_ID, heatMapStyles } from "./mapStyles";
 
 export {
   colorGreen,
@@ -37,8 +35,8 @@ export {
   colorGreyLight,
   colorGreyDark,
   media
-}
-export { 
+};
+export {
   MainContainer,
   DashboardContainer,
   ControlsContainer,
@@ -54,10 +52,8 @@ export {
   EnvChartsContainer,
   LandFillContainer,
   EmissionContainer,
-  ReqContainer
-}
-export {
-  MainTitle,
-  ChartTitle,
-  ChartPaper
-}
+  ReqContainer,
+  DonationPercentageContainer
+};
+export { MainTitle, ChartTitle, ChartPaper };
+export { HEATMAP_SOURCE_ID, heatMapStyles };

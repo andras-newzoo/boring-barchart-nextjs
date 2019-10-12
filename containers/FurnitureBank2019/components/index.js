@@ -1,6 +1,5 @@
-import ControlContainer from "./ControlContainer";
-import MapContent from './Map/MapContent'
 import Message from './Message'
 import PercentageChart from './PercentageChart'
+import PersonIcons from './PersonsIcons'
 
-export { ControlContainer, MapContent, Message, PercentageChart };
+export { Message, PercentageChart, PersonIcons };
