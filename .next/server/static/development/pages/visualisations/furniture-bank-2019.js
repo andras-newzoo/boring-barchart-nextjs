@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -965,6 +965,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var d3_ease__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(d3_ease__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var d3_transition__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! d3-transition */ "d3-transition");
 /* harmony import */ var d3_transition__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(d3_transition__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../utils */ "./utils/index.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/PercentageChart.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -974,88 +975,99 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const ChartWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div`
-  position: relative;
-  height: 80%;
-  width: 90%;
 
-  border: 1px solid ${_styles__WEBPACK_IMPORTED_MODULE_4__["colorGreyDark"]};
-
-  border-radius: 20px;
-  overflow: hidden;
-
-  svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-
-    rect {
-      fill: ${_styles__WEBPACK_IMPORTED_MODULE_4__["colorGreen"]};
-    }
-  }
-`;
+const ChartWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "PercentageChart__ChartWrapper",
+  componentId: "sc-18c8aar-0"
+})(["position:relative;height:70%;width:90%;border:1px solid ", ";border-radius:20px;overflow:hidden;svg{position:absolute;rect{fill:", ";}}"], _styles__WEBPACK_IMPORTED_MODULE_4__["colorGreen"], _styles__WEBPACK_IMPORTED_MODULE_4__["colorGreen"]);
 
 const PercentageChart = ({
-  data
+  data,
+  fullCount,
+  updateDuration = 1000,
+  resetDelay = 500
 }) => {
-  const svgRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  const divRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   const storedValues = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
   const prevData = Object(_hooks__WEBPACK_IMPORTED_MODULE_2__["usePrevious"])(data);
+  const prevCount = Object(_hooks__WEBPACK_IMPORTED_MODULE_2__["usePrevious"])(fullCount);
   const {
     0: init,
     1: setInit
   } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
-  let initVis, updateData;
-  const dims = Object(_hooks__WEBPACK_IMPORTED_MODULE_2__["useSvgResize"])(svgRef);
+  let initVis, resetChart, updateRect, updateDims;
+  const dims = Object(_hooks__WEBPACK_IMPORTED_MODULE_2__["useSvgResize"])(divRef);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     if (dims.width && dims.height && data && !init) {
       initVis();
       setInit(true);
     }
   }, [data, dims.height, dims.width, init, initVis]);
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {//console.log('dims', dims)
-  }, [dims]);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (init) {
+      updateDims();
+    }
+  }, [dims, init, updateDims]);
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     if (init && prevData !== data) {
-      updateData();
+      prevCount < fullCount && resetChart('end');
+      fullCount < prevCount && resetChart('start');
+      fullCount === prevCount && updateRect();
     }
-  }, [data, init, prevData, updateData]);
+  }, [data, init, prevData, fullCount, prevCount, resetChart, updateDuration, resetDelay, updateRect, dims.width]);
 
   initVis = () => {
-    const svg = Object(d3_selection__WEBPACK_IMPORTED_MODULE_3__["select"])(svgRef.current);
-    svg.append("g").attr("class", "chart-area");
-    const chartArea = Object(d3_selection__WEBPACK_IMPORTED_MODULE_3__["select"])(".chart-area");
-    chartArea.append('rect').attr('x', 0).attr('y', 0).attr('height', dims.height).attr('width', dims.width * data);
+    const area = Object(d3_selection__WEBPACK_IMPORTED_MODULE_3__["select"])(divRef.current);
+    const {
+      chartArea
+    } = Object(_utils__WEBPACK_IMPORTED_MODULE_7__["createUpdateSvg"])({
+      area,
+      dims,
+      append: true
+    });
+    chartArea.append("rect").attr("x", 0).attr("y", 0).attr("height", dims.height).attr("width", 0);
     storedValues.current = {
+      area,
       chartArea
     };
+    updateRect();
   };
 
-  updateData = () => {
+  updateDims = () => {
     const {
       chartArea
     } = storedValues.current;
-    chartArea.select('rect').transition().duration(1000).ease(d3_ease__WEBPACK_IMPORTED_MODULE_5__["easeCubicInOut"]).attr('width', dims.width * data);
+    Object(_utils__WEBPACK_IMPORTED_MODULE_7__["createUpdateSvg"])({
+      area: Object(d3_selection__WEBPACK_IMPORTED_MODULE_3__["select"])(divRef.current),
+      dims,
+      update: true
+    });
+    chartArea.select("rect").attr("height", dims.height).attr("width", dims.width * (data - fullCount));
   };
 
-  const resetChart = () => {};
+  resetChart = resetPoint => {
+    const {
+      chartArea
+    } = storedValues.current;
+    const toEnd = resetPoint === 'end';
+    chartArea.select("rect").transition().duration(updateDuration / 2).ease(d3_ease__WEBPACK_IMPORTED_MODULE_5__["easeCubicInOut"]).attr("width", toEnd ? dims.width : 0).transition().delay(resetDelay).duration(0).attr("width", toEnd ? 0 : dims.width).transition().delay(updateDuration / 2).duration(updateDuration / 2).ease(d3_ease__WEBPACK_IMPORTED_MODULE_5__["easeCubicInOut"]).attr("width", dims.width * (data - fullCount));
+  };
 
-  const updateDims = () => {};
+  updateRect = () => {
+    const {
+      chartArea
+    } = storedValues.current;
+    chartArea.select("rect").transition("update").duration(updateDuration).ease(d3_ease__WEBPACK_IMPORTED_MODULE_5__["easeCubicInOut"]).attr("width", dims.width * (data - fullCount));
+  };
 
   return __jsx(ChartWrapper, {
+    ref: divRef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 127
     },
     __self: undefined
-  }, __jsx("svg", {
-    ref: svgRef,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 91
-    },
-    __self: undefined
-  }));
+  });
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (PercentageChart);
@@ -1234,40 +1246,41 @@ const Dashboard = () => {
   const classes = useStyles();
   const totalPrice = Object(react_redux__WEBPACK_IMPORTED_MODULE_13__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_14__["selectAllSelectedPrice"]);
   const perc = totalPrice / AVG_DONATION_VALUE;
+  const fullCount = Math.floor(perc);
   return __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_2__["Helmet"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 59
-    },
-    __self: undefined
-  }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 60
     },
     __self: undefined
-  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainContainer"], {
+  }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 61
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["DashboardContainer"], {
+  }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 63
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ControlsContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["DashboardContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 64
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["LogoContainer"], {
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ControlsContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 65
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["LogoContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 66
     },
     __self: undefined
   }, __jsx("img", {
@@ -1275,106 +1288,106 @@ const Dashboard = () => {
     alt: "furniture bank icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 66
+      lineNumber: 67
     },
     __self: undefined
   })), __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["ControlContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 72
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 74
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["SocChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 75
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 76
     },
     __self: undefined
   }, "What is the estimated social impact of your donation?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["MapContent"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 79
     },
     __self: undefined
   }), __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_9__["ChartPaper"], {
     gridArea: "families",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79
+      lineNumber: 80
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["FamilyContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 81
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartTitle"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 82
     },
     __self: undefined
   }, "Who will be likely to receive your donation?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["Message"], {
     noData: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 85
     },
     __self: undefined
   }), __jsx(_components_PersonsIcons__WEBPACK_IMPORTED_MODULE_10__["default"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 86
     },
     __self: undefined
   }))), __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_9__["ChartPaper"], {
     gridArea: "value",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 89
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ValueContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 90
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ChartTitle"], {
     contained: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 91
     },
     __self: undefined
   }, "What is the estimated value of your donation?"), __jsx(_styles__WEBPACK_IMPORTED_MODULE_8__["FlexContainer"], {
     justify: "space-evenly",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 94
     },
     __self: undefined
   }, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 97
     },
     __self: undefined
-  }), __jsx(_components__WEBPACK_IMPORTED_MODULE_12__["ConvertedNumber"], {
+  }), !!totalPrice && __jsx(_components__WEBPACK_IMPORTED_MODULE_12__["ConvertedNumber"], {
     data: totalPrice,
     size: _styles__WEBPACK_IMPORTED_MODULE_8__["fontSizeXL"],
     weight: _styles__WEBPACK_IMPORTED_MODULE_8__["fontWeightL"],
@@ -1383,27 +1396,28 @@ const Dashboard = () => {
     prefix: "$",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 100
     },
     __self: undefined
   })), __jsx(_styles_styledContainers__WEBPACK_IMPORTED_MODULE_11__["DonationPercentageContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 110
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_8__["FlexContainer"], {
+  }, !!perc && __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(_styles__WEBPACK_IMPORTED_MODULE_8__["FlexContainer"], {
     area: "chart",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 114
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["PercentageChart"], {
     data: perc,
+    fullCount: fullCount,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 117
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_8__["FlexContainer"], {
@@ -1413,35 +1427,35 @@ const Dashboard = () => {
     width: "90%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114
+      lineNumber: 122
     },
     __self: undefined
   }, _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default()(Array(Math.floor(perc)), (_, i) => i + 1).map(el => __jsx("img", {
     key: el,
     style: {
       height: 25,
-      marginLeft: 5
+      marginLeft: 4
     },
     className: "bar",
     src: "/static/icons/furnitureBank/bar.svg",
     alt: "completed bar icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 130
     },
     __self: undefined
   }))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_8__["FlexContainer"], {
     area: "percentage",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 132
+      lineNumber: 140
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_8__["FlexContainer"], {
     align: "flex-end",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 143
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_12__["ConvertedNumber"], {
@@ -1453,74 +1467,74 @@ const Dashboard = () => {
     perc: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 138
+      lineNumber: 146
     },
     __self: undefined
   }), __jsx(_styles_sharedStyledComponents__WEBPACK_IMPORTED_MODULE_15__["TextSpan"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 146
+      lineNumber: 154
     },
     __self: undefined
-  }, "\xA0of avg. donation value")))), __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["Message"], {
+  }, "\xA0of avg. donation value"))))), __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 152
+      lineNumber: 162
     },
     __self: undefined
   })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["EnvChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 156
+      lineNumber: 166
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["MainTitle"], {
     gridArea: "title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 157
+      lineNumber: 167
     },
     __self: undefined
   }, "What is the estimated environmental impact of your donation?"), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["LandFillContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 160
+      lineNumber: 170
     },
     __self: undefined
   }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_9__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161
+      lineNumber: 171
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 162
+      lineNumber: 172
     },
     __self: undefined
   }))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["EmissionContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 165
+      lineNumber: 175
     },
     __self: undefined
   }, __jsx(_styles_styledElements__WEBPACK_IMPORTED_MODULE_9__["ChartPaper"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 166
+      lineNumber: 176
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 167
+      lineNumber: 177
     },
     __self: undefined
   })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_5__["ReqContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 171
+      lineNumber: 181
     },
     __self: undefined
   }, __jsx(_material_ui_core__WEBPACK_IMPORTED_MODULE_3__["Button"], {
@@ -1529,7 +1543,7 @@ const Dashboard = () => {
     disableRipple: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 172
+      lineNumber: 182
     },
     __self: undefined
   }, "Request a Pickup", __jsx(_material_ui_icons_Send__WEBPACK_IMPORTED_MODULE_4___default.a, {
@@ -1537,7 +1551,7 @@ const Dashboard = () => {
     className: classes.rightIcon,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 178
+      lineNumber: 188
     },
     __self: undefined
   })))))));
@@ -1909,7 +1923,7 @@ const media = Object(_styles_mediaQueries__WEBPACK_IMPORTED_MODULE_0__["createBr
 /*!************************!*\
   !*** ./hooks/index.js ***!
   \************************/
-/*! exports provided: useSvgResize, usePrevious */
+/*! exports provided: useSvgResize, usePrevious, useWindowSize */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1919,6 +1933,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _usePrevious__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./usePrevious */ "./hooks/usePrevious.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "usePrevious", function() { return _usePrevious__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+/* harmony import */ var _useWindowSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./useWindowSize */ "./hooks/useWindowSize.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "useWindowSize", function() { return _useWindowSize__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+
 
 
 
@@ -1974,8 +1992,9 @@ const useSvgResize = svgRef => {
   });
   Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
     const handleResize = () => {
-      const width = svgRef.current.clientWidth;
-      const height = svgRef.current.clientHeight;
+      // console.log(svgRef.current.offsetHeight);
+      const width = svgRef.current.offsetWidth;
+      const height = svgRef.current.offsetHeight;
       setDims({
         width,
         height
@@ -1990,6 +2009,49 @@ const useSvgResize = svgRef => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (useSvgResize);
+
+/***/ }),
+
+/***/ "./hooks/useWindowSize.js":
+/*!********************************!*\
+  !*** ./hooks/useWindowSize.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function useWindowSize() {
+  const isClient = false;
+  const getSize = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => ({
+    width: isClient ? window.innerWidth : undefined,
+    height: isClient ? window.innerHeight : undefined
+  }), [isClient]);
+  const {
+    0: windowSize,
+    1: setWindowSize
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getSize);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    if (!isClient) {
+      return false;
+    }
+
+    function handleResize() {
+      setWindowSize(getSize());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [getSize, isClient]); // Empty array ensures that effect is only run on mount and unmount
+
+  return windowSize;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (useWindowSize);
 
 /***/ }),
 
@@ -2558,7 +2620,97 @@ const testBorder = `border: 1px solid black`;
 
 /***/ }),
 
-/***/ 5:
+/***/ "./utils/chartHelpers.js":
+/*!*******************************!*\
+  !*** ./utils/chartHelpers.js ***!
+  \*******************************/
+/*! exports provided: numberTween, createUpdateSvg */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "numberTween", function() { return numberTween; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUpdateSvg", function() { return createUpdateSvg; });
+/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3-selection */ "d3-selection");
+/* harmony import */ var d3_selection__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(d3_selection__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3-interpolate */ "d3-interpolate");
+/* harmony import */ var d3_interpolate__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(d3_interpolate__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! numeral */ "numeral");
+/* harmony import */ var numeral__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(numeral__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+const numberTween = (d, i, n, format) => {
+  const that = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__["select"])(n[i]),
+        num = +that.text().substring(0, that.text().length - 1) * 0.01,
+        newNum = d[0][1] - d[0][0],
+        index = Object(d3_interpolate__WEBPACK_IMPORTED_MODULE_1__["interpolateNumber"])(num, newNum);
+  return function (t) {
+    that.text(`${numeral__WEBPACK_IMPORTED_MODULE_2___default()(index(t)).format(format)}`);
+  };
+};
+const createUpdateSvg = ({
+  area,
+  dims,
+  margin = {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+  append,
+  update
+}) => {
+  let chartArea;
+
+  const setDims = svg => svg.attr("width", dims.width).attr("height", dims.height);
+
+  const chartWidth = dims.width - margin.left - margin.right;
+  const chartHeight = dims.height - margin.top - margin.bottom;
+
+  if (append) {
+    area.append("svg");
+    const svg = area.select("svg");
+    setDims(svg);
+    svg.append("g").attr("class", "chart-area").attr("transform", `translate(${margin.left}, ${margin.top})`);
+    chartArea = Object(d3_selection__WEBPACK_IMPORTED_MODULE_0__["select"])(".chart-area");
+  }
+
+  ;
+
+  if (update) {
+    setDims(area.select("svg"));
+  }
+
+  return {
+    chartArea,
+    chartWidth,
+    chartHeight
+  };
+};
+
+/***/ }),
+
+/***/ "./utils/index.js":
+/*!************************!*\
+  !*** ./utils/index.js ***!
+  \************************/
+/*! exports provided: createUpdateSvg, numberTween */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _chartHelpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chartHelpers */ "./utils/chartHelpers.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createUpdateSvg", function() { return _chartHelpers__WEBPACK_IMPORTED_MODULE_0__["createUpdateSvg"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "numberTween", function() { return _chartHelpers__WEBPACK_IMPORTED_MODULE_0__["numberTween"]; });
+
+
+
+
+/***/ }),
+
+/***/ 3:
 /*!***********************************************************!*\
   !*** multi ./pages/visualisations/furniture-bank-2019.js ***!
   \***********************************************************/
@@ -2746,6 +2898,17 @@ module.exports = require("d3-format");
 
 /***/ }),
 
+/***/ "d3-interpolate":
+/*!*********************************!*\
+  !*** external "d3-interpolate" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("d3-interpolate");
+
+/***/ }),
+
 /***/ "d3-selection":
 /*!*******************************!*\
   !*** external "d3-selection" ***!
@@ -2776,6 +2939,17 @@ module.exports = require("d3-transition");
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
+
+/***/ }),
+
+/***/ "numeral":
+/*!**************************!*\
+  !*** external "numeral" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("numeral");
 
 /***/ }),
 

@@ -5,8 +5,10 @@ const useSvgResize = svgRef => {
 
   useEffect(() => {
     const handleResize = () => {
-      const width = svgRef.current.clientWidth;
-      const height = svgRef.current.clientHeight;
+      // console.log(svgRef.current.offsetHeight);
+      
+      const width = svgRef.current.offsetWidth;
+      const height = svgRef.current.offsetHeight;
       setDims({ width, height });
     };
     window.addEventListener("resize", handleResize);

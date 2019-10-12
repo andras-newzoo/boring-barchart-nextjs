@@ -53,7 +53,8 @@ const Dashboard = () => {
 
   const totalPrice = useSelector(selectAllSelectedPrice);
   const perc = totalPrice/AVG_DONATION_VALUE
-  
+  const fullCount = Math.floor(perc)
+
   return (
     <>
       <Helmet>
@@ -94,60 +95,69 @@ const Dashboard = () => {
                     justify="space-evenly"
                   >
                     <div/>
-                    <ConvertedNumber
-                      data={totalPrice}
-                      size={fontSizeXL}
-                      weight={fontWeightL}
-                      color={colorGreen}
-                      animate
-                      prefix="$"
-                    />
+                    {
+                      !!totalPrice && 
+                      <ConvertedNumber
+                        data={totalPrice}
+                        size={fontSizeXL}
+                        weight={fontWeightL}
+                        color={colorGreen}
+                        animate
+                        prefix="$"
+                      />
+                    }
                   </FlexContainer>
                   <DonationPercentageContainer>
-                    <FlexContainer
-                      area="chart"
-                    >
-                      <PercentageChart
-                        data={perc}
-                      />
-                    </FlexContainer>
-                    <FlexContainer
-                      area="subchart"
-                      align="flex-start"
-                      justify="flex-start"
-                      width="90%"
-                    >
-                      {
-                        Array.from(Array(Math.floor(perc)), (_, i) => i + 1 ).map(el => (
-                          <img
-                          key={el}
-                          style={{ height: 25, marginLeft: 5 }}
-                          className="bar"
-                          src="/static/icons/furnitureBank/bar.svg"
-                          alt="completed bar icon"
-                        />
-                        ))
-                      }
-                    </FlexContainer>
-                    <FlexContainer
-                       area="percentage"
-                    >
-                      <FlexContainer
-                        align="flex-end"
-                      >
-                        <ConvertedNumber
-                          data={perc}
-                          size={fontSizeXL}
-                          weight={fontWeightL}
-                          color={colorGreen}
-                          animate
-                          perc
-                        /> 
-                        <TextSpan>
-                          &nbsp;of avg. donation value
-                        </TextSpan>
-                      </FlexContainer>
-                    </FlexContainer>
+                    {
+                      !!perc &&
+                      <>
+                        <FlexContainer
+                          area="chart"
+                        >
+                          <PercentageChart
+                            data={perc}
+                            fullCount={fullCount}
+                          />
+                        </FlexContainer>
+                        <FlexContainer
+                          area="subchart"
+                          align="flex-start"
+                          justify="flex-start"
+                          width="90%"
+                        >
+                          {
+                            Array.from(Array(Math.floor(perc)), (_, i) => i + 1 ).map(el => (
+                              <img
+                                key={el}
+                                style={{ height: 25, marginLeft: 4 }}
+                                className="bar"
+                                src="/static/icons/furnitureBank/bar.svg"
+                                alt="completed bar icon"
+                              />
+                            ))
+                          }
+                        </FlexContainer>
+                        <FlexContainer
+                          area="percentage"
+                        >
+                          <FlexContainer
+                            align="flex-end"
+                          >
+                            <ConvertedNumber
+                              data={perc}
+                              size={fontSizeXL}
+                              weight={fontWeightL}
+                              color={colorGreen}
+                              animate
+                              perc
+                            /> 
+                            <TextSpan>
+                              &nbsp;of avg. donation value
+                            </TextSpan>
+                          </FlexContainer>
+                        </FlexContainer>
+                      </>
+                    }
                   </DonationPercentageContainer>
                   <Message />
                 </ValueContainer>
