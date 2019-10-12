@@ -1,7 +1,6 @@
-import { paddingM, paddingS, testBorder } from "../../../styles/sharedStyles";
+import { paddingM, paddingS, testBorder, fontSizeXL, fontWeightL } from "../../../styles/sharedStyles";
 import styled from "styled-components";
 import { media, titleHeightM, gridGapM, gridGapS, colorGreen } from "./variables";
-// import { border } from "@material-ui/system";
 
 export const MainContainer = styled.div`
   width: 100vw;
@@ -38,11 +37,11 @@ export const DashboardContainer = styled.div`
     padding-top: 0;
     padding-bottom: 2rem;
     grid-template-rows: 300px 1fr;
-    height: 1350px;
+    height: 1400px;
   `}
 
   ${media.extraSmall`
-    height: 1300px;
+    height: 1400px;
   `}
 `;
 
@@ -203,7 +202,7 @@ export const SocChartsContainer = styled.div`
     "value value";
   
   ${media.small`
-    grid-template-rows: ${titleHeightM} repeat(2, 1fr) 100px;
+    grid-template-rows: ${titleHeightM} repeat(3, 1fr);
     grid-template-columns: 1fr;
     grid-template-areas:
       "title"
@@ -255,9 +254,33 @@ export const PersonsContainer = styled.div`
 `
 
 export const ValueContainer = styled.div`
-  grid-area: value;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
   height: 100%;
-  width: 100%; 
+
+  ${media.small`
+    grid-template-columns: repeat(2, 1fr);
+  `}
+`
+
+export const DonationPercentageContainer = styled.div`
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  grid-template-areas:
+    ". ."
+    "chart percentage"
+    "subchart .";
+    
+  ${media.small`
+    /* grid-template-rows: ${titleHeightM} repeat(2, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "landfill"
+      "emission"; */
+  `}
 `
 
 export const EnvChartsContainer = styled.div`

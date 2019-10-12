@@ -55,6 +55,13 @@ export const ChartTitle = styled.div`
     top: 0;
     left: 0;
   `}
+  ${props => props.contained && css`
+    width: 80px;
+
+    ${media.small`
+       width: auto;
+    `}
+  `}
   z-index: 100;
   padding: ${paddingXS};
 
@@ -73,6 +80,6 @@ export const ChartPaper = styled(Paper)`
   grid-area: ${props => props.gridArea};
   height: 100%;
   width: 100%;
-
+  overflow: hidden;
   position: relative;
 `;

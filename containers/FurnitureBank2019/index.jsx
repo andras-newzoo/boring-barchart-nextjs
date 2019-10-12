@@ -1,7 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import styled from "styled-components";
-import _ from "lodash";
 import { Button } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import {
@@ -21,11 +19,17 @@ import {
   EmissionContainer,
   ReqContainer
 } from "./styles";
-import { ControlContainer, MapContent, Message } from "./components";
+import { ControlContainer, MapContent, Message, PercentageChart } from "./components";
 import { makeStyles } from "@material-ui/core/styles";
-import { fontSizeM } from "../../styles/sharedStyles";
+import { fontSizeM, fontSizeXL, fontWeightL } from "../../styles";
 import { ChartPaper } from "./styles/styledElements";
 import PersonsIcon from "./components/PersonsIcons";
+import { DonationPercentageContainer } from "./styles/styledContainers";
+import { FlexContainer } from '../../styles'
+import { ConvertedNumber } from "../../components";
+import { useSelector } from "react-redux";
+import { selectAllSelectedPrice } from "../../store/furnitureBankReducer/selectors";
+import { TextSpan } from "../../styles/sharedStyledComponents";
 
 const useStyles = makeStyles(theme => ({
   rightIcon: {
@@ -42,9 +46,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const AVG_DONATION_VALUE = 735
+
 const Dashboard = () => {
   const classes = useStyles();
 
+  const totalPrice = useSelector(selectAllSelectedPrice);
+  const perc = totalPrice/AVG_DONATION_VALUE
+  
   return (
     <>
       <Helmet>
@@ -76,11 +85,73 @@ const Dashboard = () => {
                   <PersonsIcon />
                 </FamilyContainer>
               </ChartPaper>
-              <ValueContainer>
-                <ChartPaper>
+              <ChartPaper gridArea="value">
+                <ValueContainer>
+                  <ChartTitle contained>
+                    What is the estimated value of your donation?
+                  </ChartTitle>
+                  <FlexContainer
+                    justify="space-evenly"
+                  >
+                    <div/>
+                    <ConvertedNumber
+                      data={totalPrice}
+                      size={fontSizeXL}
+                      weight={fontWeightL}
+                      color={colorGreen}
+                      animate
+                      prefix="$"
+                    />
+                  </FlexContainer>
+                  <DonationPercentageContainer>
+                    <FlexContainer
+                      area="chart"
+                    >
+                      <PercentageChart
+                        data={perc}
+                      />
+                    </FlexContainer>
+                    <FlexContainer
+                      area="subchart"
+                      align="flex-start"
+                      justify="flex-start"
+                      width="90%"
+                    >
+                      {
+                        Array.from(Array(Math.floor(perc)), (_, i) => i + 1 ).map(el => (
+                          <img
+                          key={el}
+                          style={{ height: 25, marginLeft: 5 }}
+                          className="bar"
+                          src="/static/icons/furnitureBank/bar.svg"
+                          alt="completed bar icon"
+                        />
+                        ))
+                      }
+                    </FlexContainer>
+                    <FlexContainer
+                       area="percentage"
+                    >
+                      <FlexContainer
+                        align="flex-end"
+                      >
+                        <ConvertedNumber
+                          data={perc}
+                          size={fontSizeXL}
+                          weight={fontWeightL}
+                          color={colorGreen}
+                          animate
+                          perc
+                        /> 
+                        <TextSpan>
+                          &nbsp;of avg. donation value
+                        </TextSpan>
+                      </FlexContainer>
+                    </FlexContainer>
+                  </DonationPercentageContainer>
                   <Message />
-                </ChartPaper>
-              </ValueContainer>
+                </ValueContainer>
+              </ChartPaper>
             </SocChartsContainer>
             <EnvChartsContainer>
               <MainTitle gridArea="title">

@@ -32,6 +32,19 @@ export const selectAllUnselected = createSelector(
     )
 );
 
+export const selectAllSelectedPrice = createSelector(
+  selectFurnitureList,
+  selectedAllSelected,
+  (furnitureList, selectedItems) =>
+    selectedItems
+      .map(
+        el =>
+          +furnitureList.find(d => d.product_name === el.name).value *
+          el.quantity
+      )
+      .reduce((acc, curr) => acc + curr, 0)
+);
+
 //* Get relevant postal code list
 export const selectFilteredDonationPostalCode = createSelector(
   selectAllDonation,
@@ -95,9 +108,9 @@ export const selectTopGroups = createSelector(
 //* Persons
 export const selectAdults = createSelector(
   selectPostalCodeFamilies,
-  families => _.mean(families.map(el => parseInt(el.adults) || 0 ))
-)
+  families => _.mean(families.map(el => parseInt(el.adults) || 0))
+);
 export const selectChildren = createSelector(
   selectPostalCodeFamilies,
-  families => _.mean(families.map(el => parseInt(el.children) || 0 ))
-)
+  families => _.mean(families.map(el => parseInt(el.children) || 0))
+);
