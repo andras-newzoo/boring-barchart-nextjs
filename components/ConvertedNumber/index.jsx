@@ -2,7 +2,11 @@ import { format } from "d3-format";
 import React, { useState } from "react";
 import CountUp from "react-countup";
 import styled, { keyframes, css } from "styled-components";
-import { fontSizeM, fontWeightS, fontSizeS, colorGrey } from "../../styles/sharedStyles";
+import {
+  fontSizeM,
+  fontWeightS,
+  colorGrey
+} from "../../styles/sharedStyles";
 
 export const getFormattedNumber = ({ val, perc, expPlus }) => {
   let formatKey;
@@ -67,7 +71,7 @@ const fadein = keyframes`
 `;
 
 const Container = styled.span`
-  display: flex;
+  display: ${props => props.display || 'flex'};
   align-items: flex-end;
 
   ${props =>
@@ -80,14 +84,14 @@ const Container = styled.span`
   color: ${props => props.color};
   line-height: ${props => props.lineHeight};
   ${props =>
-    props.smallSuffix &&
+    (props.smallSuffix || props.smallPrefix) &&
     css`
-      .suffix {
-        display: flex;
+      .suffix,
+      .prefix {
         display: block;
-        font-size: ${props.suffixSize};
+        font-size: ${props.suffixSize || props.prefixSize};
         margin-left: 3px;
-        line-height: ${props.suffixLineHeight}
+        line-height: ${props.suffixLineHeight || props.prefixLineHeight};
       }
     `}
 `;
@@ -100,24 +104,46 @@ const ConvertedNumber = ({
   weight = fontWeightS,
   size = fontSizeM,
   color = colorGrey,
-  suffixSize= fontSizeS,
-  lineHeight= 1.2,
-  suffixLineHeight = 1,
+  lineHeight = 1.2,
+  suffixSize,
+  suffixLineHeight,
   customSuffix,
   animate,
   smallSuffix,
   expPlus,
   period,
-  suffixSpace
+  suffixSpace,
+  prefixSpace,
+  prefixSize,
+  smallPrefix,
+  prefixLineHeight,
+  display
 }) => {
   const [isInitalized, setIsInitalized] = useState(false);
-  const styles = { weight, size, smallSuffix, suffixSize, color, lineHeight, suffixLineHeight };
+  const styles = {
+    weight,
+    size,
+    smallSuffix,
+    suffixSize,
+    color,
+    lineHeight,
+    smallPrefix,
+    suffixLineHeight,
+    prefixSize,
+    prefixLineHeight,
+    display
+  };
   if (data === undefined) return <div></div>;
   const suffix = getSuffix({ val: data, custom: customSuffix, perc });
   return (
     <>
       <Container {...styles}>
-        {prefix}
+        {prefix && (
+          <span className="prefix">
+            {prefix}
+            {prefixSpace && " "}
+          </span>
+        )}
         {animate ? (
           <CountUp
             end={data}

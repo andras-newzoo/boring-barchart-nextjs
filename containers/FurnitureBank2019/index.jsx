@@ -1,8 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Button } from "@material-ui/core";
-import SendIcon from "@material-ui/icons/Send";
-import { makeStyles } from "@material-ui/core/styles";
 
 import {
   MainContainer,
@@ -11,50 +8,44 @@ import {
   ChartsContainer,
   LogoContainer,
   MainTitle,
-  ChartTitle,
-  colorGreen,
   SocChartsContainer,
-  FamilyContainer,
   EnvChartsContainer,
-  LandFillContainer,
   EmissionContainer,
   ReqContainer,
-  ChartPaper
+  ChartPaper,
+  ChartTitle
 } from "./styles";
-import { ValueContainer, MapContainer, ControlContainer } from './containers'
-import { Message, PersonIcons, BarChart } from "./components";
-import { fontSizeM, FlexContainer } from "../../styles";
-import { useSelector } from "react-redux";
-import { selectTopGroups, selectGroups } from "../../store/furnitureBankReducer/selectors";
-
-const useStyles = makeStyles(theme => ({
-  rightIcon: {
-    marginLeft: theme.spacing(1)
-  },
-  button: {
-    background: colorGreen,
-    color: "white",
-    fontSize: fontSizeM,
-    "&:hover": {
-      background: colorGreen,
-      color: "white"
-    }
-  }
-}));
-
-
+import {
+  ValueContainer,
+  MapContainer,
+  ControlContainer,
+  FamiliesContainer,
+  LandFillContainer
+} from "./containers";
+import { Message } from "./components";
+import { FixedInfoButton, QuestionMarkGillSemiBold } from "../../components";
 
 const Dashboard = () => {
-  const classes = useStyles();
-
-  const clientGroups = useSelector(selectTopGroups)
-  
   return (
     <>
       <Helmet>
         <title>Furniture Bank 2019</title>
       </Helmet>
       <MainContainer>
+        <FixedInfoButton
+          top={0}
+          right={0}
+          height={120}
+          width={120}
+          round
+          corner
+          translate="50%, -50%"
+          iconComponent={
+            <QuestionMarkGillSemiBold height={20} width={20} fill="#fff" />
+          }
+          iconLeft="20%"
+          iconBottom="20%"
+        />
         <DashboardContainer>
           <ControlsContainer>
             <LogoContainer>
@@ -71,52 +62,35 @@ const Dashboard = () => {
                 What is the estimated social impact of your donation?
               </MainTitle>
               <MapContainer />
-              <ChartPaper gridArea="families">
-                <FamilyContainer>
-                  <ChartTitle>
-                    Who will be likely to receive your donation?
-                  </ChartTitle>
-                  <Message noData />
-                  <PersonIcons />
-                  <FlexContainer
-                    height="75%"
-                    width="85%"
-                    marginTop={1}
-                  >
-                  { !!clientGroups[0].share &&
-                    <BarChart
-                      data={clientGroups}
-                    />
-                  }
-                  </FlexContainer>
-                </FamilyContainer>
-              </ChartPaper>
-              <ValueContainer/>
+              <FamiliesContainer />
+              <ValueContainer />
             </SocChartsContainer>
             <EnvChartsContainer>
               <MainTitle gridArea="title">
                 What is the estimated environmental impact of your donation?
               </MainTitle>
-              <LandFillContainer>
-                <ChartPaper>
-                  <Message />
-                </ChartPaper>
-              </LandFillContainer>
+              <LandFillContainer />
               <EmissionContainer>
                 <ChartPaper>
+                  <ChartTitle>
+                    What is the estimated CO2 emission saved?
+                  </ChartTitle>
                   <Message />
                 </ChartPaper>
               </EmissionContainer>
             </EnvChartsContainer>
             <ReqContainer>
-              <Button
-                className={classes.button}
-                variant="contained"
-                disableRipple
+              <a
+                href="https://www.furniturebank.org/request-a-pick-up/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Request a Pickup
-                <SendIcon fontSize="small" className={classes.rightIcon} />
-              </Button>
+                <img
+                  className="button"
+                  src="/static/icons/furnitureBank/requestButton.svg"
+                  alt="request button icon"
+                />
+              </a>
             </ReqContainer>
           </ChartsContainer>
         </DashboardContainer>

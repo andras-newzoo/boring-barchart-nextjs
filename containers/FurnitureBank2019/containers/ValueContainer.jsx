@@ -43,6 +43,10 @@ const ValueContainer = () => {
               color={colorGreen}
               animate
               prefix="$"
+              smallPrefix
+              prefixSize={fontSizeM}
+              prefixLineHeight={1.7}
+              prefixSpace
             />
           )}
         </FlexContainer>
@@ -98,7 +102,7 @@ const ValueContainer = () => {
                     animate
                     smallSuffix
                     suffixSize={fontSizeM}
-                    suffixLineHeight={1.35}
+                    suffixLineHeight={1.5}
                     perc
                   />
                   <TextSpan>&nbsp;of avg. donation value</TextSpan>

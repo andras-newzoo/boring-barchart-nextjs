@@ -8,9 +8,8 @@ import { max } from 'd3-array'
 import { colorGreen } from "../styles";
 import { useSvgResize, usePrevious } from "../../../hooks";
 import { createUpdateSvg, numberTween } from "../../../utils";
-import { colorGrey, fontSizeS, fontSizeM, fontWeightL } from "../../../styles";
+import { colorGrey, fontSizeM, fontWeightL } from "../../../styles";
 import { easeCubicInOut } from "d3-ease";
-import { format } from "d3-format";
 
 const ChartWrapper = styled.div`
   height: 100%;
@@ -79,6 +78,7 @@ const BarChart = ({
     const xScale = scaleLinear().range([0, dims.width])
     
     storedValues.current = {
+      area,
       chartArea,
       yScale,
       xScale
@@ -118,9 +118,20 @@ const BarChart = ({
   }
 
   updateDims = () => {
-    console.log('updatig dims');
-    
-    // TODO
+    const { area, chartArea, yScale, xScale, centerText, yPos } = storedValues.current
+    yScale.range([0, dims.height])
+    xScale.range([0, dims.width])
+    createUpdateSvg({ area, dims, update: true })
+    chartArea.selectAll('rect')
+      .attr('width', d => xScale(d.share))
+      .attr('y', d => yScale(d.group))
+      .attr('height', yScale.bandwidth())
+    chartArea.selectAll('.value')
+      .attr('x', d => xScale(d.share) - 2)
+      .attr('y', centerText)
+    chartArea.selectAll('.variable')
+      .attr('y', yPos)
+    storedValues.current = { ...storedValues.current, yScale, xScale }
   }
 
   const createUpdateValueText = () => {
@@ -145,6 +156,7 @@ const BarChart = ({
         .attr('x', d => xScale(d.share) - 2)
         .tween('text', (d, i, n) => numberTween(d, i, n, 'share', '.1%'))
         .attr('opacity', 1)
+    storedValues.current = { ...storedValues.current, centerText }
   }
 
   const createUpdateVariableText = () => {
@@ -168,7 +180,7 @@ const BarChart = ({
         .ease(easeCubicInOut)
         .attr('y', yPos)
         .attr('opacity', 1)
-
+    storedValues.current = { ...storedValues.current, yPos }
   }
 
   const removeElement = el => 

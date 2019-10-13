@@ -23,7 +23,9 @@ import {
   LandFillContainer,
   EmissionContainer,
   ReqContainer,
-  DonationPercentageContainer
+  DonationPercentageContainer,
+  LandFillSubContainer, 
+  ContainerChart
 } from "./styledContainers";
 import { MainTitle, ChartTitle, ChartPaper } from "./styledElements";
 import { HEATMAP_SOURCE_ID, heatMapStyles } from "./mapStyles";
@@ -34,9 +36,9 @@ export {
   colorRed,
   colorGreyLight,
   colorGreyDark,
-  media
-};
-export {
+  media,
+  LandFillSubContainer, 
+  ContainerChart,
   MainContainer,
   DashboardContainer,
   ControlsContainer,

@@ -1,0 +1,1 @@
+export const getArray = num =>  num > 0 ? Array.from(Array(Math.floor(num)), (_, i) => i + 1) : []

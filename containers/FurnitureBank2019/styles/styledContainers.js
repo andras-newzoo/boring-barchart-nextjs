@@ -35,12 +35,8 @@ export const DashboardContainer = styled.div`
   ${media.small`
     width: 100%;
     padding-top: 0;
-    padding-bottom: 2rem;
+    padding-bottom: 7rem;
     grid-template-rows: 300px 1fr;
-    height: 1400px;
-  `}
-
-  ${media.extraSmall`
     height: 1400px;
   `}
 `;
@@ -90,8 +86,6 @@ export const LogoContainer = styled.div`
   align-items: flex-start;
   justify-content: center;
   background: #fff;
-
-  ${'' /* ${testBorder}; */}
 
   img {
     width: 100%;
@@ -314,10 +308,54 @@ export const EnvChartsContainer = styled.div`
 `;
 
 export const LandFillContainer = styled.div`
-  grid-area: landfill;
   height: 100%;
   width: 100%;
+  display: grid;
+  grid-template-rows: 20px repeat(2, 1fr);
+  grid-row-gap: 1rem;
+  grid-template-areas: 
+    "title"
+    "weight"
+    "volume";
+
+  .garbage {
+    &-month {
+      height: 45px;
+      padding-right: 2px;
+    }
+    &-week {
+      height: 20px;
+      padding-right: 1px;
+    }
+  }
+  .container {
+    height: 45px;
+  }
 `;
+
+export const LandFillSubContainer = styled.div`
+  display: grid;
+  grid-area: ${props => props.gridArea};
+  grid-template-rows: 1fr 30px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: 
+    "num icon"
+    "text text";
+`
+
+export const ContainerChart = styled.div`
+  width: 68px;
+  height: ${props => props.height < 1 ? props.height * 41 : 41}px;
+  background-color: ${colorGreen};
+  transform: translateY(${props => props.height < 1 ? 41 - props.height * 41 : 0}px);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  ${media.small`
+    height: ${props => props.height < 1 ? props.height * 40 : 40}px;
+    transform: translateY(${props => props.height < 1 ? 41 - props.height * 42 : 1}px);
+    background-color: ${colorGreen};
+  `}
+`
 
 export const EmissionContainer = styled.div`
   grid-area: emission;
@@ -331,4 +369,21 @@ export const ReqContainer = styled.div`
   margin-top: 1.6rem;
   justify-content: flex-end;
   align-items: center;
+
+  .button {
+    height: 40px;
+    cursor: pointer;
+    transition: .3s all;
+
+    &:hover{
+      transform: translateY(-2px);
+    }
+    &:active{
+      transform: translateY(0px);
+    }
+  }
+
+  ${media.small`
+    justify-content: center;
+  `}
 `;

@@ -32,17 +32,42 @@ export const selectAllUnselected = createSelector(
     )
 );
 
-export const selectAllSelectedPrice = createSelector(
+export const selectAllSelectedItems = createSelector(
   selectFurnitureList,
   selectedAllSelected,
   (furnitureList, selectedItems) =>
-    selectedItems
-      .map(
-        el =>
-          +furnitureList.find(d => d.product_name === el.name).value *
-          el.quantity
-      )
-      .reduce((acc, curr) => acc + curr, 0)
+  selectedItems
+  .map(
+    el =>
+    furnitureList.find(d => d.product_name === el.name)
+  )
+);
+
+export const selectAllSelectedPrice = createSelector(
+  selectAllSelectedItems,
+  selectedAllSelected,
+  ( selectedItems, selectedQuantities ) =>
+  selectedItems
+    .reduce((acc, curr) => acc + selectedQuantities
+      .find(el => curr.product_name === el.name ).quantity * curr.value, 0 )
+);
+
+export const selectAllSelectedWeight = createSelector(
+  selectAllSelectedItems,
+  selectedAllSelected,
+  ( selectedItems, selectedQuantities ) =>
+  selectedItems
+    .reduce((acc, curr) => acc + selectedQuantities
+      .find(el => curr.product_name === el.name ).quantity * curr.weight_lbs, 0 )
+);
+
+export const selectAllSelectedVolume = createSelector(
+  selectAllSelectedItems,
+  selectedAllSelected,
+  ( selectedItems, selectedQuantities ) =>
+  selectedItems
+    .reduce((acc, curr) => acc + selectedQuantities
+      .find(el => curr.product_name === el.name ).quantity * curr.volume_ft, 0 )
 );
 
 //* Get relevant postal code list
