@@ -13,7 +13,8 @@ import {
   EmissionContainer,
   ReqContainer,
   ChartPaper,
-  ChartTitle
+  ChartTitle,
+  colorGreen
 } from "./styles";
 import {
   ValueContainer,
@@ -25,6 +26,13 @@ import {
 import { Message, InfoButton, ModalComponent } from "./components";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleModal } from "../../store/furnitureBankReducer/actions";
+import { useWindowSize } from "../../hooks";
+import { selectAllSelectedEmission } from "../../store/furnitureBankReducer/selectors";
+import { FlexContainer, fontSizeM, fontWeightL, fontSizeXL, fontWeightM } from "../../styles";
+import { ConvertedNumber } from "../../components";
+
+///https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator
+const AVG_MILES_PER_KILOGRAM = 2.4;
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -33,6 +41,11 @@ const Dashboard = () => {
   );
 
   const handleToggleModal = () => dispatch(toggleModal());
+  const windowSize = useWindowSize();
+  const smallLayout = windowSize.width < 768;
+
+  const emission = useSelector(selectAllSelectedEmission);
+  // KG of CO2 Emssion Avoided
 
   return (
     <>
@@ -44,9 +57,13 @@ const Dashboard = () => {
           openModal={openModal}
           handleClick={handleToggleModal}
           data={modalText}
+          smallLayout={smallLayout}
         />
         <DashboardContainer>
-          <InfoButton handleClick={handleToggleModal} />
+          <InfoButton
+            handleClick={handleToggleModal}
+            smallLayout={smallLayout}
+          />
           <ControlsContainer>
             <LogoContainer>
               <img
@@ -63,21 +80,57 @@ const Dashboard = () => {
               </MainTitle>
               <MapContainer />
               <FamiliesContainer />
-              <ValueContainer />
+              <ValueContainer smallLayout={smallLayout} />
             </SocChartsContainer>
             <EnvChartsContainer>
               <MainTitle gridArea="title">
                 What is the estimated environmental impact of your donation?
               </MainTitle>
               <LandFillContainer />
-              <EmissionContainer>
-                <ChartPaper>
+              <ChartPaper gridArea="emission">
+                <EmissionContainer>
                   <ChartTitle>
                     What is the estimated CO2 emission saved?
                   </ChartTitle>
                   <Message />
-                </ChartPaper>
-              </EmissionContainer>
+                  <FlexContainer area="num">
+                    <FlexContainer
+                      direction="column"
+                      align="flex-start"
+                      width="50%"
+                    >
+                      <ConvertedNumber
+                        data={Math.abs(emission)}
+                        size={fontSizeXL}
+                        weight={fontWeightL}
+                        color={colorGreen}
+                        animate
+                        smallSuffix
+                        suffixSize={fontSizeM}
+                        suffixLineHeight={1.5}
+                        customSuffix="kg"
+                      />
+                      <div>
+                        CO2 emission avoided
+                      </div>
+                    </FlexContainer>
+                  </FlexContainer>
+                  <FlexContainer area="icon">
+                      Icon
+                  </FlexContainer>
+                  <FlexContainer area="text">
+                    Equivalent to&nbsp;
+                    <ConvertedNumber
+                      data={Math.abs(emission) * AVG_MILES_PER_KILOGRAM}
+                      weight={fontWeightL}
+                      color={colorGreen}
+                      display="inline-block"
+                      animate
+                    />
+                    &nbsp;miles driven by an avg. passenger vehicle
+                  </FlexContainer>
+                </EmissionContainer>
+              </ChartPaper>
             </EnvChartsContainer>
             <ReqContainer>
               <a

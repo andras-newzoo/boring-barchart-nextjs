@@ -15,7 +15,12 @@ const ModalBackground = styled.div`
 const ModalPaper = styled.div`
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
+  ${props => props.size === "s" && css`
+    transform: translate(-50%, -25%);
+  `}
+  ${props => props.size === "m" && css`
+    transform: translate(-50%, -50%);
+  `}
   z-index: 1100;
   background-color: #fff;
 
@@ -35,7 +40,8 @@ const ModalPaper = styled.div`
 const Modal = ({
   children,
   open,
-  handleClick
+  handleClick,
+  size
 }) => {
 
   return (
@@ -46,6 +52,7 @@ const Modal = ({
       />
       <ModalPaper
         open={open}
+        size={size}
       >
         {children}
       </ModalPaper>

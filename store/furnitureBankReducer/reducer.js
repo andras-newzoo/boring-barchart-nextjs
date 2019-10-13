@@ -9,6 +9,7 @@ import coordinatesData from "../../static/data/chartDataSets/FurnitureBank2019/c
 import donationsData from "../../static/data/chartDataSets/FurnitureBank2019/donationsData.json";
 import familyData from "../../static/data/chartDataSets/FurnitureBank2019/familyData.json";
 import productList from "../../static/data/chartDataSets/FurnitureBank2019/productList.json";
+import emissionData from "../../static/data/chartDataSets/FurnitureBank2019/emissionData.json";
 import { modalText } from '../../static/data/chartDataSets/FurnitureBank2019/modalText'
 import { createReducer } from "../utils/reducerUtils";
 
@@ -31,6 +32,7 @@ const initialState = {
   familyData,
   productList,
   modalText,
+  emissionData,
   openModal: false
 };
 

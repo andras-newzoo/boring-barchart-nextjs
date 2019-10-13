@@ -153,7 +153,7 @@ const BarChart = ({
         .transition()
         .duration(updateDuration)
         .ease(easeCubicInOut)
-        .attr('x', d => xScale(d.share) - 2)
+        .attr('x', d => xScale(d.share) - 3)
         .tween('text', (d, i, n) => numberTween(d, i, n, 'share', '.1%'))
         .attr('opacity', 1)
     storedValues.current = { ...storedValues.current, centerText }

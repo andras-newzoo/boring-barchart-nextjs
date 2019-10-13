@@ -1,9 +1,10 @@
 import React from "react";
 import { FixedInfoButton, QuestionMarkGillSemiBold } from "../../../components";
 import { colorGreen } from "../styles";
+import { colorGrey } from "../../../styles";
 
 const InfoButton = ({
-  handleClick
+  handleClick, smallLayout
 }) => {
   
   return (
@@ -14,7 +15,7 @@ const InfoButton = ({
       width={120}
       round
       corner
-      background={colorGreen}
+      background={smallLayout ? colorGrey : colorGreen}
       translate="50%, -50%"
       iconComponent={
         <QuestionMarkGillSemiBold height={25} width={25} fill="#fff" />

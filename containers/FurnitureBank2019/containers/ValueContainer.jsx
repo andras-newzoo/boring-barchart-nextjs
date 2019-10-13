@@ -13,20 +13,19 @@ import {
   TextSpan,
   fontSizeM
 } from "../../../styles";
-import { useWindowSize } from "../../../hooks";
 import { useSelector } from "react-redux";
 import { selectAllSelectedPrice } from "../../../store/furnitureBankReducer/selectors";
 import { ConvertedNumber } from "../../../components";
 import { PercentageChart, Message } from "../components";
-
+  
 const AVG_DONATION_VALUE = 735;
 
-const ValueContainer = () => {
-  const windowSize = useWindowSize();
+const ValueContainer = ({
+  smallLayout
+}) => {
   const totalPrice = useSelector(selectAllSelectedPrice);
   const perc = totalPrice / AVG_DONATION_VALUE;
   const fullCount = Math.floor(perc);
-  const smallLayout = windowSize.width < 768;
   return (
     <ChartPaper gridArea="value">
       <Container>

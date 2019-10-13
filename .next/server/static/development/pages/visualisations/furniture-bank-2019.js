@@ -507,7 +507,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 const Container = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
   displayName: "FixedInfoButton__Container",
   componentId: "s3rour-0"
-})(["position:fixed;background-color:", ";color:", ";", " border-radius:", ";transform:translate(", ");cursor:pointer;"], props => props.background || _styles__WEBPACK_IMPORTED_MODULE_3__["colorGrey"], props => props.color || "#fff", props => Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["css"])(["top:", ";right:", ";bottom:", ";left:", ";width:", "px;height:", "px;"], props.top, props.right, props.bottom, props.left, props.width, props.height), props => props.round && "100%", props => props.corner && props.translate);
+})(["position:absolute;background-color:", ";color:", ";", " border-radius:", ";transform:translate(", ");cursor:pointer;"], props => props.background || _styles__WEBPACK_IMPORTED_MODULE_3__["colorGrey"], props => props.color || "#fff", props => Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["css"])(["top:", ";right:", ";bottom:", ";left:", ";width:", "px;height:", "px;"], props.top, props.right, props.bottom, props.left, props.width, props.height), props => props.round && "100%", props => props.corner && props.translate);
 const IconContainer = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
   displayName: "FixedInfoButton__IconContainer",
   componentId: "s3rour-1"
@@ -782,26 +782,28 @@ const ModalBackground = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a
 const ModalPaper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "Modal__ModalPaper",
   componentId: "sc-15imcyp-1"
-})(["position:absolute;left:50%;transform:translate(-50%,-50%);z-index:1100;background-color:#fff;", ""], props => props.open ? Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transition:1s all;opacity:1;top:50%;visibility:visible;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transition:0s all;opacity:0;top:-50%;visibility:hidden;"]));
+})(["position:absolute;left:50%;", " ", " z-index:1100;background-color:#fff;", ""], props => props.size === "s" && Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transform:translate(-50%,-25%);"]), props => props.size === "m" && Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transform:translate(-50%,-50%);"]), props => props.open ? Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transition:1s all;opacity:1;top:50%;visibility:visible;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transition:0s all;opacity:0;top:-50%;visibility:hidden;"]));
 
 const Modal = ({
   children,
   open,
-  handleClick
+  handleClick,
+  size
 }) => {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(ModalBackground, {
     onClick: handleClick,
     open: open,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 49
     },
     __self: undefined
   }), __jsx(ModalPaper, {
     open: open,
+    size: size,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 53
     },
     __self: undefined
   }, children));
@@ -1024,7 +1026,7 @@ const BarChart = ({
     const centerText = d => yScale(d.group) + yScale.bandwidth() / 2 + 4;
 
     removeElement(texts);
-    texts.enter().append('text').attr('class', 'value').attr('x', 0).attr('y', centerText).attr('opacity', 0).text(0).merge(texts).transition().duration(updateDuration).ease(d3_ease__WEBPACK_IMPORTED_MODULE_11__["easeCubicInOut"]).attr('x', d => xScale(d.share) - 2).tween('text', (d, i, n) => Object(_utils__WEBPACK_IMPORTED_MODULE_9__["numberTween"])(d, i, n, 'share', '.1%')).attr('opacity', 1);
+    texts.enter().append('text').attr('class', 'value').attr('x', 0).attr('y', centerText).attr('opacity', 0).text(0).merge(texts).transition().duration(updateDuration).ease(d3_ease__WEBPACK_IMPORTED_MODULE_11__["easeCubicInOut"]).attr('x', d => xScale(d.share) - 3).tween('text', (d, i, n) => Object(_utils__WEBPACK_IMPORTED_MODULE_9__["numberTween"])(d, i, n, 'share', '.1%')).attr('opacity', 1);
     storedValues.current = Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, storedValues.current, {
       centerText
     });
@@ -1075,14 +1077,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components */ "./components/index.js");
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../styles */ "./styles/index.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/InfoButton.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
+
 const InfoButton = ({
-  handleClick
+  handleClick,
+  smallLayout
 }) => {
   return __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["FixedInfoButton"], {
     top: 0,
@@ -1091,7 +1096,7 @@ const InfoButton = ({
     width: 120,
     round: true,
     corner: true,
-    background: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+    background: smallLayout ? _styles__WEBPACK_IMPORTED_MODULE_3__["colorGrey"] : _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
     translate: "50%, -50%",
     iconComponent: __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["QuestionMarkGillSemiBold"], {
       height: 25,
@@ -1099,7 +1104,7 @@ const InfoButton = ({
       fill: "#fff",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 21
       },
       __self: undefined
     }),
@@ -1108,7 +1113,7 @@ const InfoButton = ({
     handleClick: handleClick,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 11
     },
     __self: undefined
   });
@@ -1193,11 +1198,13 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 const ModalComponent = ({
   openModal,
   handleClick,
-  data
+  data,
+  smallLayout
 }) => {
   return __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     open: openModal,
     handleClick: handleClick,
+    size: smallLayout ? "s" : "m",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 11
@@ -1221,6 +1228,7 @@ const ModalComponent = ({
     direction: "column",
     align: "flex-start",
     justify: "flex-start",
+    area: el.area,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 17
@@ -1231,19 +1239,19 @@ const ModalComponent = ({
     weight: _styles__WEBPACK_IMPORTED_MODULE_3__["fontWeightL"],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 23
     },
     __self: undefined
   }, el.title), el.text.map(par => __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 28
     },
     __self: undefined
   }, par), __jsx("br", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 29
     },
     __self: undefined
   }))), el.gif && __jsx("img", {
@@ -1251,7 +1259,7 @@ const ModalComponent = ({
     alt: el.gifAlt,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 32
     },
     __self: undefined
   })))));
@@ -1945,6 +1953,8 @@ const LandFillContainer = () => {
   }, "Equivalent to", " ", __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["ConvertedNumber"], {
     data: volume / CARGO_VOLUME,
     display: "inline-block",
+    weight: _styles__WEBPACK_IMPORTED_MODULE_6__["fontWeightL"],
+    color: _styles__WEBPACK_IMPORTED_MODULE_1__["colorGreen"],
     perc: true,
     animate: true,
     __source: {
@@ -2106,12 +2116,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../styles */ "./styles/index.js");
-/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../hooks */ "./hooks/index.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components */ "./components/index.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components */ "./containers/FurnitureBank2019/components/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../components */ "./components/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components */ "./containers/FurnitureBank2019/components/index.js");
 
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/containers/ValueContainer.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -2122,33 +2131,32 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-
 const AVG_DONATION_VALUE = 735;
 
-const ValueContainer = () => {
-  const windowSize = Object(_hooks__WEBPACK_IMPORTED_MODULE_4__["useWindowSize"])();
-  const totalPrice = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_6__["selectAllSelectedPrice"]);
+const ValueContainer = ({
+  smallLayout
+}) => {
+  const totalPrice = Object(react_redux__WEBPACK_IMPORTED_MODULE_4__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_5__["selectAllSelectedPrice"]);
   const perc = totalPrice / AVG_DONATION_VALUE;
   const fullCount = Math.floor(perc);
-  const smallLayout = windowSize.width < 768;
   return __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartPaper"], {
     gridArea: "value",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 30
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ValueContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 31
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartTitle"], {
     contained: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 32
     },
     __self: undefined
   }, "What is the estimated value of your donation?"), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -2156,16 +2164,16 @@ const ValueContainer = () => {
     area: "abs",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 35
     },
     __self: undefined
   }, !smallLayout && __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 36
     },
     __self: undefined
-  }), !!totalPrice && __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["ConvertedNumber"], {
+  }), !!totalPrice && __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["ConvertedNumber"], {
     data: totalPrice,
     size: _styles__WEBPACK_IMPORTED_MODULE_3__["fontSizeXL"],
     weight: _styles__WEBPACK_IMPORTED_MODULE_3__["fontWeightL"],
@@ -2178,13 +2186,13 @@ const ValueContainer = () => {
     prefixSpace: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 38
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["DonationPercentageContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 52
     },
     __self: undefined
   }, !!perc && __jsx(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -2192,16 +2200,16 @@ const ValueContainer = () => {
     height: smallLayout ? "35%" : "70%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 55
     },
     __self: undefined
-  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_8__["PercentageChart"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["PercentageChart"], {
     data: perc,
     fullCount: fullCount,
     direction: "horizontal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 56
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -2210,7 +2218,7 @@ const ValueContainer = () => {
     justify: smallLayout && "flex-end",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 62
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -2220,7 +2228,7 @@ const ValueContainer = () => {
     height: "90%",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 67
     },
     __self: undefined
   }, _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default()(Array(Math.floor(perc)), (_, i) => i + 1).map(el => __jsx("img", {
@@ -2234,7 +2242,7 @@ const ValueContainer = () => {
     alt: "completed bar icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 75
     },
     __self: undefined
   })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -2242,7 +2250,7 @@ const ValueContainer = () => {
     align: smallLayout && "flex-start",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 86
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
@@ -2252,10 +2260,10 @@ const ValueContainer = () => {
     direction: smallLayout && "column",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 90
     },
     __self: undefined
-  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["ConvertedNumber"], {
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_6__["ConvertedNumber"], {
     data: perc,
     size: _styles__WEBPACK_IMPORTED_MODULE_3__["fontSizeXL"],
     weight: _styles__WEBPACK_IMPORTED_MODULE_3__["fontWeightL"],
@@ -2267,19 +2275,19 @@ const ValueContainer = () => {
     perc: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 96
     },
     __self: undefined
   }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["TextSpan"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 107
     },
     __self: undefined
-  }, "\xA0of avg. donation value"))))), __jsx(_components__WEBPACK_IMPORTED_MODULE_8__["Message"], {
+  }, "\xA0of avg. donation value"))))), __jsx(_components__WEBPACK_IMPORTED_MODULE_7__["Message"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114
+      lineNumber: 113
     },
     __self: undefined
   })));
@@ -2341,6 +2349,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/furnitureBankReducer/actions */ "./store/furnitureBankReducer/actions.js");
+/* harmony import */ var _hooks__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../hooks */ "./hooks/index.js");
+/* harmony import */ var _store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../store/furnitureBankReducer/selectors */ "./store/furnitureBankReducer/selectors.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../styles */ "./styles/index.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components */ "./components/index.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/index.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2351,6 +2363,12 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
+
+ ///https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator
+
+const AVG_MILES_PER_KILOGRAM = 2.4;
+
 const Dashboard = () => {
   const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useDispatch"])();
   const {
@@ -2360,56 +2378,62 @@ const Dashboard = () => {
 
   const handleToggleModal = () => dispatch(Object(_store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__["toggleModal"])());
 
+  const windowSize = Object(_hooks__WEBPACK_IMPORTED_MODULE_7__["useWindowSize"])();
+  const smallLayout = windowSize.width < 768;
+  const emission = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(_store_furnitureBankReducer_selectors__WEBPACK_IMPORTED_MODULE_8__["selectAllSelectedEmission"]); // KG of CO2 Emssion Avoided
+
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_1__["Helmet"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 52
     },
     __self: undefined
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 53
     },
     __self: undefined
   }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 55
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["ModalComponent"], {
     openModal: openModal,
     handleClick: handleToggleModal,
     data: modalText,
+    smallLayout: smallLayout,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 56
     },
     __self: undefined
   }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["DashboardContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 62
     },
     __self: undefined
   }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["InfoButton"], {
     handleClick: handleToggleModal,
+    smallLayout: smallLayout,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 63
     },
     __self: undefined
   }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ControlsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 67
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["LogoContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 68
     },
     __self: undefined
   }, __jsx("img", {
@@ -2417,99 +2441,163 @@ const Dashboard = () => {
     alt: "furniture bank icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 69
     },
     __self: undefined
   })), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["ControlContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 74
     },
     __self: undefined
   })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 76
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["SocChartsContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 77
     },
     __self: undefined
   }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainTitle"], {
     gridArea: "title",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 61
-    },
-    __self: undefined
-  }, "What is the estimated social impact of your donation?"), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["MapContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 64
-    },
-    __self: undefined
-  }), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["FamiliesContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 65
-    },
-    __self: undefined
-  }), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["ValueContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66
-    },
-    __self: undefined
-  })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["EnvChartsContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 68
-    },
-    __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainTitle"], {
-    gridArea: "title",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 69
-    },
-    __self: undefined
-  }, "What is the estimated environmental impact of your donation?"), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["LandFillContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 72
-    },
-    __self: undefined
-  }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["EmissionContainer"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 73
-    },
-    __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartPaper"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 74
-    },
-    __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartTitle"], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 75
-    },
-    __self: undefined
-  }, "What is the estimated CO2 emission saved?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["Message"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 78
     },
     __self: undefined
-  })))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ReqContainer"], {
+  }, "What is the estimated social impact of your donation?"), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["MapContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 81
+    },
+    __self: undefined
+  }), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["FamiliesContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 82
+    },
+    __self: undefined
+  }), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["ValueContainer"], {
+    smallLayout: smallLayout,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 83
+    },
+    __self: undefined
+  })), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["EnvChartsContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 85
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainTitle"], {
+    gridArea: "title",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 86
+    },
+    __self: undefined
+  }, "What is the estimated environmental impact of your donation?"), __jsx(_containers__WEBPACK_IMPORTED_MODULE_3__["LandFillContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 89
+    },
+    __self: undefined
+  }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartPaper"], {
+    gridArea: "emission",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 90
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["EmissionContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 91
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ChartTitle"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 92
+    },
+    __self: undefined
+  }, "What is the estimated CO2 emission saved?"), __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["Message"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 95
+    },
+    __self: undefined
+  }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_9__["FlexContainer"], {
+    area: "num",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 96
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_9__["FlexContainer"], {
+    direction: "column",
+    align: "flex-start",
+    width: "50%",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 97
+    },
+    __self: undefined
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_10__["ConvertedNumber"], {
+    data: Math.abs(emission),
+    size: _styles__WEBPACK_IMPORTED_MODULE_9__["fontSizeXL"],
+    weight: _styles__WEBPACK_IMPORTED_MODULE_9__["fontWeightL"],
+    color: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+    animate: true,
+    smallSuffix: true,
+    suffixSize: _styles__WEBPACK_IMPORTED_MODULE_9__["fontSizeM"],
+    suffixLineHeight: 1.5,
+    customSuffix: "kg",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 102
+    },
+    __self: undefined
+  }), __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 113
+    },
+    __self: undefined
+  }, "CO2 emission avoided"))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_9__["FlexContainer"], {
+    area: "icon",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 118
+    },
+    __self: undefined
+  }, "Icon"), __jsx(_styles__WEBPACK_IMPORTED_MODULE_9__["FlexContainer"], {
+    area: "text",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 121
+    },
+    __self: undefined
+  }, "Equivalent to\xA0", __jsx(_components__WEBPACK_IMPORTED_MODULE_10__["ConvertedNumber"], {
+    data: Math.abs(emission) * AVG_MILES_PER_KILOGRAM,
+    weight: _styles__WEBPACK_IMPORTED_MODULE_9__["fontWeightL"],
+    color: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+    display: "inline-block",
+    animate: true,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 123
+    },
+    __self: undefined
+  }), "\xA0miles driven by an avg. passenger vehicle")))), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ReqContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 135
     },
     __self: undefined
   }, __jsx("a", {
@@ -2518,7 +2606,7 @@ const Dashboard = () => {
     rel: "noopener noreferrer",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 136
     },
     __self: undefined
   }, __jsx("img", {
@@ -2527,7 +2615,7 @@ const Dashboard = () => {
     alt: "request button icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 141
     },
     __self: undefined
   })))))));
@@ -2702,9 +2790,7 @@ const MainContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.d
 const DashboardContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__DashboardContainer",
   componentId: "sc-86vxz-1"
-})(["width:90%;height:650px;max-width:1440px;margin:0 auto;padding-top:4rem;padding-bottom:4rem;display:grid;grid-template-columns:300px 1fr;grid-template-areas:\"control charts\";", " ", " ", ""], ''
-/* ${testBorder}; */
-, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
+})(["width:90%;height:650px;max-width:1440px;margin:0 auto;padding-top:4rem;padding-bottom:4rem;display:grid;grid-template-columns:300px 1fr;grid-template-areas:\"control charts\";", " ", ""], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
     padding-top: 3rem;
     padding-bottom: 3rem;
     height: 850px;
@@ -2716,7 +2802,7 @@ const DashboardContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___defaul
   `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
     width: 100%;
     padding-top: 0;
-    padding-bottom: 7rem;
+    padding-bottom: 2rem;
     grid-template-rows: 300px 1fr;
     height: 1400px;
   `);
@@ -2864,7 +2950,7 @@ const ContainerChart = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.
 const EmissionContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__EmissionContainer",
   componentId: "sc-86vxz-17"
-})(["grid-area:emission;height:100%;width:100%;"]);
+})(["height:100%;width:100%;display:grid;grid-template-rows:1fr 4fr 30px;grid-template-columns:repeat(2,1fr);grid-template-areas:\". .\" \"num icon\" \"text text\";"]);
 const ReqContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ReqContainer",
   componentId: "sc-86vxz-18"
@@ -2874,7 +2960,32 @@ const ReqContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.di
 const ModalContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
   displayName: "styledContainers__ModalContainer",
   componentId: "sc-86vxz-19"
-})(["width:750px;height:450px;padding:", ";position:relative;display:grid;grid-row-gap:2rem;grid-column-gap:3rem;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);img{width:100%;}.icon{position:absolute;top:.5rem;right:1rem;font-size:", ";font-weight:", ";color:", ";cursor:pointer;}"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingXL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["fontSizeL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["fontWeightL"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorRed"]);
+})(["width:750px;height:450px;padding:", ";position:relative;display:grid;grid-row-gap:2rem;grid-column-gap:3rem;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);grid-template-areas:\"intro help data\" \"one two three\";", " ", " img{width:100%;}.icon{position:absolute;top:.5rem;right:1rem;font-size:", ";font-weight:", ";color:", ";cursor:pointer;}"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingXL"], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].medium`
+    width: 650px;
+    height: 650px;
+    padding: ${_styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingL"]};
+
+    grid-row-gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "intro help"
+      "one two"
+      "three data";
+  `, _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
+    width: 300px;
+    height: 1200px;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      "intro"
+      "help"
+      "one"
+      "two"
+      "three"
+      "data";
+  `, _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["fontSizeL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["fontWeightL"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorRed"]);
 
 /***/ }),
 
@@ -2957,7 +3068,7 @@ const gridGapM = '2.4rem';
 const gridGapS = '1.2rem';
 const media = Object(_styles_mediaQueries__WEBPACK_IMPORTED_MODULE_0__["createBreakPoints"])({
   medium: 1024,
-  small: 768,
+  small: 767,
   extraSmall: 545
 });
 
@@ -3369,7 +3480,7 @@ const toggleModal = () => ({
 /*!*************************************************!*\
   !*** ./store/furnitureBankReducer/selectors.js ***!
   \*************************************************/
-/*! exports provided: selectAllSelected, selectTotalQuantity, selectAllUnselected, selectAllSelectedItems, selectAllSelectedPrice, selectAllSelectedWeight, selectAllSelectedVolume, selectFilteredDonationPostalCode, selectFilteredFamilies, selectFilteredCoordinates, selectUniqueCoordinates, selectPostalCodeFamilies, selectGroups, selectTopGroups, selectAdults, selectChildren */
+/*! exports provided: selectAllSelected, selectTotalQuantity, selectAllUnselected, selectAllSelectedItems, selectAllSelectedPrice, selectAllSelectedWeight, selectAllSelectedVolume, selectAllSelectedEmission, selectFilteredDonationPostalCode, selectFilteredFamilies, selectFilteredCoordinates, selectUniqueCoordinates, selectPostalCodeFamilies, selectGroups, selectTopGroups, selectAdults, selectChildren */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3381,6 +3492,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllSelectedPrice", function() { return selectAllSelectedPrice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllSelectedWeight", function() { return selectAllSelectedWeight; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllSelectedVolume", function() { return selectAllSelectedVolume; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectAllSelectedEmission", function() { return selectAllSelectedEmission; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredDonationPostalCode", function() { return selectFilteredDonationPostalCode; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredFamilies", function() { return selectFilteredFamilies; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectFilteredCoordinates", function() { return selectFilteredCoordinates; });
@@ -3413,6 +3525,8 @@ const selectedAllSelected = state => state.furnitureBankReducer.selectedItems;
 
 const selectAllDonation = state => state.furnitureBankReducer.donationsData;
 
+const selectAllEmission = state => state.furnitureBankReducer.emissionData;
+
 const selectAllFamily = state => state.furnitureBankReducer.familyData;
 
 const selectAllCoordinates = state => state.furnitureBankReducer.coordinatesData; //* Array of all selected items
@@ -3424,7 +3538,11 @@ const selectAllUnselected = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["create
 const selectAllSelectedItems = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectFurnitureList, selectedAllSelected, (furnitureList, selectedItems) => selectedItems.map(el => furnitureList.find(d => d.product_name === el.name)));
 const selectAllSelectedPrice = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllSelectedItems, selectedAllSelected, (selectedItems, selectedQuantities) => selectedItems.reduce((acc, curr) => acc + selectedQuantities.find(el => curr.product_name === el.name).quantity * curr.value, 0));
 const selectAllSelectedWeight = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllSelectedItems, selectedAllSelected, (selectedItems, selectedQuantities) => selectedItems.reduce((acc, curr) => acc + selectedQuantities.find(el => curr.product_name === el.name).quantity * curr.weight_lbs, 0));
-const selectAllSelectedVolume = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllSelectedItems, selectedAllSelected, (selectedItems, selectedQuantities) => selectedItems.reduce((acc, curr) => acc + selectedQuantities.find(el => curr.product_name === el.name).quantity * curr.volume_ft, 0)); //* Get relevant postal code list
+const selectAllSelectedVolume = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllSelectedItems, selectedAllSelected, (selectedItems, selectedQuantities) => selectedItems.reduce((acc, curr) => acc + selectedQuantities.find(el => curr.product_name === el.name).quantity * curr.volume_ft, 0));
+const selectAllSelectedEmission = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectedAllSelected, selectAllEmission, (selectedItems, emissionList) => selectedItems.reduce((acc, curr) => {
+  const result = emissionList.find(el => el.product_name === curr.name);
+  return result ? acc + result.kg_co2_per_unit * curr.quantity : acc;
+}, 0)); //* Get relevant postal code list
 
 const selectFilteredDonationPostalCode = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(selectAllDonation, selectAllSelected, (donations, selectedItems) => donations.filter(el => selectedItems.includes(el.product_name))); //* Get family data for postal codes
 

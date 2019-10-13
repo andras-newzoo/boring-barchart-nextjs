@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { colorGrey } from "../../styles";
 
 const Container = styled.div`
-  position: fixed;
+  position: absolute;
   background-color: ${props => props.background || colorGrey};
   color: ${props => props.color || "#fff"};
   ${props => css`

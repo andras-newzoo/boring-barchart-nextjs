@@ -140,6 +140,8 @@ const LandFillContainer = () => {
                 <ConvertedNumber
                   data={volume / CARGO_VOLUME}
                   display="inline-block"
+                  weight={fontWeightL}
+                  color={colorGreen}
                   perc
                   animate
                 />{" "}

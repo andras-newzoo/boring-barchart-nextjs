@@ -5,6 +5,7 @@ const selectGroupList = state => state.furnitureBankReducer.groups;
 const selectFurnitureList = state => state.furnitureBankReducer.productList;
 const selectedAllSelected = state => state.furnitureBankReducer.selectedItems;
 const selectAllDonation = state => state.furnitureBankReducer.donationsData;
+const selectAllEmission = state => state.furnitureBankReducer.emissionData;
 const selectAllFamily = state => state.furnitureBankReducer.familyData;
 const selectAllCoordinates = state =>
   state.furnitureBankReducer.coordinatesData;
@@ -68,6 +69,16 @@ export const selectAllSelectedVolume = createSelector(
   selectedItems
     .reduce((acc, curr) => acc + selectedQuantities
       .find(el => curr.product_name === el.name ).quantity * curr.volume_ft, 0 )
+);
+
+export const selectAllSelectedEmission = createSelector(
+  selectedAllSelected,
+  selectAllEmission,
+  ( selectedItems, emissionList ) =>
+  selectedItems.reduce((acc, curr) => {
+    const result = emissionList.find(el => el.product_name === curr.name)
+    return result ? acc + result.kg_co2_per_unit * curr.quantity : acc
+  }, 0)
 );
 
 //* Get relevant postal code list

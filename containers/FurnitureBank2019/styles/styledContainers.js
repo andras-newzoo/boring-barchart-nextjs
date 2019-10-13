@@ -1,4 +1,4 @@
-import { paddingM, paddingS, testBorder, fontSizeXL, fontWeightL, paddingL, paddingXL, fontSizeL } from "../../../styles/sharedStyles";
+import { paddingM, paddingS, fontWeightL, paddingL, paddingXL, fontSizeL } from "../../../styles/sharedStyles";
 import styled from "styled-components";
 import { media, titleHeightM, gridGapM, gridGapS, colorGreen, colorRed } from "./variables";
 
@@ -19,8 +19,6 @@ export const DashboardContainer = styled.div`
   grid-template-columns: 300px 1fr;
   grid-template-areas: "control charts";
 
-  ${'' /* ${testBorder}; */}
-
   ${media.medium`
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -35,7 +33,7 @@ export const DashboardContainer = styled.div`
   ${media.small`
     width: 100%;
     padding-top: 0;
-    padding-bottom: 7rem;
+    padding-bottom: 2rem;
     grid-template-rows: 300px 1fr;
     height: 1400px;
   `}
@@ -358,9 +356,16 @@ export const ContainerChart = styled.div`
 `
 
 export const EmissionContainer = styled.div`
-  grid-area: emission;
   height: 100%;
   width: 100%;
+
+  display: grid;
+  grid-template-rows: 1fr 4fr 30px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    ". ."
+    "num icon"
+    "text text";
 `;
 
 export const ReqContainer = styled.div`
@@ -401,6 +406,38 @@ export const ModalContainer = styled.div`
   grid-column-gap: 3rem;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "intro help data"
+    "one two three";
+  
+  ${media.medium`
+    width: 650px;
+    height: 650px;
+    padding: ${paddingL};
+
+    grid-row-gap: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "intro help"
+      "one two"
+      "three data";
+  `}
+
+  ${media.small`
+    width: 300px;
+    height: 1200px;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      "intro"
+      "help"
+      "one"
+      "two"
+      "three"
+      "data";
+  `}
 
   img {
     width: 100%;

@@ -5,10 +5,10 @@ import { ModalContainer } from '../styles';
 import { FlexContainer, TextSpan, fontWeightL } from '../../../styles';
 
 const ModalComponent = ({
-  openModal, handleClick, data
+  openModal, handleClick, data, smallLayout
 }) => {
   return ( 
-    <Modal open={openModal} handleClick={handleClick}>
+    <Modal open={openModal} handleClick={handleClick} size={smallLayout ? "s" : "m"}>
     <ModalContainer>
       <span className="icon" onClick={handleClick}>
         ×
@@ -18,6 +18,7 @@ const ModalComponent = ({
           direction="column"
           align="flex-start"
           justify="flex-start"
+          area={el.area}
         >
           <TextSpan paddingBottom={1} weight={fontWeightL}>
             {el.title}
