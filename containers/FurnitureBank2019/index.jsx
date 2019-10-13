@@ -22,31 +22,31 @@ import {
   FamiliesContainer,
   LandFillContainer
 } from "./containers";
-import { Message } from "./components";
-import { FixedInfoButton, QuestionMarkGillSemiBold } from "../../components";
+import { Message, InfoButton, ModalComponent } from "./components";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleModal } from "../../store/furnitureBankReducer/actions";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const { openModal, modalText } = useSelector(
+    state => state.furnitureBankReducer
+  );
+
+  const handleToggleModal = () => dispatch(toggleModal());
+
   return (
     <>
       <Helmet>
         <title>Furniture Bank 2019</title>
       </Helmet>
       <MainContainer>
-        <FixedInfoButton
-          top={0}
-          right={0}
-          height={120}
-          width={120}
-          round
-          corner
-          translate="50%, -50%"
-          iconComponent={
-            <QuestionMarkGillSemiBold height={20} width={20} fill="#fff" />
-          }
-          iconLeft="20%"
-          iconBottom="20%"
+        <ModalComponent
+          openModal={openModal}
+          handleClick={handleToggleModal}
+          data={modalText}
         />
         <DashboardContainer>
+          <InfoButton handleClick={handleToggleModal} />
           <ControlsContainer>
             <LogoContainer>
               <img

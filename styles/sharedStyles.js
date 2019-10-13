@@ -24,3 +24,9 @@ export const paddingS = '0.6rem 1.2rem'
 export const paddingXS = '0.4rem .8rem'
 
 export const testBorder = `border: 1px solid black`
+
+
+export const easeInOutCubic = 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+
+export const zIndexModal = 1100
+export const zIndexModalBackground = 1000

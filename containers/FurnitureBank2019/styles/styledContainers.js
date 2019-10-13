@@ -1,6 +1,6 @@
-import { paddingM, paddingS, testBorder, fontSizeXL, fontWeightL } from "../../../styles/sharedStyles";
+import { paddingM, paddingS, testBorder, fontSizeXL, fontWeightL, paddingL, paddingXL, fontSizeL } from "../../../styles/sharedStyles";
 import styled from "styled-components";
-import { media, titleHeightM, gridGapM, gridGapS, colorGreen } from "./variables";
+import { media, titleHeightM, gridGapM, gridGapS, colorGreen, colorRed } from "./variables";
 
 export const MainContainer = styled.div`
   width: 100vw;
@@ -387,3 +387,33 @@ export const ReqContainer = styled.div`
     justify-content: center;
   `}
 `;
+
+
+export const ModalContainer = styled.div`
+  width: 750px;
+  height: 450px;
+  padding: ${paddingXL};
+
+  position: relative;
+
+  display: grid;
+  grid-row-gap: 2rem;
+  grid-column-gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  img {
+    width: 100%;
+  }
+
+  .icon {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    font-size: ${fontSizeL};
+    font-weight: ${fontWeightL};
+    color: ${colorRed};
+    cursor: pointer;
+  }
+
+`

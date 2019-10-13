@@ -24,19 +24,18 @@ import {
   fontSizeS,
   fontSizeXS,
   fontFamilyMain,
-  colorGrey
+  colorGrey,
+  easeInOutCubic,
+  zIndexModal,
+  zIndexModalBackground
 } from './sharedStyles'
 
 
 export {
   FlexContainer,
-  TextSpan
-}
-export {
+  TextSpan,
   defaultBreakPoints,
-  createBreakPoints
-}
-export {
+  createBreakPoints,
   paddingXL,
   paddingL,
   paddingM,
@@ -55,5 +54,8 @@ export {
   fontSizeS,
   fontSizeXS,
   fontFamilyMain,
-  colorGrey
+  colorGrey,
+  easeInOutCubic,
+  zIndexModal,
+  zIndexModalBackground
 }

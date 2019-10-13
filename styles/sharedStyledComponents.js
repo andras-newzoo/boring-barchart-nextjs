@@ -12,9 +12,13 @@ export const FlexContainer = styled.div`
   width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
 
+  font-size: ${props => props.size || fontSizeM};
+
   padding-left: ${props => props.paddingLeft || 0}rem;
   
   margin-top: ${props => props.marginTop || 0}rem;
+
+  padding: ${props => props.padding};
 
   ${props => props.border && css`
     border: 1px solid black;
@@ -25,7 +29,8 @@ export const TextSpan = styled.div`
   font-size: ${props => props.size || fontSizeM};
   font-weight: ${props => props.weight || fontWeightS};
   color: ${props => props.color || colorGrey};
-  display: block;
+  display: ${props => props.display || 'block'};
+  padding-bottom: ${props => props.paddingBottom || 0}rem;
 `
 
 

@@ -25,7 +25,8 @@ import {
   ReqContainer,
   DonationPercentageContainer,
   LandFillSubContainer, 
-  ContainerChart
+  ContainerChart,
+  ModalContainer
 } from "./styledContainers";
 import { MainTitle, ChartTitle, ChartPaper } from "./styledElements";
 import { HEATMAP_SOURCE_ID, heatMapStyles } from "./mapStyles";
@@ -55,7 +56,8 @@ export {
   LandFillContainer,
   EmissionContainer,
   ReqContainer,
-  DonationPercentageContainer
+  DonationPercentageContainer,
+  ModalContainer
 };
 export { MainTitle, ChartTitle, ChartPaper };
 export { HEATMAP_SOURCE_ID, heatMapStyles };

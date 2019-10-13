@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -535,7 +535,8 @@ const FixedInfoButton = ({
   iconTop,
   iconRight,
   iconHeight,
-  iconComponent
+  iconComponent,
+  handleClick
 }) => {
   const dims = {
     top,
@@ -560,21 +561,22 @@ const FixedInfoButton = ({
     iconHeight
   };
   return __jsx(Container, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, dims, styles, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 67
-    },
-    __self: undefined
-  }), __jsx(IconContainer, {
+    onClick: handleClick,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 68
     },
     __self: undefined
-  }, __jsx(Icon, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, iconDims, {
+  }), __jsx(IconContainer, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 69
+    },
+    __self: undefined
+  }, __jsx(Icon, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, iconDims, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
     },
     __self: undefined
   }), iconComponent ? iconComponent : __jsx("img", {
@@ -583,7 +585,7 @@ const FixedInfoButton = ({
     alt: "fixed icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 74
     },
     __self: undefined
   }))));
@@ -756,11 +758,64 @@ const ItemChip = ({
 
 /***/ }),
 
+/***/ "./components/Modal/Modal.jsx":
+/*!************************************!*\
+  !*** ./components/Modal/Modal.jsx ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/components/Modal/Modal.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const ModalBackground = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "Modal__ModalBackground",
+  componentId: "sc-15imcyp-0"
+})(["position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,", ");display:", ";z-index:1000;"], props => props.opacity || .5, props => props.open ? 'block' : 'none');
+const ModalPaper = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "Modal__ModalPaper",
+  componentId: "sc-15imcyp-1"
+})(["position:absolute;left:50%;transform:translate(-50%,-50%);z-index:1100;background-color:#fff;", ""], props => props.open ? Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transition:1s all;opacity:1;top:50%;visibility:visible;"]) : Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["transition:0s all;opacity:0;top:-50%;visibility:hidden;"]));
+
+const Modal = ({
+  children,
+  open,
+  handleClick
+}) => {
+  return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(ModalBackground, {
+    onClick: handleClick,
+    open: open,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 43
+    },
+    __self: undefined
+  }), __jsx(ModalPaper, {
+    open: open,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47
+    },
+    __self: undefined
+  }, children));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Modal);
+
+/***/ }),
+
 /***/ "./components/index.js":
 /*!*****************************!*\
   !*** ./components/index.js ***!
   \*****************************/
-/*! exports provided: AutoComplete, ItemChip, ConvertedNumber, FixedInfoButton, QuestionMarkGillSemiBold */
+/*! exports provided: AutoComplete, ItemChip, ConvertedNumber, FixedInfoButton, QuestionMarkGillSemiBold, Modal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -777,8 +832,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FixedInfoButton_FixedInfoButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FixedInfoButton/FixedInfoButton */ "./components/FixedInfoButton/FixedInfoButton.jsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "FixedInfoButton", function() { return _FixedInfoButton_FixedInfoButton__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _IconComponents__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./IconComponents */ "./components/IconComponents/index.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "QuestionMarkGillSemiBold", function() { return _IconComponents__WEBPACK_IMPORTED_MODULE_4__["QuestionMarkGillSemiBold"]; });
+/* harmony import */ var _Modal_Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modal/Modal */ "./components/Modal/Modal.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Modal", function() { return _Modal_Modal__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _IconComponents__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./IconComponents */ "./components/IconComponents/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "QuestionMarkGillSemiBold", function() { return _IconComponents__WEBPACK_IMPORTED_MODULE_5__["QuestionMarkGillSemiBold"]; });
+
 
 
 
@@ -1003,6 +1062,62 @@ const BarChart = ({
 
 /***/ }),
 
+/***/ "./containers/FurnitureBank2019/components/InfoButton.jsx":
+/*!****************************************************************!*\
+  !*** ./containers/FurnitureBank2019/components/InfoButton.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components */ "./components/index.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/InfoButton.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+const InfoButton = ({
+  handleClick
+}) => {
+  return __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["FixedInfoButton"], {
+    top: 0,
+    right: 0,
+    height: 120,
+    width: 120,
+    round: true,
+    corner: true,
+    background: _styles__WEBPACK_IMPORTED_MODULE_2__["colorGreen"],
+    translate: "50%, -50%",
+    iconComponent: __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["QuestionMarkGillSemiBold"], {
+      height: 25,
+      width: 25,
+      fill: "#fff",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 20
+      },
+      __self: undefined
+    }),
+    iconLeft: "19%",
+    iconBottom: "17%",
+    handleClick: handleClick,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    },
+    __self: undefined
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (InfoButton);
+
+/***/ }),
+
 /***/ "./containers/FurnitureBank2019/components/Message.jsx":
 /*!*************************************************************!*\
   !*** ./containers/FurnitureBank2019/components/Message.jsx ***!
@@ -1051,6 +1166,98 @@ const Message = ({
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Message);
+
+/***/ }),
+
+/***/ "./containers/FurnitureBank2019/components/Modal.jsx":
+/*!***********************************************************!*\
+  !*** ./containers/FurnitureBank2019/components/Modal.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../components */ "./components/index.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles */ "./containers/FurnitureBank2019/styles/index.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../styles */ "./styles/index.js");
+var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/components/Modal.jsx";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+const ModalComponent = ({
+  openModal,
+  handleClick,
+  data
+}) => {
+  return __jsx(_components__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
+    open: openModal,
+    handleClick: handleClick,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ModalContainer"], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12
+    },
+    __self: undefined
+  }, __jsx("span", {
+    className: "icon",
+    onClick: handleClick,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
+    },
+    __self: undefined
+  }, "\xD7"), data.map(el => __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["FlexContainer"], {
+    direction: "column",
+    align: "flex-start",
+    justify: "flex-start",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: undefined
+  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_3__["TextSpan"], {
+    paddingBottom: 1,
+    weight: _styles__WEBPACK_IMPORTED_MODULE_3__["fontWeightL"],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    },
+    __self: undefined
+  }, el.title), el.text.map(par => __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 27
+    },
+    __self: undefined
+  }, par), __jsx("br", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: undefined
+  }))), el.gif && __jsx("img", {
+    src: el.gif,
+    alt: el.gifAlt,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 31
+    },
+    __self: undefined
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ModalComponent);
 
 /***/ }),
 
@@ -1266,7 +1473,7 @@ const PersonsIcon = () => {
 /*!**********************************************************!*\
   !*** ./containers/FurnitureBank2019/components/index.js ***!
   \**********************************************************/
-/*! exports provided: Message, PercentageChart, PersonIcons, BarChart */
+/*! exports provided: Message, PercentageChart, PersonIcons, BarChart, ModalComponent, InfoButton */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1282,6 +1489,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _BarChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BarChart */ "./containers/FurnitureBank2019/components/BarChart.jsx");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "BarChart", function() { return _BarChart__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modal */ "./containers/FurnitureBank2019/components/Modal.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ModalComponent", function() { return _Modal__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _InfoButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./InfoButton */ "./containers/FurnitureBank2019/components/InfoButton.jsx");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "InfoButton", function() { return _InfoButton__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+
 
 
 
@@ -2123,7 +2338,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles */ "./containers/FurnitureBank2019/styles/index.js");
 /* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers */ "./containers/FurnitureBank2019/containers/index.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components */ "./containers/FurnitureBank2019/components/index.js");
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components */ "./components/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../store/furnitureBankReducer/actions */ "./store/furnitureBankReducer/actions.js");
 var _jsxFileName = "/Users/andrasszesztai/Desktop/boring-barchart-nextjs/containers/FurnitureBank2019/index.jsx";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -2133,57 +2350,57 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+
 const Dashboard = () => {
+  const dispatch = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useDispatch"])();
+  const {
+    openModal,
+    modalText
+  } = Object(react_redux__WEBPACK_IMPORTED_MODULE_5__["useSelector"])(state => state.furnitureBankReducer);
+
+  const handleToggleModal = () => dispatch(Object(_store_furnitureBankReducer_actions__WEBPACK_IMPORTED_MODULE_6__["toggleModal"])());
+
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx(react_helmet__WEBPACK_IMPORTED_MODULE_1__["Helmet"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 39
     },
     __self: undefined
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 40
     },
     __self: undefined
   }, "Furniture Bank 2019")), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["MainContainer"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 42
     },
     __self: undefined
-  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_5__["FixedInfoButton"], {
-    top: 0,
-    right: 0,
-    height: 120,
-    width: 120,
-    round: true,
-    corner: true,
-    translate: "50%, -50%",
-    iconComponent: __jsx(_components__WEBPACK_IMPORTED_MODULE_5__["QuestionMarkGillSemiBold"], {
-      height: 20,
-      width: 20,
-      fill: "#fff",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 44
-      },
-      __self: undefined
-    }),
-    iconLeft: "20%",
-    iconBottom: "20%",
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["ModalComponent"], {
+    openModal: openModal,
+    handleClick: handleToggleModal,
+    data: modalText,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 43
     },
     __self: undefined
   }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["DashboardContainer"], {
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 48
+    },
+    __self: undefined
+  }, __jsx(_components__WEBPACK_IMPORTED_MODULE_4__["InfoButton"], {
+    handleClick: handleToggleModal,
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 49
     },
     __self: undefined
-  }, __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ControlsContainer"], {
+  }), __jsx(_styles__WEBPACK_IMPORTED_MODULE_2__["ControlsContainer"], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 50
@@ -2324,7 +2541,7 @@ const Dashboard = () => {
 /*!******************************************************!*\
   !*** ./containers/FurnitureBank2019/styles/index.js ***!
   \******************************************************/
-/*! exports provided: colorGreen, colorRedDark, colorRed, colorGreyLight, colorGreyDark, media, LandFillSubContainer, ContainerChart, MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, SocChartsContainer, MapContainer, FamilyContainer, PersonsContainer, ValueContainer, EnvChartsContainer, LandFillContainer, EmissionContainer, ReqContainer, DonationPercentageContainer, MainTitle, ChartTitle, ChartPaper, HEATMAP_SOURCE_ID, heatMapStyles */
+/*! exports provided: colorGreen, colorRedDark, colorRed, colorGreyLight, colorGreyDark, media, LandFillSubContainer, ContainerChart, MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, SocChartsContainer, MapContainer, FamilyContainer, PersonsContainer, ValueContainer, EnvChartsContainer, LandFillContainer, EmissionContainer, ReqContainer, DonationPercentageContainer, ModalContainer, MainTitle, ChartTitle, ChartPaper, HEATMAP_SOURCE_ID, heatMapStyles */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2380,6 +2597,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ReqContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["ReqContainer"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DonationPercentageContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["DonationPercentageContainer"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ModalContainer", function() { return _styledContainers__WEBPACK_IMPORTED_MODULE_1__["ModalContainer"]; });
 
 /* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styledElements */ "./containers/FurnitureBank2019/styles/styledElements.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MainTitle", function() { return _styledElements__WEBPACK_IMPORTED_MODULE_2__["MainTitle"]; });
@@ -2444,7 +2663,7 @@ const heatMapStyles = {
 /*!*****************************************************************!*\
   !*** ./containers/FurnitureBank2019/styles/styledContainers.js ***!
   \*****************************************************************/
-/*! exports provided: MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, SocChartsContainer, MapContainer, FamilyContainer, PersonsContainer, ValueContainer, DonationPercentageContainer, EnvChartsContainer, LandFillContainer, LandFillSubContainer, ContainerChart, EmissionContainer, ReqContainer */
+/*! exports provided: MainContainer, DashboardContainer, ControlsContainer, LogoContainer, ControlContainer, PanelContainer, ChartsContainer, SocChartsContainer, MapContainer, FamilyContainer, PersonsContainer, ValueContainer, DonationPercentageContainer, EnvChartsContainer, LandFillContainer, LandFillSubContainer, ContainerChart, EmissionContainer, ReqContainer, ModalContainer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2468,6 +2687,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ContainerChart", function() { return ContainerChart; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmissionContainer", function() { return EmissionContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReqContainer", function() { return ReqContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalContainer", function() { return ModalContainer; });
 /* harmony import */ var _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../styles/sharedStyles */ "./styles/sharedStyles.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "styled-components");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_1__);
@@ -2651,6 +2871,10 @@ const ReqContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.di
 })(["grid-area:req;display:flex;margin-top:1.6rem;justify-content:flex-end;align-items:center;.button{height:40px;cursor:pointer;transition:.3s all;&:hover{transform:translateY(-2px);}&:active{transform:translateY(0px);}}", ""], _variables__WEBPACK_IMPORTED_MODULE_2__["media"].small`
     justify-content: center;
   `);
+const ModalContainer = styled_components__WEBPACK_IMPORTED_MODULE_1___default.a.div.withConfig({
+  displayName: "styledContainers__ModalContainer",
+  componentId: "sc-86vxz-19"
+})(["width:750px;height:450px;padding:", ";position:relative;display:grid;grid-row-gap:2rem;grid-column-gap:3rem;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);img{width:100%;}.icon{position:absolute;top:.5rem;right:1rem;font-size:", ";font-weight:", ";color:", ";cursor:pointer;}"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["paddingXL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["fontSizeL"], _styles_sharedStyles__WEBPACK_IMPORTED_MODULE_0__["fontWeightL"], _variables__WEBPACK_IMPORTED_MODULE_2__["colorRed"]);
 
 /***/ }),
 
@@ -3099,32 +3323,18 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 /*!***********************************************!*\
   !*** ./store/furnitureBankReducer/actions.js ***!
   \***********************************************/
-/*! exports provided: increment, decrement, updateFilter, addItem, incrementItem, decrementItem, deleteItem */
+/*! exports provided: addItem, incrementItem, decrementItem, deleteItem, toggleModal */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "increment", function() { return increment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decrement", function() { return decrement; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateFilter", function() { return updateFilter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addItem", function() { return addItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "incrementItem", function() { return incrementItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "decrementItem", function() { return decrementItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteItem", function() { return deleteItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggleModal", function() { return toggleModal; });
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./types */ "./store/furnitureBankReducer/types.js");
 
-const increment = () => ({
-  type: _types__WEBPACK_IMPORTED_MODULE_0__["INCREMENT"]
-});
-const decrement = () => ({
-  type: _types__WEBPACK_IMPORTED_MODULE_0__["DECREMENT"]
-});
-const updateFilter = filter => ({
-  type: _types__WEBPACK_IMPORTED_MODULE_0__["UPDATE_FILTER"],
-  payload: {
-    filter
-  }
-});
 const addItem = item => ({
   type: _types__WEBPACK_IMPORTED_MODULE_0__["ADD_ITEM"],
   payload: {
@@ -3148,6 +3358,9 @@ const deleteItem = item => ({
   payload: {
     item
   }
+});
+const toggleModal = () => ({
+  type: _types__WEBPACK_IMPORTED_MODULE_0__["TOGGLE_MODAL"]
 });
 
 /***/ }),
@@ -3243,25 +3456,21 @@ const selectChildren = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelec
 /*!*********************************************!*\
   !*** ./store/furnitureBankReducer/types.js ***!
   \*********************************************/
-/*! exports provided: INCREMENT, DECREMENT, UPDATE_FILTER, ADD_ITEM, DECREMENT_ITEM, INCREMENT_ITEM, DELETE_ITEM */
+/*! exports provided: ADD_ITEM, DECREMENT_ITEM, INCREMENT_ITEM, DELETE_ITEM, TOGGLE_MODAL */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INCREMENT", function() { return INCREMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECREMENT", function() { return DECREMENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FILTER", function() { return UPDATE_FILTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ADD_ITEM", function() { return ADD_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DECREMENT_ITEM", function() { return DECREMENT_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "INCREMENT_ITEM", function() { return INCREMENT_ITEM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_ITEM", function() { return DELETE_ITEM; });
-const INCREMENT = 'INCREMENT';
-const DECREMENT = 'DECREMENT';
-const UPDATE_FILTER = 'UPDATE_FILTER';
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TOGGLE_MODAL", function() { return TOGGLE_MODAL; });
 const ADD_ITEM = 'ADD_ITEM';
 const DECREMENT_ITEM = 'DECREMENT_ITEM';
 const INCREMENT_ITEM = 'INCREMENT_ITEM';
 const DELETE_ITEM = 'DELETE_ITEM';
+const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 /***/ }),
 
@@ -3269,7 +3478,7 @@ const DELETE_ITEM = 'DELETE_ITEM';
 /*!*************************!*\
   !*** ./styles/index.js ***!
   \*************************/
-/*! exports provided: FlexContainer, TextSpan, defaultBreakPoints, createBreakPoints, paddingXL, paddingL, paddingM, paddingS, paddingXS, testBorder, fontWeightXS, fontWeightS, fontWeightM, fontWeightL, fontWeightXL, fontSizeXXL, fontSizeXL, fontSizeL, fontSizeM, fontSizeS, fontSizeXS, fontFamilyMain, colorGrey */
+/*! exports provided: FlexContainer, TextSpan, defaultBreakPoints, createBreakPoints, paddingXL, paddingL, paddingM, paddingS, paddingXS, testBorder, fontWeightXS, fontWeightS, fontWeightM, fontWeightL, fontWeightXL, fontSizeXXL, fontSizeXL, fontSizeL, fontSizeM, fontSizeS, fontSizeXS, fontFamilyMain, colorGrey, easeInOutCubic, zIndexModal, zIndexModalBackground */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3323,7 +3532,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "colorGrey", function() { return _sharedStyles__WEBPACK_IMPORTED_MODULE_2__["colorGrey"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "easeInOutCubic", function() { return _sharedStyles__WEBPACK_IMPORTED_MODULE_2__["easeInOutCubic"]; });
 
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zIndexModal", function() { return _sharedStyles__WEBPACK_IMPORTED_MODULE_2__["zIndexModal"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "zIndexModalBackground", function() { return _sharedStyles__WEBPACK_IMPORTED_MODULE_2__["zIndexModalBackground"]; });
 
 
 
@@ -3390,11 +3603,11 @@ __webpack_require__.r(__webpack_exports__);
 const FlexContainer = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "sharedStyledComponents__FlexContainer",
   componentId: "sc-1q45dof-0"
-})(["display:flex;position:", ";flex-direction:", ";justify-content:", ";;align-items:", ";grid-area:", ";width:", ";height:", ";padding-left:", "rem;margin-top:", "rem;", ""], props => props.position || 'relative', props => props.direction || 'row', props => props.justify || 'center', props => props.align || 'center', props => props.area, props => props.width || '100%', props => props.height || '100%', props => props.paddingLeft || 0, props => props.marginTop || 0, props => props.border && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["border:1px solid black;"]));
+})(["display:flex;position:", ";flex-direction:", ";justify-content:", ";;align-items:", ";grid-area:", ";width:", ";height:", ";font-size:", ";padding-left:", "rem;margin-top:", "rem;padding:", ";", ""], props => props.position || 'relative', props => props.direction || 'row', props => props.justify || 'center', props => props.align || 'center', props => props.area, props => props.width || '100%', props => props.height || '100%', props => props.size || ___WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], props => props.paddingLeft || 0, props => props.marginTop || 0, props => props.padding, props => props.border && Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(["border:1px solid black;"]));
 const TextSpan = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.withConfig({
   displayName: "sharedStyledComponents__TextSpan",
   componentId: "sc-1q45dof-1"
-})(["font-size:", ";font-weight:", ";color:", ";display:block;"], props => props.size || ___WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], props => props.weight || ___WEBPACK_IMPORTED_MODULE_1__["fontWeightS"], props => props.color || _sharedStyles__WEBPACK_IMPORTED_MODULE_2__["colorGrey"]);
+})(["font-size:", ";font-weight:", ";color:", ";display:", ";padding-bottom:", "rem;"], props => props.size || ___WEBPACK_IMPORTED_MODULE_1__["fontSizeM"], props => props.weight || ___WEBPACK_IMPORTED_MODULE_1__["fontWeightS"], props => props.color || _sharedStyles__WEBPACK_IMPORTED_MODULE_2__["colorGrey"], props => props.display || 'block', props => props.paddingBottom || 0);
 
 /***/ }),
 
@@ -3402,7 +3615,7 @@ const TextSpan = styled_components__WEBPACK_IMPORTED_MODULE_0___default.a.div.wi
 /*!********************************!*\
   !*** ./styles/sharedStyles.js ***!
   \********************************/
-/*! exports provided: fontFamilyMain, colorGrey, fontSizeXXL, fontSizeXL, fontSizeL, fontSizeM, fontSizeS, fontSizeXS, fontWeightXS, fontWeightS, fontWeightM, fontWeightL, fontWeightXL, paddingXL, paddingL, paddingM, paddingS, paddingXS, testBorder */
+/*! exports provided: fontFamilyMain, colorGrey, fontSizeXXL, fontSizeXL, fontSizeL, fontSizeM, fontSizeS, fontSizeXS, fontWeightXS, fontWeightS, fontWeightM, fontWeightL, fontWeightXL, paddingXL, paddingL, paddingM, paddingS, paddingXS, testBorder, easeInOutCubic, zIndexModal, zIndexModalBackground */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3426,6 +3639,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "paddingS", function() { return paddingS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "paddingXS", function() { return paddingXS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "testBorder", function() { return testBorder; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "easeInOutCubic", function() { return easeInOutCubic; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zIndexModal", function() { return zIndexModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zIndexModalBackground", function() { return zIndexModalBackground; });
 const fontFamilyMain = `gill-sans-nova, sans-serif`;
 const colorGrey = `#333333`;
 const fontSizeXXL = `3.6rem`;
@@ -3445,6 +3661,9 @@ const paddingM = '0.8rem 1.6rem';
 const paddingS = '0.6rem 1.2rem';
 const paddingXS = '0.4rem .8rem';
 const testBorder = `border: 1px solid black`;
+const easeInOutCubic = 'cubic-bezier(0.645, 0.045, 0.355, 1)';
+const zIndexModal = 1100;
+const zIndexModalBackground = 1000;
 
 /***/ }),
 
@@ -3559,7 +3778,7 @@ const getArray = num => num > 0 ? _babel_runtime_corejs2_core_js_array_from__WEB
 
 /***/ }),
 
-/***/ 5:
+/***/ 3:
 /*!***********************************************************!*\
   !*** multi ./pages/visualisations/furniture-bank-2019.js ***!
   \***********************************************************/

@@ -58,13 +58,14 @@ const FixedInfoButton = ({
   iconTop,
   iconRight,
   iconHeight,
-  iconComponent
+  iconComponent,
+  handleClick
 }) => {
   const dims = { top, right, bottom, left, height, width, corner, translate };
   const styles = { background, color, round };
   const iconDims = { iconLeft, iconBottom, iconTop, iconRight, iconHeight };
   return (
-    <Container {...dims} {...styles}>
+    <Container {...dims} {...styles} onClick={handleClick} >
       <IconContainer>
         <Icon {...iconDims}>
           {

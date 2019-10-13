@@ -1,27 +1,10 @@
 import {
-  DECREMENT,
-  INCREMENT,
-  UPDATE_FILTER,
   ADD_ITEM,
   INCREMENT_ITEM,
   DECREMENT_ITEM,
-  DELETE_ITEM
+  DELETE_ITEM,
+  TOGGLE_MODAL
 } from "./types";
-
-export const increment = () => ({
-  type: INCREMENT
-});
-
-export const decrement = () => ({
-  type: DECREMENT
-});
-
-export const updateFilter = filter => ({
-  type: UPDATE_FILTER,
-  payload: {
-    filter
-  }
-});
 
 export const addItem = item => ({
   type: ADD_ITEM,
@@ -50,3 +33,8 @@ export const deleteItem = item => ({
     item
   }
 });
+
+export const toggleModal = () => ({
+  type: TOGGLE_MODAL,
+});
+
