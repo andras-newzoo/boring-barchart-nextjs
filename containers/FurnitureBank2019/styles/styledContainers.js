@@ -366,6 +366,11 @@ export const EmissionContainer = styled.div`
     ". ."
     "num icon"
     "text text";
+
+  img {
+    width: 80%;
+    padding-right: 2rem;
+  }
 `;
 
 export const ReqContainer = styled.div`

@@ -15,6 +15,7 @@ export const FlexContainer = styled.div`
   font-size: ${props => props.size || fontSizeM};
 
   padding-left: ${props => props.paddingLeft || 0}rem;
+  padding-right: ${props => props.paddingRight || 0}rem;
   
   margin-top: ${props => props.marginTop || 0}rem;
 

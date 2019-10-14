@@ -3,6 +3,7 @@ import MapContainer from './MapContainer'
 import ControlContainer from './ControlContainer'
 import FamiliesContainer from './FamiliesContainer'
 import LandFillContainer from './LandFillContainer'
+import EmissionContainer from './EmissionContainer'
 
 
 export {
@@ -10,5 +11,6 @@ export {
   MapContainer,
   ControlContainer,
   FamiliesContainer,
-  LandFillContainer
+  LandFillContainer,
+  EmissionContainer
 }
