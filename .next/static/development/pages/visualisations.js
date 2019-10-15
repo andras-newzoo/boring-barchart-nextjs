@@ -27789,7 +27789,7 @@ var zIndexModalBackground = 1000;
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!*******************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fvisualisations&absolutePagePath=%2FUsers%2Fandrasszesztai%2FDesktop%2Fboring-barchart-nextjs%2Fpages%2Fvisualisations%2Findex.js ***!
   \*******************************************************************************************************************************************************************************/
@@ -27812,5 +27812,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[2,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=visualisations.js.map
