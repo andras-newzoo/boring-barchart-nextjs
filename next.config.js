@@ -17,3 +17,7 @@ module.exports = withCSS(
     }
   })
 );
+
+module.exports = {
+  target: 'serverless'
+}
